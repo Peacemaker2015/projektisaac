@@ -1,0 +1,156 @@
+/*
+    Document   : game.css
+
+    Author     : Reichert, Tobias, OFR
+                 Rothe, Martin, OFR
+    History:
+    2015-02-23  TR  Create Document
+*/
+
+#moorhuhnL0{
+
+    display: none;
+    width: 75px;
+    height: 50px;
+
+}
+
+#moorhuhnL1{
+
+    display: none;
+    width: 75px;
+    height: 50px;
+
+}
+
+#moorhuhnL2{
+
+    display: none;
+    width: 75px;
+    height: 50px;
+
+}
+
+#moorhuhnR0{
+
+    display: none;
+    width: 75px;
+    height: 50px;
+
+}
+
+#moorhuhnR1{
+
+    display: none;
+    width: 75px;
+    height: 50px;
+
+}
+
+#moorhuhnR2{
+
+    display: none;
+    width: 75px;
+    height: 50px;
+
+}
+
+#kugel{
+    width: 32px;
+    height: 65px;
+    position: absolute;
+    margin: 730px 0 0 950px;
+    text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+    position: absolute;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size:40px;
+}
+
+#ammo{
+    color: #444;
+    margin: 745px 0 0 1000px;
+    text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+    position: absolute;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size:40px;
+}
+
+#score{
+    color: #222222;
+    margin: 745px 0 0 550;
+    text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+    position: absolute;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size:40px;
+
+}
+
+#time{
+    color: black;
+    margin: 745px 0 0 155px;
+    text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+    position: absolute;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size:40px;
+}
+
+#game{
+
+    cursor: url(../images/fadenkreuz.png), default;
+    background-image: url(../images/background.jpg);
+    position: absolute;
+    width: 1024px;
+    height: 768px;
+    left: 100px;
+    top: 50px;
+    border: 1px solid #FFF;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.4);
+
+}

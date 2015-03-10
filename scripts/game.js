@@ -255,6 +255,7 @@ function game(){
 
     // Elemente des DIVs werden in Variablen gespeichert
     var frageHighscoreDIV = document.getElementById("eintragenHighscoreDiv");
+    var sendenButton = document.getElementById("highscoreSendenButton");
     var zuruckMenuButton = document.getElementById("zurückzumMenüButton");
 
     // Funktion zum Anzeigen des HighScoreEintragenDivs
@@ -279,6 +280,7 @@ function game(){
 
     // Eventlistener für den Button "Zurück"
     zuruckMenuButton.addEventListener("click",hideAbfrageHighscore);
+    sendenButton.addEventListener("click", schreiben);
 
 
 //------------------------------------------------------------------------------------------------------------ //
@@ -686,10 +688,6 @@ function schreiben(){
 
     // Das HIGHSCORE-Eintragen-Div wird ausgeblendet und das Highscore-Anzeigen-DIV eingeblendet
 
-
-
-
-
     var name = document.getElementById("name").value;
     var score = document.getElementById("score").innerHTML;
 
@@ -716,25 +714,16 @@ function auslesen(){
     xmlhttp.open('GET', 'db_lesen.php', true);
 
     xmlhttp.addEventListener('readystatechange', function() {
-    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-        //console.log(xmlhttp.responseText);
-        document.getElementById('tabelle').innerHTML = xmlhttp.responseText;
-    }
-});
-xmlhttp.send();
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            //console.log(xmlhttp.responseText);
+            document.getElementById('tabelle').innerHTML = xmlhttp.responseText;
+        }
+    });
+    xmlhttp.send();
 }
 
- var senden = document.getElementById("highscoreSendenButton");
-// Funktion zum Verschwinden lassen des Hauptmenüs und Anzeigen des Divs mit der Spielanleitung
 
-
-// Eventlistener für den Button "Spielanleitung" und den "Zurück" Button auf dem Spielanleitungs DIV
-    senden.addEventListener("click", schreiben);
 
 
 };
 game();
-
-
-
-

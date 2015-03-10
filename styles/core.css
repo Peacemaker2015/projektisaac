@@ -632,3 +632,7 @@ input:required:valid {
 #highscoreSendenButton {
     top: 170px;
 }
+
+#punkte {
+    color: red;
+}

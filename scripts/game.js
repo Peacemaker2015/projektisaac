@@ -431,9 +431,9 @@ function mousedownSpielfeld(e){
             // Prüfen, ob Moorhuhn getroffen
             for(var i=0;i<moorhuhn.length;i++){
 
-                if( mouseX > (moorhuhn[i].x - 15)
+                if( mouseX > (moorhuhn[i].x - 30)
                         && mouseX < (moorhuhn[i].x + (30 * moorhuhn[i].scale) - 15)
-                        && mouseY > (moorhuhn[i].y - 15)
+                        && mouseY > (moorhuhn[i].y - 30)
                         && mouseY < (moorhuhn[i].y + (50 * moorhuhn[i].scale) - 15) ){
 
 

@@ -2,9 +2,13 @@
 <head>
   <link href='http://fonts.googleapis.com/css?family=Bubblegum+Sans' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="styles/styleProjectKlein.css" media="(max-width: 1130px)">
+<link rel="stylesheet" type="text/css" href="styles/styleProjectKlein.css" media="(max-height: 820px)">
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/core.css">
   <link rel="stylesheet" href="styles/game.css">
+
+
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
 </head>
@@ -68,12 +72,12 @@
 
             <br>
 
-            <p >Ziel des Spiels ist es, die fliegenden „Moorhühner“ abzuschießen. <br><br>
+            <p id="content">Ziel des Spiels ist es, die fliegenden „Moorhühner“ abzuschießen. <br><br>
 
                 Je mehr Sie davon in den vorgegebenen 90 Sekunden treffen, umso höher fällt Ihre Punktezahl aus. Dabei steuern Sie das                      Zielkreuz mit der Maus, per Linksklick feuern Sie eine Ladung Schrot ab.
             </p>
 
-            <p>
+            <p id="content">
             Am Bildschirmrand sehen Sie verschiedene Anzeigen. <br><br>
             Oben links wird die verbleibende Zeit für das Spiel angegeben, während Sie oben rechts Ihren aktuellen Punktestand                     einsehen können. <br><br>
 
@@ -88,7 +92,7 @@
 
         <div id="HighscoreDiv" class="hidden position">
 
-            <p>Highscore</p>
+            <p id="content">Highscore</p>
             <br>
             <br>
             <br>
@@ -104,7 +108,7 @@
 
         <div id="spieleinestellungenDiv" class="hidden position">
 
-            <p>Einstellungen</p>
+            <p id="content">Einstellungen</p>
             <br>
             <br>
             <!-- Einstellen des Schwierigkeitsgrades           -->
@@ -217,7 +221,7 @@
 
             <br>
 
-            <p > Spiel wurde pausiert! </p>
+            <p id="content"> Spiel wurde pausiert! </p>
 
 
         <a href="#" class="action-button shadow animate green" id="weiterButton">Weiter</a>
@@ -226,7 +230,7 @@
 
         <div id="eintragenHighscoreDiv"  class="postionHighscoreAbfrage hidden">
           <p id="punkte"></p>
-          <p>Trage deinen Namen ein und klicke auf Absenden! <br> <br>Danach bekommst du den Highscore angezeigt und kannst schauen, ob du es in den Highscore geschafft hast! </p>
+          <p id="content">Trage deinen Namen ein und klicke auf Absenden! <br> <br>Danach bekommst du den Highscore angezeigt und kannst schauen, ob du es in den Highscore geschafft hast! </p>
         <div id="form-div">
             <form class="form" id="form1">
 
@@ -262,7 +266,10 @@
         <!-- ENDE DIV EintragenHighscore -->
 
     </div> <!-- ENDE DIV GAMEOBJEKT -->
+ <div id="zuklein"  class="hidden">
+ <p id="fehler"><br> <br> <br> <br>  Ohhhh das ist was doofes passiert! <br> <br> Bitte vergrößern Sie das Fenster, <br> <br> damit das Spiel ordentlich dargestellt werden kann.
 
+        </div> <!-- ENDE DIV SPIELANLEITUNG -->
     <script src="scripts/game.js" type="text/javascript" charset="utf-8"></script>
 
 </body>

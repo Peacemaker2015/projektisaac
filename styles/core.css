@@ -24,7 +24,7 @@ font-size:20px;
 
 }
 
-p {
+#content {
     padding: 10px;
     font-family: 'Bubblegum Sans', cursive;
 	font-size: 23px;
@@ -652,5 +652,7 @@ input:required:valid {
                0 20px 20px rgba(0,0,0,.15);
 
 }
+
+
 
 

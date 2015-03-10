@@ -57,6 +57,8 @@ var zuruckButton = document.getElementById("zuruckAnleitungButton");
 var frageHighscoreDIV = document.getElementById("eintragenHighscoreDiv");
 
 var showHighscoreabfrage = function () {
+    var text = "Wow, Du hast " + spielfeld.score + " Punkte !!!";
+    document.getElementById("punkte").innerHTML = text;
 
     ammo.classList.toggle("hidden");
     time.classList.toggle("hidden");
@@ -65,7 +67,6 @@ var showHighscoreabfrage = function () {
 
     onlymenubutton.classList.toggle("hidden");
     frageHighscoreDIV.classList.toggle("hidden");
-
 }
 // Funktion zum Verschwinden lassen des Hauptmenüs und Anzeigen des Divs mit der Spielanleitung
 

@@ -8,9 +8,10 @@
 *   2015-02-23  -
 *   2015-02-26  TR  > Create Main-Game-Engine
 *   2015-02-26  MR  > Implementation GUI
-*   2015-03-03  TR  > Implementation code encapsulation
+*   2015-03-03  TR  > Implementation Code encapsulation
 *   2015-03-04  TR  > Implementation left and right direction
 *                   > Fixed Errors
+*   2015-03-05  MR  > Implementation Database connection
 */
 
 //function game(){
@@ -21,7 +22,7 @@ window.onload = function(){
     loadGame();
     // Es wird überprüft, ob ein Spiel mit
     // ausreichender Spielzeit vorhanden ist
-    if(isNaN(spielfeld.time) || spielfeld.time<=0){
+    if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=maxTime){
         onlymenu.click();
     }else{
         // Spiel wird gestartet
@@ -56,6 +57,8 @@ var zuruckButton = document.getElementById("zuruckAnleitungButton");
 var frageHighscoreDIV = document.getElementById("eintragenHighscoreDiv");
 
 var showHighscoreabfrage = function () {
+    var text = "Wow, Du hast " + spielfeld.score + " Punkte !!!";
+    document.getElementById("punkte").innerHTML = text;
 
     ammo.classList.toggle("hidden");
     time.classList.toggle("hidden");
@@ -64,7 +67,6 @@ var showHighscoreabfrage = function () {
 
     onlymenubutton.classList.toggle("hidden");
     frageHighscoreDIV.classList.toggle("hidden");
-
 }
 // Funktion zum Verschwinden lassen des Hauptmenüs und Anzeigen des Divs mit der Spielanleitung
 
@@ -223,6 +225,7 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
+var maxTime = 30;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;
@@ -284,7 +287,7 @@ function loadGame(){
         document.getElementById('ammo').innerHTML = spielfeld.ammo;
         // Spielzeit wird überprüft
         if(isNaN(spielfeld.time) || spielfeld.time<=0){
-            spielfeld.time = 10;
+            spielfeld.time = maxTime;
             ;
         }
         document.getElementById('time').innerHTML = spielfeld.time;
@@ -428,24 +431,24 @@ function mousedownSpielfeld(e){
             // Prüfen, ob Moorhuhn getroffen
             for(var i=0;i<moorhuhn.length;i++){
 
-                if(mouseX > moorhuhn[i].x
-                        && mouseX < (moorhuhn[i].x + (70 * moorhuhn[i].scale))
-                        && mouseY > moorhuhn[i].y
-                        && mouseY < (moorhuhn[i].y + (50 * moorhuhn[i].scale))){
+                if( mouseX > (moorhuhn[i].x - 15)
+                        && mouseX < (moorhuhn[i].x + (30 * moorhuhn[i].scale) - 15)
+                        && mouseY > (moorhuhn[i].y - 15)
+                        && mouseY < (moorhuhn[i].y + (50 * moorhuhn[i].scale) - 15) ){
 
 
                     if(moorhuhn[i].hit === false){
 
                         // Punkte werden vergeben
-                        if(moorhuhn[i].scale <= 0.6){
+                        if(moorhuhn[i].scale <= 1.05){
                             spielfeld.score += (15 * level);
                             document.getElementById('score').innerHTML = spielfeld.score;
                         }else{
-                            if(moorhuhn[i].scale <= 0.8){
+                            if(moorhuhn[i].scale <= 1.35){
                                 spielfeld.score += (10 * level);
                                 document.getElementById('score').innerHTML = spielfeld.score;
                             }
-                            else if(moorhuhn[i].scale > 0.8){
+                            else if(moorhuhn[i].scale > 1.35){
                                 spielfeld.score += (5 * level);
                                 document.getElementById('score').innerHTML = spielfeld.score;
                             }
@@ -480,9 +483,9 @@ function createMoorhuhn(direction){
     this.direction = direction;
 
     if(level===3){
-        this.scale = 0.5;
+        this.scale = 0.7;
     }else{
-        this.scale = 0.5 + (Math.random() * 0.5);
+        this.scale = 0.7 + (Math.random() * 0.8);
     }
 }
 

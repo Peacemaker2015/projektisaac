@@ -16,40 +16,46 @@
 */
 //------------------------------------------------------------------------------------------------------------ //
 
+function game(){
+    'use strict';
 
-//function game(){
-'use strict';
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, wenn das Browserfenster geöffnet wird.
+    */
 
-window.onload = function(){
-    // Spielstand wird geladen
-    loadGame();
-    // Es wird überprüft, ob ein Spiel mit
-    // ausreichender Spielzeit vorhanden ist
-    if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=maxTime){
-        onlymenu.click();
-    }else{
-        // Spiel wird gestartet
-        if(document.getElementById("Einfach").checked === true){
-            startGame(1);
+    window.onload = function(){
+        // Spielstand wird geladen
+        loadGame();
+        // Es wird überprüft, ob ein Spiel mit
+        // ausreichender Spielzeit vorhanden ist
+        if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=maxTime){
+            onlymenu.click();
+        }else{
+            // Spiel wird gestartet
+            if(document.getElementById("Einfach").checked === true){
+                startGame(1);
+            }
+            else if(document.getElementById("Mittel").checked === true){
+                startGame(2);
+            }
+            else if(document.getElementById("Experte").checked === true){
+                startGame(3);
+            }
         }
-        else if(document.getElementById("Mittel").checked === true){
-            startGame(2);
-        }
-        else if(document.getElementById("Experte").checked === true){
-            startGame(3);
-        }
-    }
-};
+    };
 
-window.onunload = function(){
-    // Spiel wird gestoppt
-    stopGame();
-    // Spielstand wird gespeichert
-    saveGame();
-};
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, wenn das Browserfenster geschlossen wird.
+    */
 
-
-
+    window.onunload = function(){
+        // Spiel wird gestoppt
+        stopGame();
+        // Spielstand wird gespeichert
+        saveGame();
+    };
 
 //------------------------------------------------------------------------------------------------------------ //
 /*
@@ -202,42 +208,50 @@ var hidemenusettings = function () {
     zuruckButtonEinstellungen.addEventListener("click", hidemenusettings);
 
 
-    //------------------------------------------------------------------------------------------------------------ //
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das verschwinden lassen
+    **  des HauptmenüDIVs und Anzeigen des HighscoreDIVs
+    */
 
-// Funktion zum Verschwinden lassen des Hauptmenüs und Anzeigen des Divs mit dem Highscore
-
-    var highscoreButton = document.getElementById("highscoreButton");
+    // Elemente des DIVs werden in Variablen gespeichert
     var hightscoreDiv = document.getElementById("HighscoreDiv");
+    var highscoreButton = document.getElementById("highscoreButton");
     var zuruckButtonHighscore = document.getElementById("zuruckHighscoreButton");
 
-var hidemenuhighscore = function () {
-    hightscoreDiv.classList.toggle("hidden");
-    buttonsDiv.classList.toggle("hidden");
-    auslesen();
+    // Funktion für den Eventlistener für die Buttons
+    var hidemenuhighscore = function () {
+        hightscoreDiv.classList.toggle("hidden");
+        buttonsDiv.classList.toggle("hidden");
+        auslesen();
 
-};
+    };
 
-// Eventlistener für den Button "Spielanleitung" und den "Zurück" Button auf dem Spielanleitungs DIV
+    // Eventlistener für den Button "Highscore" und den "Zurück"
     highscoreButton.addEventListener("click", hidemenuhighscore);
     zuruckButtonHighscore.addEventListener("click", hidemenuhighscore);
 
 
-// Funktion zum Anzeigen des Pause Divs
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das PauseDIVs
+    */
 
+    // Elemente des DIVs werden in Variablen gespeichert
     var pauseDiv = document.getElementById("pauseDiv");
     var weiterButton = document.getElementById("weiterButton");
 
+    // Funktion für den Eventlistener für den Button "Weiter"
     var hidemenupause = function () {
+
+        // Spiel wird gestartet
         startGame(level);
+        // PauseDIV wird ausgeblendet
         pauseDiv.classList.toggle("hidden");
     };
 
-    // Eventlistener für den Button "Spielanleitung" und den "Zurück" Button auf dem Spielanleitungs DIV
+    // Eventlistener für den Button "Weiter"
     weiterButton.addEventListener("click", hidemenupause);
-
-
-
-
 
 
 //------------------------------------------------------------------------------------------------------------ //
@@ -694,8 +708,8 @@ xmlhttp.send();
     senden.addEventListener("click", schreiben);
 
 
-//};
-//game();
+};
+game();
 
 
 

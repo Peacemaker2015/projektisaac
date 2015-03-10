@@ -16,9 +16,6 @@
 //function game(){
 'use strict';
 
-
-
-
 window.onload = function(){
     // Spielstand wird geladen
     loadGame();

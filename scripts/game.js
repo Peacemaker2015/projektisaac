@@ -22,7 +22,7 @@ window.onload = function(){
     loadGame();
     // Es wird überprüft, ob ein Spiel mit
     // ausreichender Spielzeit vorhanden ist
-    if(isNaN(spielfeld.time) || spielfeld.time<=0){
+    if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=maxTime){
         onlymenu.click();
     }else{
         // Spiel wird gestartet
@@ -225,6 +225,7 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
+var maxTime = 10;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;
@@ -286,7 +287,7 @@ function loadGame(){
         document.getElementById('ammo').innerHTML = spielfeld.ammo;
         // Spielzeit wird überprüft
         if(isNaN(spielfeld.time) || spielfeld.time<=0){
-            spielfeld.time = 10;
+            spielfeld.time = maxTime;
             ;
         }
         document.getElementById('time').innerHTML = spielfeld.time;

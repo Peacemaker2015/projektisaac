@@ -209,12 +209,29 @@ var hidemenuhighscore = function () {
     zuruckButtonHighscore.addEventListener("click", hidemenuhighscore);
 
 
+// Funktion zum Anzeigen des Pause Divs
+
+    var pauseDiv = document.getElementById("pauseDiv");
+    var weiterButton = document.getElementById("weiterButton");
+
+    var hidemenupause = function () {
+        startGame(level);
+        pauseDiv.classList.toggle("hidden");
+    };
+
+    // Eventlistener für den Button "Spielanleitung" und den "Zurück" Button auf dem Spielanleitungs DIV
+    weiterButton.addEventListener("click", hidemenupause);
 
 
+
+
+
+
+//------------------------------------------------------------------------------------------------------------ //
 /*
- *
- *  Bereich Engine
- */
+**  Bereich Engine
+*/
+//------------------------------------------------------------------------------------------------------------ //
 
 // Canvas vorbereiten
 var canvas = document.getElementById('game');
@@ -405,8 +422,14 @@ function keydownSpielfeld(e){
         // Spiel mit Leertaste unterbrechen
         else if (e.keyCode === 32) {
             if(active===true){
+                // Spiel anhalten
                 stopGame();
+                // PauseDiv einblenden
+                pauseDiv.classList.toggle("hidden");
             }else{
+                // Spiel fortsetzen
+                pauseDiv.classList.toggle("hidden");
+                // PauseDIV ausblenden
                 startGame(level);
             }
         }

@@ -225,7 +225,7 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
-var maxTime = 10;
+var maxTime = 30;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;
@@ -431,10 +431,10 @@ function mousedownSpielfeld(e){
             // Prüfen, ob Moorhuhn getroffen
             for(var i=0;i<moorhuhn.length;i++){
 
-                if(mouseX > moorhuhn[i].x
-                        && mouseX < (moorhuhn[i].x + (70 * moorhuhn[i].scale))
-                        && mouseY > moorhuhn[i].y
-                        && mouseY < (moorhuhn[i].y + (50 * moorhuhn[i].scale))){
+                if( mouseX > (moorhuhn[i].x - 15)
+                        && mouseX < (moorhuhn[i].x + (30 * moorhuhn[i].scale) - 15)
+                        && mouseY > (moorhuhn[i].y - 15)
+                        && mouseY < (moorhuhn[i].y + (50 * moorhuhn[i].scale) - 15) ){
 
 
                     if(moorhuhn[i].hit === false){

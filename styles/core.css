@@ -141,12 +141,12 @@ p {
 }
 
 
-.action-button:active
+/*.action-button:active
 {
 	transform: translate(0px,5px);
   -webkit-transform: translate(0px,5px);
 	border-bottom: 1px solid;
-}
+}*/
 
 .hidden{
     display: none;
@@ -204,12 +204,12 @@ p {
 
 }
 
-.menubutton:active{
+/*.menubutton:active{
 
     transform: translate(0px,5px);
   -webkit-transform: translate(0px,5px);
 	border-bottom: 1px solid;
-}
+}*/
 
 /*CSS für die Einstellungen des Spiels*/
 
@@ -389,9 +389,10 @@ p {
 
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
-  background-size: cover;
-  height:100%;
+html{
+    background:url(../images/hintergrund1.jpg) no-repeat;
+    background-size: cover;
+    height:100%;
 }
 
 #feedback-page{

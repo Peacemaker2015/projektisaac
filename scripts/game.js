@@ -8,9 +8,10 @@
 *   2015-02-23  -
 *   2015-02-26  TR  > Create Main-Game-Engine
 *   2015-02-26  MR  > Implementation GUI
-*   2015-03-03  TR  > Implementation code encapsulation
+*   2015-03-03  TR  > Implementation Code encapsulation
 *   2015-03-04  TR  > Implementation left and right direction
 *                   > Fixed Errors
+*   2015-03-05  MR  > Implementation Database connection
 */
 
 //function game(){

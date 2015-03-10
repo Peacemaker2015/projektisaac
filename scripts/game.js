@@ -288,6 +288,7 @@ function loadGame(){
         // Spielzeit wird überprüft
         if(isNaN(spielfeld.time) || spielfeld.time<=0){
             spielfeld.time = 10;
+            ;
         }
         document.getElementById('time').innerHTML = spielfeld.time;
         // Moorhühner werden geladen
@@ -606,8 +607,11 @@ function drawMoorhuhn(){
 
 function schreiben(){
 
-    menu.classList.toggle("hidden");
-    frageHighscoreDIV.classList.toggle("hidden");
+    // Das HIGHSCORE-Eintragen-Div wird ausgeblendet und das Highscore-Anzeigen-DIV eingeblendet
+
+
+
+
 
     var name = document.getElementById("name").value;
     var score = document.getElementById("score").innerHTML;
@@ -618,6 +622,13 @@ function schreiben(){
     xmlhttp.send();
 
     stopGame();
+
+    menu.classList.toggle("hidden");
+    frageHighscoreDIV.classList.toggle("hidden");
+    buttonsDiv.classList.toggle("hidden");
+    hightscoreDiv.classList.toggle("hidden");
+
+    window.setTimeout( auslesen(), 5000 );
 
 };
 
@@ -637,7 +648,7 @@ function auslesen(){
 xmlhttp.send();
 }
 
- var senden = document.getElementById("sendenButton");
+ var senden = document.getElementById("highscoreSendenButton");
 // Funktion zum Verschwinden lassen des Hauptmenüs und Anzeigen des Divs mit der Spielanleitung
 
 

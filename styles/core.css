@@ -411,6 +411,7 @@ html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat
 	padding-top:35px;
 	padding-bottom:50px;
 	width: 450px;
+    height: 150px;
 	float: left;
 	left: 50%;
 	position: absolute;
@@ -475,30 +476,6 @@ textarea {
     height: 150px;
     line-height: 150%;
     resize:vertical;
-}
-
-input:hover, textarea:hover,
-input:focus, textarea:focus {
-	background-color:white;
-}
-
-#sendenButton{
-	font-family: 'Bubblegum Sans', cursive;
-	float:center;
-	width: 100%;
-	border: #fbfbfb solid 4px;
-	cursor:pointer;
-	background-color: #3498db;
-	color:white;
-	font-size:30px;
-	padding-top:22px;
-	padding-bottom:22px;
-    padding-left: 22px;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-  margin-top:-4px;
-  font-weight:700;
 }
 
 #sendenButton:hover{
@@ -650,3 +627,7 @@ input:required:valid {
     background-position: right top;
     background-repeat: no-repeat;
   }
+
+#highscoreSendenButton {
+    top: 170px;
+}

@@ -64,66 +64,62 @@ function game(){
 //------------------------------------------------------------------------------------------------------------ //
 
 
-// Deklaration der Variablen für die Funktion des Hauptmenüs
+    // Deklaration der Variablen für die Funktion des Hauptmenüs
+    //var buttonsDiv = document.getElementById("buttonsDiv");
 
-var anleitung = document.getElementById("anleitungButton");
-var buttonsDiv = document.getElementById("buttonsDiv");
-var anleitungsDiv = document.getElementById("spielanleitungDiv");
-var zuruckButton = document.getElementById("zuruckAnleitungButton");
 
-// Anzeigen des HighScoreEintragenDivs
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das verschwinden lassen
+    **  des HauptmenüDIVs und Anzeigen des SpieleanleitungDIVs
+    */
 
-var frageHighscoreDIV = document.getElementById("eintragenHighscoreDiv");
+    // Elemente des DIVs werden in Variablen gespeichert
+    var anleitungsDiv = document.getElementById("spielanleitungDiv");
+    var anleitung = document.getElementById("anleitungButton");
+    var zuruckButton = document.getElementById("zuruckAnleitungButton");
 
-var showHighscoreabfrage = function () {
-    var text = "Wow, Du hast " + spielfeld.score + " Punkte !!!";
-    document.getElementById("punkte").innerHTML = text;
 
-    ammo.classList.toggle("hidden");
-    time.classList.toggle("hidden");
-    score.classList.toggle("hidden");
-    kugel.classList.toggle("hidden");
+    // Funktion für den Eventlistener für die Buttons
+    var hidemenu = function () {
+        anleitungsDiv.classList.toggle("hidden");
+        buttonsDiv.classList.toggle("hidden");
+    };
 
-    onlymenubutton.classList.toggle("hidden");
-    frageHighscoreDIV.classList.toggle("hidden");
-}
-// Funktion zum Verschwinden lassen des Hauptmenüs und Anzeigen des Divs mit der Spielanleitung
-
-var hidemenu = function () {
-    anleitungsDiv.classList.toggle("hidden");
-    buttonsDiv.classList.toggle("hidden");
-};
-
-// Eventlistener für den Button "Spielanleitung" und den "Zurück" Button auf dem Spielanleitungs DIV
+    // Eventlistener für den Button "Spielanleitung" und den "Zurück"
     anleitung.addEventListener("click", hidemenu);
     zuruckButton.addEventListener("click", hidemenu);
 
-// Funktion, um nach der Highscoreeingabe den kleinen MenüButton auszublenden und das große Menü wieder einzublenden
 
-    var hideAbfrageHighscore = function () {
-        menu.classList.toggle("hidden");
-        frageHighscoreDIV.classList.toggle("hidden");
-    }
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das verschwinden lassen
+    **  des HauptmenüDIVs und Anzeigen der Spiele-Engine
+    **  mit dem kleinen Menü-Button
+    */
 
-    var zuruckMenuButton = document.getElementById("zurückzumMenüButton");
-
-    zuruckMenuButton.addEventListener("click",hideAbfrageHighscore);
-
-
-
-
-
-
-// Funktion bei Klick auf "Spiel starten" um Menü auszublenden, damit ein neues Spiel gestartet werden kann.
-
-    var playGame = document.getElementById("spielstarten");
-    var menu = document.getElementById("menu");
-    var onlymenubutton = document.getElementById("onlymenubuttondiv");
+    // Elemente des DIVs werden in Variablen gespeichert
     var time = document.getElementById("time");
     var ammo = document.getElementById("ammo");
     var score = document.getElementById("score");
     var kugel = document.getElementById("kugel");
 
+    // "Großes" Hauptmenü
+    var menu = document.getElementById("menu");
+    var playGame = document.getElementById("spielstarten");
+
+    // "Kleiner" Menü-Button
+    var onlymenu = document.getElementById("onlymenu");
+    var onlymenubutton = document.getElementById("onlymenubuttondiv");
+
+    var showmenu = function () {
+        menu.classList.toggle("hidden");
+        onlymenubutton.classList.toggle("hidden");
+    };
+
+    // Funktion für den Eventlistener für das "große" Hauptmenü,
+    // wenn das Spiel nicht läuft. Bei "Click" auf "Spiel satrten" wird der
+    // "kleine" Menü-Button eingeblendet und das "große" Hauptmenü ausgeblendet
     var hidemenufornewgamebig = function (){
         // Andere Dinge werden verarbeitet
         menu.classList.toggle("hidden");
@@ -146,6 +142,9 @@ var hidemenu = function () {
         }
     };
 
+    // Funktion für den Eventlistener für den kleinen Menübutton oben links,
+    // wenn das Hauptmenü ausgeblendet ist. Auf "Click" wird der Menü Button
+    // ausgeblendet und das Hauptmenü eingeblendet
     var hidemenufornewgamesmall = function (){
         // Spiel wird gestoppt
         stopGame();
@@ -160,76 +159,9 @@ var hidemenu = function () {
         kugel.classList.toggle("hidden");
     };
 
+    // Eventlistener für den Button "Einstellungen" und den "Zurück"
     playGame.addEventListener("click", hidemenufornewgamebig);
-
-// Funktion des OnlyMenüButtons, damit das große Menü wieder angezeigt wird
-
-    var onlymenu = document.getElementById("onlymenu");
-
-    var showmenu = function () {
-        menu.classList.toggle("hidden");
-        onlymenubutton.classList.toggle("hidden");
-    };
-
-// Aktionlistener für den kleinen Menübutton oben links, wenn das Hauptmenü ausgeblendet ist
-// Auf "Click" wird der Menü Button ausgeblendet und das Hauptmenü eingeblendet
-
     onlymenu.addEventListener("click", hidemenufornewgamesmall);
-
-
-
-// Funktion zum Verschwinden lassen des Hauptmenüs und Anzeigen des Divs mit der Spieleinstellungen
-
-    var spieleinstellungenButton = document.getElementById("einstellungenButton");
-    var spieleinstellungenDiv = document.getElementById("spieleinestellungenDiv");
-    var zuruckButtonEinstellungen = document.getElementById("zuruckEinstellungenButton");
-
-var hidemenusettings = function () {
-    spieleinstellungenDiv.classList.toggle("hidden");
-    buttonsDiv.classList.toggle("hidden");
-    if(document.getElementById("yes").checked === true){
-        if(music===false){
-            activateMusic();
-        }
-    }
-    else if(document.getElementById("no").checked === true){
-        deactivateMusic();
-    }
-    if(document.getElementById("on").checked === true){
-        activateSound();
-    }
-    else if(document.getElementById("off").checked === true){
-        deactivateSound();
-    }
-};
-
-// Eventlistener für den Button "Spielanleitung" und den "Zurück" Button auf dem Spielanleitungs DIV
-    spieleinstellungenButton.addEventListener("click", hidemenusettings);
-    zuruckButtonEinstellungen.addEventListener("click", hidemenusettings);
-
-
-    //-------------------------------------------------------------------- //
-    /*
-    **  Befehlsausführungen, für das verschwinden lassen
-    **  des HauptmenüDIVs und Anzeigen des HighscoreDIVs
-    */
-
-    // Elemente des DIVs werden in Variablen gespeichert
-    var hightscoreDiv = document.getElementById("HighscoreDiv");
-    var highscoreButton = document.getElementById("highscoreButton");
-    var zuruckButtonHighscore = document.getElementById("zuruckHighscoreButton");
-
-    // Funktion für den Eventlistener für die Buttons
-    var hidemenuhighscore = function () {
-        hightscoreDiv.classList.toggle("hidden");
-        buttonsDiv.classList.toggle("hidden");
-        auslesen();
-
-    };
-
-    // Eventlistener für den Button "Highscore" und den "Zurück"
-    highscoreButton.addEventListener("click", hidemenuhighscore);
-    zuruckButtonHighscore.addEventListener("click", hidemenuhighscore);
 
 
     //-------------------------------------------------------------------- //
@@ -252,6 +184,101 @@ var hidemenusettings = function () {
 
     // Eventlistener für den Button "Weiter"
     weiterButton.addEventListener("click", hidemenupause);
+
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das verschwinden lassen
+    **  des HauptmenüDIVs und Anzeigen des EinstellungenDIVs
+    */
+
+    // Elemente des DIVs werden in Variablen gespeichert
+    var spieleinstellungenDiv = document.getElementById("spieleinestellungenDiv");
+    var spieleinstellungenButton = document.getElementById("einstellungenButton");
+    var zuruckButtonEinstellungen = document.getElementById("zuruckEinstellungenButton");
+
+    // Funktion für den Eventlistener für die Buttons
+    var hidemenusettings = function () {
+        spieleinstellungenDiv.classList.toggle("hidden");
+        buttonsDiv.classList.toggle("hidden");
+        if(document.getElementById("yes").checked === true){
+            if(music===false){
+                activateMusic();
+            }
+        }
+        else if(document.getElementById("no").checked === true){
+            deactivateMusic();
+        }
+        if(document.getElementById("on").checked === true){
+            activateSound();
+        }
+        else if(document.getElementById("off").checked === true){
+            deactivateSound();
+        }
+    };
+
+    // Eventlistener für den Button "Einstellungen" und den "Zurück"
+    spieleinstellungenButton.addEventListener("click", hidemenusettings);
+    zuruckButtonEinstellungen.addEventListener("click", hidemenusettings);
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das verschwinden lassen
+    **  des HauptmenüDIVs und Anzeigen des HighscoreDIVs
+    */
+
+    // Elemente des DIVs werden in Variablen gespeichert
+    var hightscoreDiv = document.getElementById("HighscoreDiv");
+    var highscoreButton = document.getElementById("highscoreButton");
+    var zuruckButtonHighscore = document.getElementById("zuruckHighscoreButton");
+
+    // Funktion für den Eventlistener für die Buttons
+    var hidemenuhighscore = function () {
+        hightscoreDiv.classList.toggle("hidden");
+        buttonsDiv.classList.toggle("hidden");
+        auslesen();
+    };
+
+    // Eventlistener für den Button "Highscore" und den "Zurück"
+    highscoreButton.addEventListener("click", hidemenuhighscore);
+    zuruckButtonHighscore.addEventListener("click", hidemenuhighscore);
+
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das verschwinden lassen
+    **  des HauptmenüDIVs und Anzeigen des HighScoreEintragenDivs
+    **
+    **  HINWEIS: Button "Eintragen" wird direkt aus der HTML-Datei
+    **  die Funktion schreiben() aufrufen
+    */
+
+    // Elemente des DIVs werden in Variablen gespeichert
+    var frageHighscoreDIV = document.getElementById("eintragenHighscoreDiv");
+    var zuruckMenuButton = document.getElementById("zurückzumMenüButton");
+
+    // Funktion zum Anzeigen des HighScoreEintragenDivs
+    var showHighscoreabfrage = function () {
+        var text = "Wow, Du hast " + spielfeld.score + " Punkte !!!";
+        document.getElementById("punkte").innerHTML = text;
+
+        ammo.classList.toggle("hidden");
+        time.classList.toggle("hidden");
+        score.classList.toggle("hidden");
+        kugel.classList.toggle("hidden");
+
+        onlymenubutton.classList.toggle("hidden");
+        frageHighscoreDIV.classList.toggle("hidden");
+    }
+
+    // Funktion für den Eventlistener für die Buttons
+    var hideAbfrageHighscore = function () {
+        menu.classList.toggle("hidden");
+        frageHighscoreDIV.classList.toggle("hidden");
+    }
+
+    // Eventlistener für den Button "Zurück"
+    zuruckMenuButton.addEventListener("click",hideAbfrageHighscore);
 
 
 //------------------------------------------------------------------------------------------------------------ //
@@ -428,9 +455,7 @@ function timeSpielfeld(){
 
     if(spielfeld.time<=0){
         stopGame();
-        //onlymenu.click();
         showHighscoreabfrage();
-        console.log( "bla" );
     }
 }
 
@@ -668,7 +693,6 @@ function schreiben(){
     var name = document.getElementById("name").value;
     var score = document.getElementById("score").innerHTML;
 
-    //alert(name +" "+score);
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', 'db_schreiben.php?&nname=' + name + '&ppunkte=' + score, true);
     xmlhttp.send();

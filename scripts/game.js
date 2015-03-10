@@ -439,15 +439,15 @@ function mousedownSpielfeld(e){
                     if(moorhuhn[i].hit === false){
 
                         // Punkte werden vergeben
-                        if(moorhuhn[i].scale <= 0.6){
+                        if(moorhuhn[i].scale <= 1.05){
                             spielfeld.score += (15 * level);
                             document.getElementById('score').innerHTML = spielfeld.score;
                         }else{
-                            if(moorhuhn[i].scale <= 0.8){
+                            if(moorhuhn[i].scale <= 1.35){
                                 spielfeld.score += (10 * level);
                                 document.getElementById('score').innerHTML = spielfeld.score;
                             }
-                            else if(moorhuhn[i].scale > 0.8){
+                            else if(moorhuhn[i].scale > 1.35){
                                 spielfeld.score += (5 * level);
                                 document.getElementById('score').innerHTML = spielfeld.score;
                             }
@@ -482,9 +482,9 @@ function createMoorhuhn(direction){
     this.direction = direction;
 
     if(level===3){
-        this.scale = 0.5;
+        this.scale = 0.7;
     }else{
-        this.scale = 0.5 + (Math.random() * 0.5);
+        this.scale = 0.7 + (Math.random() * 0.8);
     }
 }
 

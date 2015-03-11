@@ -35,6 +35,13 @@ function game(){
         if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=maxTime){
             onlymenu.click();
         }else{
+            active = false;
+            // Andere Elemente ausblenden
+            onlymenubutton.classList.toggle("hidden");
+            ammo.classList.toggle("hidden");
+            time.classList.toggle("hidden");
+            score.classList.toggle("hidden");
+            kugel.classList.toggle("hidden");
             // PauseDiv einblenden
             pauseDiv.classList.toggle("hidden");
         }
@@ -187,6 +194,12 @@ function game(){
         }
         // PauseDIV wird ausgeblendet
         pauseDiv.classList.toggle("hidden");
+        // Andere Elemente ausblenden
+        onlymenubutton.classList.toggle("hidden");
+        ammo.classList.toggle("hidden");
+        time.classList.toggle("hidden");
+        score.classList.toggle("hidden");
+        kugel.classList.toggle("hidden");
     };
 
     // Eventlistener für den Button "Weiter"
@@ -486,19 +499,36 @@ function keydownSpielfeld(e){
             }
         }
 
-        // Spiel mit Leertaste unterbrechen
+        // Spiel mit Leertaste unterbrechen oder fortsetzen
         else if (e.keyCode === 32) {
             if(active===true){
                 // Spiel anhalten
                 stopGame();
-                // PauseDiv einblenden
-                pauseDiv.classList.toggle("hidden");
             }else{
-                // Spiel fortsetzen
-                pauseDiv.classList.toggle("hidden");
-                // PauseDIV ausblenden
-                startGame(level);
+                if(level===null){
+                    // Spiel wird gestartet
+                    if(document.getElementById("Einfach").checked === true){
+                        startGame(1);
+                    }
+                    else if(document.getElementById("Mittel").checked === true){
+                        startGame(2);
+                    }
+                    else if(document.getElementById("Experte").checked === true){
+                        startGame(3);
+                    }
+                }else{
+                    // Spiel wird gestartet
+                    startGame(level);
+                }
             }
+            // Andere Elemente ausblenden
+            onlymenubutton.classList.toggle("hidden");
+            ammo.classList.toggle("hidden");
+            time.classList.toggle("hidden");
+            score.classList.toggle("hidden");
+            kugel.classList.toggle("hidden");
+            // PauseDIV wird ausgeblendet
+            pauseDiv.classList.toggle("hidden");
         }
     }
 }

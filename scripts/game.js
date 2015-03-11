@@ -203,19 +203,21 @@ function game(){
     var spieleinstellungenDiv = document.getElementById("spieleinestellungenDiv");
     var spieleinstellungenButton = document.getElementById("einstellungenButton");
     var zuruckButtonEinstellungen = document.getElementById("zuruckEinstellungenButton");
+    var musikOnSchalter = document.getElementById("yes");
+    var musikOffSchalter = document.getElementById("no");
 
     // Funktion für den Eventlistener für die Buttons
+    var musicOn = function () {
+        activateMusic();
+    };
+
+    var musicOff = function () {
+        deactivateMusic();
+    };
+
     var hidemenusettings = function () {
         spieleinstellungenDiv.classList.toggle("hidden");
         buttonsDiv.classList.toggle("hidden");
-        if(document.getElementById("yes").checked === true){
-            if(music===false){
-                activateMusic();
-            }
-        }
-        else if(document.getElementById("no").checked === true){
-            deactivateMusic();
-        }
         if(document.getElementById("on").checked === true){
             activateSound();
         }
@@ -225,6 +227,8 @@ function game(){
     };
 
     // Eventlistener für den Button "Einstellungen" und den "Zurück"
+    musikOnSchalter.addEventListener("click", musicOn);
+    musikOffSchalter.addEventListener("click", musicOff);
     spieleinstellungenButton.addEventListener("click", hidemenusettings);
     zuruckButtonEinstellungen.addEventListener("click", hidemenusettings);
 

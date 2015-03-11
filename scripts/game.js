@@ -372,7 +372,7 @@ function loadGame(){
             if((window.localStorage.getItem("Moorhuhn"+i)===null)){
                 found=0;
             }else{
-                addMoorhuhn();
+                moorhuhn.push(new createMoorhuhn(""));
                 moorhuhn[i].src = document.getElementById("moorhuhn");
                 moorhuhn[i].y = parseInt(window.localStorage.getItem("Moorhuhn"+i+".y"));
                 moorhuhn[i].x = parseInt(window.localStorage.getItem("Moorhuhn"+i+".x"));

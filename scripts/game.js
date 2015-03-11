@@ -465,6 +465,7 @@ function keydownSpielfeld(e){
     if(spielfeld.time > 0){
         // Munition mit Strg nachladen
         if (e.keyCode === 17  && active===true){
+            document.getElementById('ammo').setAttribute( "class", "");
             spielfeld.ammo = 10;
             document.getElementById('ammo').innerHTML = spielfeld.ammo;
             // Sound wiedergeben
@@ -500,6 +501,11 @@ function mousedownSpielfeld(e){
         if(spielfeld.time > 0){
 
             spielfeld.ammo += -1;
+
+            if(spielfeld.ammo<=3){
+                document.getElementById('ammo').setAttribute( "class", "nachladen");
+            }
+
             document.getElementById('ammo').innerHTML = spielfeld.ammo;
             //Sound wiedergeben
             if(sound===true){

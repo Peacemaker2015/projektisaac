@@ -659,23 +659,41 @@ input:required:valid {
 
 @-webkit-keyframes farbe {
         0% {
-            /*color: black;*/
+
 
         }
         50%{
-/*            color: red;*/
-            text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;
+
+        text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;
+        transform: scale(2);
 
         }
         100%{
-/*            color: black;*/
+
 
         }
     }
 
 #aktiverspieler{
 
-    background-color: red;
+     -webkit-animation: hintergrund 2000ms infinite;
+}
+
+@-webkit-keyframes hintergrund {
+        0% {
+            background-color: lightcoral;
+
+        }
+        50%{
+
+            background-color: white;
+
+        }
+        100%{
+            background-color: lightcoral;
+
+        }
+    }
 
 }
 

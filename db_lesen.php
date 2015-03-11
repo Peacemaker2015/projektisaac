@@ -28,6 +28,7 @@ while($row = $result->fetch_object() ){
     if ( ($row->Name) == $_GET['nname'] & ($row->Punkte) == $_GET['ppunkte']){
 
         echo "<tr id=aktiverspieler><td>$pokale</td><td>".$row->Name."</td><td>".$row->Punkte."</td></tr>";
+        $row++;
     }
         else{
 

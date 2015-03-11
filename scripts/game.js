@@ -236,7 +236,7 @@ function game(){
     var hidemenuhighscore = function () {
         hightscoreDiv.classList.toggle("hidden");
         buttonsDiv.classList.toggle("hidden");
-        auslesen();
+        auslesen(name, score);
     };
 
     // Eventlistener für den Button "Highscore" und den "Zurück"
@@ -298,7 +298,7 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
-var maxTime = 5;
+var maxTime = 30;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;
@@ -708,7 +708,11 @@ function schreiben(){
     buttonsDiv.classList.toggle("hidden");
     hightscoreDiv.classList.toggle("hidden");
 
-    window.setTimeout( auslesen(name, score), 1000 );
+    window.setTimeout( function() {
+
+        auslesen(name, score);
+
+    }, 1000 );
 
 };
 

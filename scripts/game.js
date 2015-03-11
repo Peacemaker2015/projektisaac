@@ -356,6 +356,7 @@ function loadGame(){
         // Munition wird überprüft
         if(isNaN(spielfeld.ammo) || spielfeld.time<=0){
             spielfeld.ammo = 10;
+            document.getElementById('ammo').setAttribute( "class", "");
         }
         document.getElementById('ammo').innerHTML = spielfeld.ammo;
         // Spielzeit wird überprüft

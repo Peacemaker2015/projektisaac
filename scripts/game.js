@@ -25,6 +25,7 @@ function game(){
     */
 
     window.onload = function(){
+        createDatabase();
         // Spielstand wird geladen
         loadGame();
         // Spielfeld wird gezeichnet
@@ -322,7 +323,7 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
-var maxTime = 30;
+var maxTime = 5;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;
@@ -732,15 +733,25 @@ function drawMoorhuhn(){
 */
 //------------------------------------------------------------------------------------------------------------ //
 
+function createDatabase(){
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', 'php/database.php?&aaction="0"', true);
+    xmlhttp.send();
+
+}
+
+
 function schreiben(){
 
     // Das HIGHSCORE-Eintragen-Div wird ausgeblendet und das Highscore-Anzeigen-DIV eingeblendet
-
+    var action = 1;
     var name = document.getElementById("name").value;
     var score = document.getElementById("score").innerHTML;
 
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', 'db_schreiben.php?&nname=' + name + '&ppunkte=' + score, true);
+    //xmlhttp.open('GET', 'php/db_schreiben.php?&nname=' + name + '&ppunkte=' + score, true);
+    xmlhttp.open('GET', 'php/database.php?&aaction=' + action + '&nname=' + name + '&ppunkte=' + score, true);
     xmlhttp.send();
 
     stopGame();
@@ -762,8 +773,10 @@ function schreiben(){
 
 
 function auslesen(name,score){
+    var action = 2;
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', 'db_lesen.php?&nname=' + name + '&ppunkte=' + score, true);
+    //xmlhttp.open('GET', 'php/db_lesen.php?&nname=' + name + '&ppunkte=' + score, true);
+    xmlhttp.open('GET', 'php/database.php?&aaction=' + action + '&nname=' + name + '&ppunkte=' + score, true);
 
     xmlhttp.addEventListener('readystatechange', function() {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {

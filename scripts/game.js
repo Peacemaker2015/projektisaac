@@ -298,7 +298,7 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
-var maxTime = 30;
+var maxTime = 5;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;
@@ -702,16 +702,16 @@ function schreiben(){
     buttonsDiv.classList.toggle("hidden");
     hightscoreDiv.classList.toggle("hidden");
 
-    window.setTimeout( auslesen, 1000 );
+    window.setTimeout( auslesen(name, score), 1000 );
 
 };
 
 
 
 
-function auslesen(){
+function auslesen(name,score){
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', 'db_lesen.php', true);
+    xmlhttp.open('GET', 'db_lesen.php?&nname=' + name + '&ppunkte=' + score, true);
 
     xmlhttp.addEventListener('readystatechange', function() {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {

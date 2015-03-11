@@ -22,14 +22,27 @@ echo "<tr id='tablehead'><th>Platz</th><th>Spielername</th><th>Punkte</th></tr>"
 
 // Einfügen der Einzelnen "Zeilen" aus der Highscore
 $i = 1;
-while($row = $result->fetch_object()){
+while($row = $result->fetch_object() ){
 	if($i< 4) $pokale = "<img src=images/$i.png width=\"21px\">";
 	else $pokale = $i;
-    echo "<tr><td>$pokale</td><td>".$row->Name."</td><td>".$row->Punkte."</td></tr>";
-    $i = $i+1;
+    if ( ($row->Name) == $_GET['nname'] & ($row->Punkte) == $_GET['ppunkte']){
+
+        echo "<tr id=aktiverspieler><td>$pokale</td><td>".$row->Name."</td><td>".$row->Punkte."</td></tr>";
+    }
+        else{
+
+            echo "<tr><td>$pokale</td><td>".$row->Name."</td><td>".$row->Punkte."</td></tr>";
+            $i = $i+1;
+    }
 }
+
+
+
+
+}
+
 echo "</table>";
-}
+
 ?>
 
 

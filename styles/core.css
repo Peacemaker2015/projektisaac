@@ -618,7 +618,7 @@ table {
 /* Valiederung für das Input Feld */
 
 input:required:invalid, input:focus:invalid {
-    background-image: url(images/invalid.png);
+    background-image: url(../images/invalid.png);
     background-position: right top;
     background-repeat: no-repeat;
   }
@@ -672,6 +672,12 @@ input:required:valid {
 
         }
     }
+
+#aktiverspieler{
+
+    background-color: red;
+
+}
 
 
 

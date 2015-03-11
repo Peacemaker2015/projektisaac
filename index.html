@@ -1,0 +1,286 @@
+<html lang="en">
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Bubblegum+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch' rel='stylesheet' type='text/css'>
+
+  <!--<link rel="stylesheet" type="text/css" href="styles/styleProjectKlein.css" media="(max-width: 1130px)">
+  <link rel="stylesheet" type="text/css" href="styles/styleProjectKlein.css" media="(max-height: 820px)">-->
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/core.css">
+  <link rel="stylesheet" href="styles/game.css">
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+</head>
+<body>
+    <div id="game_object">
+
+        <audio id="background_music" loop="loop" autoplay="autoplay">
+            <source src="media/musik.mp3" type="audio/mp3">
+        </audio>
+        <audio id="shot_sound" preload="auto">
+            <source src="media/kawumm.mp3">;
+        </audio>
+        <audio id="reload_sound" preload="auto">
+            <source src="media/nachladen.mp3">;
+        </audio>
+
+        <canvas id="game" width="1024" height="768" style="position: absolute;" ></canvas>
+        <img id="moorhuhnL0" src="images/rechts1.png" class="hidden">
+        <img id="moorhuhnL1" src="images/rechts2.png" class="hidden">
+        <img id="moorhuhnL2" src="images/rechts3.png" class="hidden">
+        <img id="moorhuhnLH0" src="images/rechts_treffer1.png" class="hidden">
+        <img id="moorhuhnLH1" src="images/rechts_treffer2.png" class="hidden">
+        <img id="moorhuhnLH2" src="images/rechts_treffer3.png" class="hidden">
+        <img id="moorhuhnR0" src="images/links1.png" class="hidden">
+        <img id="moorhuhnR1" src="images/links2.png" class="hidden">
+        <img id="moorhuhnR2" src="images/links3.png" class="hidden">
+        <img id="moorhuhnRH0" src="images/links_treffer1.png" class="hidden">
+        <img id="moorhuhnRH1" src="images/links_treffer2.png" class="hidden">
+        <img id="moorhuhnRH2" src="images/links_treffer3.png" class="hidden">
+        <img id="kugel" src="images/kugel.png">
+        <div id="ammo">10</div>
+        <div id="score">0</div>
+        <div id="time"></div>
+
+
+        <div id="menu" class="hidden">
+            <div id="buttonsDiv" >
+                <div id=logoSchrift>
+
+                <table>
+                <tr>
+                    <td> Fang</td>
+                    <td> <img src="images/sl_1.gif" height="150"></td>
+                    <td> Isaac</td>
+                    </tr>
+
+                </table>
+
+
+                </div>
+                <br>
+                <br>
+                <br>
+                <a href="#" class="action-button animate green" id="anleitungButton">Spielanleitung</a>
+                <a href="#" class="action-button animate blue" id="spielstarten">Spiel starten</a>
+                <a href="#" class="action-button animate red" id="einstellungenButton">Einstellungen</a>
+                <a href="#" class="action-button animate yellow" id="highscoreButton">Highscore</a>
+        </div>
+
+        <div id="spielanleitungDiv"  class="hidden position">
+
+            <br>
+
+            <p id="content">Ziel des Spiels ist es, soviele fliegende "Isaacs" wie möglich abzuschießen. <br><br>
+
+                Je mehr Sie davon in den vorgegebenen 30 Sekunden treffen, umso höher fällt Ihre Punktezahl aus. <br>
+                <br> Gesteuert wird das Zielkreuz mit der Maus: <br>
+                <br> Linksklick feuern Sie eine Ladung Schrot ab
+                <br> Die Taste STRG läd neue Munition nach
+                <br>
+                <br>Am Bildschirmrand sehen Sie verschiedene Anzeigen. <br>
+                <br> Unten links wird die verbleibende Zeit für das Spiel angegeben
+                <br> Unten in der Mitte sehen Sie Ihren aktuellen Punktestand
+                <br> Unten rechts befindet sich die Anzeige der übrigen Patronen für Ihre Waffe.
+            </p>
+
+
+        <a href="#" class="action-button shadow animate green" id="zuruckAnleitungButton">Zurück</a>
+
+        </div> <!-- ENDE DIV SPIELANLEITUNG -->
+
+
+        <div id="HighscoreDiv" class="hidden position">
+
+            <p id="content">Highscore</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div id ="tabelle"></div>
+            <br>
+            <br>
+
+        <a href="#" class="action-button shadow animate blue" id="zuruckHighscoreButton">Zurück</a>
+
+        </div> <!-- ENDE DIV Highscore -->
+
+
+        <div id="spieleinestellungenDiv" class="hidden position">
+
+            <p id="content">Einstellungen</p>
+            <br>
+            <br>
+            <!-- Einstellen des Schwierigkeitsgrades           -->
+
+           <div class="spaceEmOut">
+        <fieldset class="switch switch-three">
+          <legend>
+            Schwierigkeitsgrad
+          </legend>
+          <input id="Einfach" name="view4" type="radio" checked />
+          <label for="Einfach">
+            Einfach
+          </label>
+          <input id="Mittel" name="view4" type="radio" />
+          <label for="Mittel">
+            Mittel
+          </label>
+          <input id="Experte" name="view4" type="radio" />
+          <label for="Experte">
+            Experte
+          </label>
+          <span class="switch-button">
+          </span>
+        </fieldset>
+      </div>
+           <br>
+           <br>
+           <br>
+      <div class="spaceEmOut">
+
+        <fieldset class="switch switch-two">
+          <legend>
+            Musik
+          </legend>
+          <input id="yes" name="musik" type="radio" checked />
+          <label for="yes">
+            AN
+          </label>
+          <input id="no" name="musik" type="radio" />
+          <label for="no">
+            AUS
+          </label>
+          <span class="switch-button">
+          </span>
+        </fieldset>
+     </div>
+            <br>
+           <br>
+           <br>
+
+       <div class="spaceEmOut">
+          <fieldset class="switch switch-two">
+          <legend>
+            Soundeffekte
+          </legend>
+
+          <input id="on" name="sound" type="radio" checked />
+          <label for="on">
+            AN
+          </label>
+          <input id="off" name="sound" type="radio" />
+          <label for="off">
+
+            AUS
+          </label>
+          <span class="switch-button">
+          </span>
+        </fieldset>
+      </div>
+            <br>
+           <br>
+           <br>
+            <div class="spaceEmOut">
+          <fieldset class="switch switch-two">
+          <legend>
+            Highscore leeren?
+          </legend>
+
+          <input id="deleteYes" name="delete" type="radio"  />
+          <label for="deleteYes">
+            JA
+          </label>
+          <input id="deleteNo" name="delete" type="radio" checked />
+          <label for="deleteNo">
+
+            NEIN
+          </label>
+          <span class="switch-button">
+          </span>
+        </fieldset>
+      </div>
+
+        <a href="#" class="action-button shadow animate blue" id="zuruckEinstellungenButton">Zurück</a>
+
+        </div> <!-- ENDE DIV EINSTELLUNGEN -->
+        </div> <!-- ENDE DIV Menü -->
+
+
+
+        <!--  Menübutton der immer oben links im Spiel erscheint, wenn das Spiel läuft
+        um jederzeit ins Menü zu kommen
+        -->
+
+        <div id="onlymenubuttondiv">
+            <a href="#" class="animate red menubutton" id="onlymenu">Menü</a>
+
+        </div> <!-- ENDE DIV ONLYMENÜBUTTON -->
+
+        <div id="pauseDiv"  class="postionHighscoreAbfrage hidden">
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <p id="content"> Spiel wurde pausiert! </p>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        <a href="#" class="action-button shadow animate green" id="weiterButton">Weiter</a>
+
+        </div> <!-- ENDE DIV PAUSE -->
+
+        <div id="eintragenHighscoreDiv"  class="postionHighscoreAbfrage hidden" >
+          <p id="punkte"></p>
+          <p id="content">Trage deinen Namen ein und klicke auf Absenden! <br> <br>Danach bekommst du den Highscore angezeigt und kannst schauen, ob du es in den Highscore geschafft hast! </p>
+        <div id="form-div">
+            <form class="form" id="form1" autocomplete="off">
+
+              <p class="name">
+                <input name="nname" type="text" class="feedback-input" placeholder="Spielername" autofocus id="name" />
+              </p>
+
+            </form>
+          </div>
+            <a href="#" class="action-button shadow animate red" id="highscoreSendenButton">Absenden</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        <a href="#" class="action-button shadow animate blue" id="zurückzumMenüButton">Menü</a>
+
+        </div>
+        <!-- ENDE DIV EintragenHighscore -->
+
+    </div> <!-- ENDE DIV GAMEOBJEKT -->
+ <div id="zuklein"  class="hidden">
+ <p id="fehler"><br> <br> <br> <br>  Ohhhh da ist was doofes passiert! <br> <br> Bitte vergrößern Sie das Fenster, <br> <br> damit das Spiel ordentlich dargestellt werden kann.
+
+        </div> <!-- ENDE DIV SPIELANLEITUNG -->
+    <script src="scripts/game.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>

@@ -1,5 +1,7 @@
 <?php
 
+if ((isset($_GET['nname']) && $_GET['nname'] != "") {
+
 $mysqli = new mysqli("localhost", "root", "", "projektmm");
 
 // Verbindung mit dem MySQL-Server aufbauen
@@ -9,10 +11,32 @@ if ($mysqli->connect_errno) {
 
 $mysqli->set_charset('utf8');
 
-$sql = "INSERT INTO t_highscore (Name, Punkte) VALUES ('".$_GET['nname']."', '".$_GET['ppunkte']."');";
+// SQL-Statement vorbereiten (Preparted Statemant)
+$sql = "INSERT INTO t_highscore (Name, Punkte) VALUES (?,?)";
 
-    //Ergebnis der QUERY in die Variable $result schreiben (Ergebnis TRUE oder FALSE)
-$stmt = $mysqli->prepare($sql);
-$stmt->execute();
+//Übergabe an DB (String $sql an die Datenbank senden)
+$result = $mysqli->prepare($sql);
+
+// Namen und Punkte in Variablen binden
+$result->bind_param(('".$_GET['nname']."', '".$_GET['ppunkte']."');
+
+//ausführen
+$result->execute();
+
+//schließen
+$result->close();
+
+//------------------------//
+
+
+
+//$sql = "INSERT INTO t_highscore (Name, Punkte) VALUES ('".$_GET['nname']."', '".$_GET['ppunkte']."');";
+
+
+//Ergebnis der QUERY in die Variable $result schreiben (Ergebnis TRUE oder FALSE)
+//$stmt = $mysqli->prepare($sql);
+//$stmt->execute();
+
+} // ENDE IF ISSET
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-if ((isset($_GET['nname']) && $_GET['nname'] != "") {
+if ((isset($_GET['nname']) && $_GET['nname'] != "")) {
 
 $mysqli = new mysqli("localhost", "root", "", "projektmm");
 

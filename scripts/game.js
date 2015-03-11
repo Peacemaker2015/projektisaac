@@ -27,21 +27,16 @@ function game(){
     window.onload = function(){
         // Spielstand wird geladen
         loadGame();
+        // Spielfeld wird gezeichnet
+        moveMoorhuhn();
+        drawMoorhuhn();
         // Es wird überprüft, ob ein Spiel mit
         // ausreichender Spielzeit vorhanden ist
         if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=maxTime){
             onlymenu.click();
         }else{
-            // Spiel wird gestartet
-            if(document.getElementById("Einfach").checked === true){
-                startGame(1);
-            }
-            else if(document.getElementById("Mittel").checked === true){
-                startGame(2);
-            }
-            else if(document.getElementById("Experte").checked === true){
-                startGame(3);
-            }
+            // PauseDiv einblenden
+            pauseDiv.classList.toggle("hidden");
         }
     };
 
@@ -175,9 +170,21 @@ function game(){
 
     // Funktion für den Eventlistener für den Button "Weiter"
     var hidemenupause = function () {
-
-        // Spiel wird gestartet
-        startGame(level);
+        if(level===null){
+            // Spiel wird gestartet
+            if(document.getElementById("Einfach").checked === true){
+                startGame(1);
+            }
+            else if(document.getElementById("Mittel").checked === true){
+                startGame(2);
+            }
+            else if(document.getElementById("Experte").checked === true){
+                startGame(3);
+            }
+        }else{
+            // Spiel wird gestartet
+            startGame(level);
+        }
         // PauseDIV wird ausgeblendet
         pauseDiv.classList.toggle("hidden");
     };

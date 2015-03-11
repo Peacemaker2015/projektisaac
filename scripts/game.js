@@ -702,7 +702,7 @@ function schreiben(){
     buttonsDiv.classList.toggle("hidden");
     hightscoreDiv.classList.toggle("hidden");
 
-    window.setTimeout( auslesen(), 5000 );
+    window.setTimeout( auslesen, 1000 );
 
 };
 

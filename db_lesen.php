@@ -18,14 +18,14 @@ $result = $mysqli->query($sql);
 
 // Erstellen der Tabelle sowie des Tabellenkopfes für die Highscoreliste
 echo "<table class='bordered'>";
-echo "<tr><th>Platz</th><th>Spielername</th><th>Punkte</th></tr>";
+echo "<tr id='tablehead'><th>Platz</th><th>Spielername</th><th>Punkte</th></tr>";
 
 // Einfügen der Einzelnen "Zeilen" aus der Highscore
 $i = 1;
 while($row = $result->fetch_object()){
-	if($i< 4) $blub = "<img src=images/$i.png width=\"21px\">";
-	else $blub = $i;
-    echo "<tr><td>$blub</td><td>".$row->Name."</td><td>".$row->Punkte."</td></tr>";
+	if($i< 4) $pokale = "<img src=images/$i.png width=\"21px\">";
+	else $pokale = $i;
+    echo "<tr><td>$pokale</td><td>".$row->Name."</td><td>".$row->Punkte."</td></tr>";
     $i = $i+1;
 }
 echo "</table>";

@@ -2,23 +2,24 @@
 
 if ((isset($_GET['nname']) && $_GET['nname'] != "")) {
 
+    // Datenbankverbindung aufbauen
 $mysqli = new mysqli("localhost", "root", "", "projektmm");
 
-// Verbindung mit dem MySQL-Server aufbauen
+
 if ($mysqli->connect_errno) {
     echo "Keine Verbindung zum Datenbankserver möglich: " . $mysqli->connect_error;
 }
 
 $mysqli->set_charset('utf8');
 
-// SQL-Statement vorbereiten (Preparted Statemant)
+// Query vorbereiten
 $sql = "INSERT INTO t_highscore (Name, Punkte) VALUES (?,?)";
 
-//Übergabe an DB (String $sql an die Datenbank senden)
+//Übergabe an DB
 $result = $mysqli->prepare($sql);
 
 // Namen und Punkte in Variablen binden
-$result->bind_param(('".$_GET['nname']."', '".$_GET['ppunkte']."');
+$result->bind_param('si', $_GET['nname'], $_GET['ppunkte'] );
 
 //ausführen
 $result->execute();
@@ -28,8 +29,6 @@ $result->close();
 
 //------------------------//
 
-
-
 //$sql = "INSERT INTO t_highscore (Name, Punkte) VALUES ('".$_GET['nname']."', '".$_GET['ppunkte']."');";
 
 
@@ -37,6 +36,8 @@ $result->close();
 //$stmt = $mysqli->prepare($sql);
 //$stmt->execute();
 
-} // ENDE IF ISSET
+}
+
+alert("Kein Name eingegeben!!!");
 
 ?>

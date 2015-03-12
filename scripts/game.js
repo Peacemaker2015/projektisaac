@@ -223,10 +223,13 @@ function game(){
     var musikOnSchalter = document.getElementById("yes");
     var musikOffSchalter = document.getElementById("no");
     var highscoreLeerenSchalter = document.getElementById("deleteYes");
+    var abfrageDiv = document.getElementById("abfrageDiv");
 
     // Funktion für den Eventlistener für die Buttons
     var highscoreLeeren = function () {
-        dropHighscore();
+        spieleinstellungenDiv.classList.toggle("hidden");
+        abfrageDiv.classList.toggle("hidden");
+
     };
 
     var musicOn = function () {
@@ -275,9 +278,44 @@ function game(){
         auslesen(name, score);
     };
 
-    // Eventlistener für den Button "Highscore" und den "Zurück"
+    // Eventlistener für den Button "Ja" und "Nein" beim HighscoreLöschenDialog
     highscoreButton.addEventListener("click", hidemenuhighscore);
     zuruckButtonHighscore.addEventListener("click", hidemenuhighscore);
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das verschwinden lassen
+    **  des HauptmenüDIVs und Anzeigen des HighscoreDIVs
+    */
+
+    // Elemente des DIVs werden in Variablen gespeichert
+    var abfrageJaButton = document.getElementById("abfrageJaButton");
+    var abfrageNeinButton = document.getElementById("abfrageNeinButton");
+
+    // Funktion um den Highscore zu löschen und den AbfrageDiv zu schließen und wieder die Einstellungen anzuzeigen
+    var leerenJa = function () {
+
+        dropHighscore();
+        spieleinstellungenDiv.classList.toggle("hidden");
+        abfrageDiv.classList.toggle("hidden");
+         document.getElementById("deleteYes").checked = false;
+         document.getElementById("deleteNo").checked = true;
+
+    };
+
+    // Funktion um den Highscore NICHT zu löschen und den AbfrageDiv zu schließen und wieder die Einstellungen anzuzeigen
+    var leerenNein = function () {
+
+        spieleinstellungenDiv.classList.toggle("hidden");
+        abfrageDiv.classList.toggle("hidden");
+        document.getElementById("deleteYes").checked = false;
+        document.getElementById("deleteNo").checked = true;
+    };
+
+    // Eventlistener für den Button "Highscore" und den "Zurück"
+    abfrageJaButton.addEventListener("click", leerenJa);
+    abfrageNeinButton.addEventListener("click", leerenNein);
+
 
 
     //-------------------------------------------------------------------- //
@@ -829,9 +867,6 @@ function drawMoorhuhn(){
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open('GET', 'php/database.php?&aaction=' + action, true);
         xmlhttp.send();
-
-        //document.getElementById("deleteYes").checked = false;
-        //document.getElementById("deleteNo").checked = true;
 
     }
 

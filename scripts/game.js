@@ -768,8 +768,9 @@ function drawMoorhuhn(){
 
     function createDatabase(){
 
+        var action = 0;
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open('GET', 'php/database.php?&aaction="0"', true);
+        xmlhttp.open('GET', 'php/database.php?&aaction=' + action, true);
         xmlhttp.send();
 
     }
@@ -828,6 +829,9 @@ function drawMoorhuhn(){
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open('GET', 'php/database.php?&aaction=' + action, true);
         xmlhttp.send();
+
+        //document.getElementById("deleteYes").checked = false;
+        //document.getElementById("deleteNo").checked = true;
 
     }
 

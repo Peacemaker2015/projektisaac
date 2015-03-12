@@ -103,7 +103,7 @@ if ($_GET["aaction"] == 0) {
             // Einfügen der Einzelnen "Zeilen" aus der Highscore
             $i = 1;
             while($row = $result->fetch_object() ){
-                if($i< 4) $pokale = "<img src=images/$i.png width=\"21px\">";
+                if($i< 4) $pokale = "<img src=images/$i.png width=\"40px\">";
                 else $pokale = $i;
                 if ( ($row->Name) == $_GET['nname'] & ($row->Punkte) == $_GET['ppunkte']){
 

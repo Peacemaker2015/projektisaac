@@ -275,6 +275,10 @@ function game(){
         hightscoreDiv.classList.toggle("hidden");
         buttonsDiv.classList.toggle("hidden");
         impressumButton.classList.toggle("hidden");
+
+        // Inhalt des DIVs "Tabelle" wieder zurücksetzen um alte Highscore zu löschen
+
+        document.getElementById('tabelle').innerHTML = '';
         auslesen(name, score);
     };
 
@@ -341,6 +345,7 @@ function game(){
         kugel.classList.toggle("hidden");
 
         onlymenubutton.classList.toggle("hidden");
+
         frageHighscoreDIV.classList.toggle("hidden");
     }
 
@@ -393,7 +398,7 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
-var maxTime = 60;
+var maxTime = 5;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;
@@ -821,7 +826,6 @@ function drawMoorhuhn(){
         var score = document.getElementById("score").innerHTML;
 
         var xmlhttp = new XMLHttpRequest();
-        //xmlhttp.open('GET', 'php/db_schreiben.php?&nname=' + name + '&ppunkte=' + score, true);
         xmlhttp.open('GET', 'php/database.php?&aaction=' + action + '&nname=' + name + '&ppunkte=' + score, true);
         xmlhttp.send();
 
@@ -832,6 +836,10 @@ function drawMoorhuhn(){
         buttonsDiv.classList.toggle("hidden");
         impressumButton.classList.toggle("hidden");
         hightscoreDiv.classList.toggle("hidden");
+
+        // Inhalt des DIVs "Tabelle" wieder zurücksetzen um alte Highscore zu löschen
+
+        document.getElementById('tabelle').innerHTML = '';
 
         window.setTimeout( function() {
 
@@ -847,12 +855,10 @@ function drawMoorhuhn(){
     function auslesen(name,score){
         var action = 2;
         var xmlhttp = new XMLHttpRequest();
-        //xmlhttp.open('GET', 'php/db_lesen.php?&nname=' + name + '&ppunkte=' + score, true);
         xmlhttp.open('GET', 'php/database.php?&aaction=' + action + '&nname=' + name + '&ppunkte=' + score, true);
 
         xmlhttp.addEventListener('readystatechange', function() {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                //console.log(xmlhttp.responseText);
                 document.getElementById('tabelle').innerHTML = xmlhttp.responseText;
             }
         });

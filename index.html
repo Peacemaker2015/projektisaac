@@ -59,7 +59,7 @@
                 </table>
 
 
-                </div>
+                </div> <!-- ENDE DIV logoSchrift -->
                 <br>
                 <br>
                 <br>
@@ -67,9 +67,13 @@
                 <a href="#" class="action-button animate blue" id="spielstarten">Spiel starten</a>
                 <a href="#" class="action-button animate red" id="einstellungenButton">Einstellungen</a>
                 <a href="#" class="action-button animate yellow" id="highscoreButton">Highscore</a>
-        </div>
 
-        <div id="spielanleitungDiv"  class="hidden position">
+        </div><!-- ENDE DIV Buttons -->
+            <div id="impressumButton">
+            <a href="#" class="stempel" id="Impressum" class="hidden">Impressum</a >
+            </div>
+
+        <div id="spielanleitungDiv"  class="hidden">
 
             <br>
 
@@ -91,8 +95,45 @@
 
         </div> <!-- ENDE DIV SPIELANLEITUNG -->
 
+        <div id="impressumDiv"  class="hidden">
 
-        <div id="HighscoreDiv" class="hidden position">
+            <br>
+            <p id="content"> Wir danken unseren Eltern, dass es uns gibt!</p>
+            <br>
+            <table>
+               <tr>
+                   <th><p id="content"> OFR Reichert</p></th>
+                   <th><p id="content"> OFR Rothe</p></th>
+                </tr>
+
+                <tr>
+                    <td id="tdprofil"><img src="images/tobi.JPG" alt="OFR Reichert" height="300" align="center" class="profil"><br><br></td>
+                    <td id="tdprofil"><img src="images/martin.jpg" alt="OFR Rothe" height="300" align="center" class="profil"><br><br></td>
+                </tr>
+
+
+                </table>
+
+            <br>
+
+
+        <a href="#" class="action-button shadow animate green" id="zuruckImpressumButton">Zurück</a>
+
+        </div> <!-- ENDE DIV impressumDIV -->
+
+        <div id="abfrageDiv" class="hidden">
+
+            <br>
+            <p id="content"> Möchten Sie den Highscore wirklich löschen?</p>
+            <br>
+
+
+        <a href="#" class="action-button shadow animate green" id="abfrageJa">Ja</a>
+        <a href="#" class="action-button shadow animate red" id="AbfrageNein">Nein</a>
+
+        </div> <!-- ENDE DIV abfrageDIV -->
+
+        <div id="HighscoreDiv" class="hidden">
 
             <p id="content">Highscore</p>
             <br>
@@ -108,7 +149,7 @@
         </div> <!-- ENDE DIV Highscore -->
 
 
-        <div id="spieleinestellungenDiv" class="hidden position">
+        <div id="spieleinestellungenDiv" class="hidden">
 
             <p id="content">Einstellungen</p>
             <br>

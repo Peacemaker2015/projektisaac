@@ -73,12 +73,13 @@ function game(){
 
     //-------------------------------------------------------------------- //
     /*
-    **  Befehlsausführungen, für das verschwinden lassen
+    **  Befehlsausführungen, für das Ausblenden
     **  des HauptmenüDIVs und Anzeigen des SpieleanleitungDIVs
     */
 
     // Elemente des DIVs werden in Variablen gespeichert
     var anleitungsDiv = document.getElementById("spielanleitungDiv");
+    var impressumButton = document.getElementById("impressumButton");
     var anleitung = document.getElementById("anleitungButton");
     var zuruckButton = document.getElementById("zuruckAnleitungButton");
 
@@ -87,6 +88,7 @@ function game(){
     var hidemenu = function () {
         anleitungsDiv.classList.toggle("hidden");
         buttonsDiv.classList.toggle("hidden");
+        impressumButton.classList.toggle("hidden");
     };
 
     // Eventlistener für den Button "Spielanleitung" und den "Zurück"
@@ -118,6 +120,7 @@ function game(){
     var showmenu = function () {
         menu.classList.toggle("hidden");
         onlymenubutton.classList.toggle("hidden");
+
     };
 
     // Funktion für den Eventlistener für das "große" Hauptmenü,
@@ -237,6 +240,7 @@ function game(){
     var hidemenusettings = function () {
         spieleinstellungenDiv.classList.toggle("hidden");
         buttonsDiv.classList.toggle("hidden");
+        impressumButton.classList.toggle("hidden");
         if(document.getElementById("on").checked === true){
             activateSound();
         }
@@ -267,6 +271,7 @@ function game(){
     var hidemenuhighscore = function () {
         hightscoreDiv.classList.toggle("hidden");
         buttonsDiv.classList.toggle("hidden");
+        impressumButton.classList.toggle("hidden");
         auslesen(name, score);
     };
 
@@ -312,6 +317,28 @@ function game(){
     // Eventlistener für den Button "Zurück"
     zuruckMenuButton.addEventListener("click",hideAbfrageHighscore);
     sendenButton.addEventListener("click", schreiben);
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das verschwinden lassen
+    **  des HauptmenüDIVs und Anzeigen des Impressums
+    **
+    */
+
+    // Elemente des DIVs werden in Variablen gespeichert
+    var impressumDiv = document.getElementById("impressumDiv");
+    var zuruckImpressumButton = document.getElementById("zuruckImpressumButton");
+
+   // Funktion für den Eventlistener für die Buttons
+    var hidemenuSettings = function () {
+        impressumDiv.classList.toggle("hidden");
+        buttonsDiv.classList.toggle("hidden");
+        impressumButton.classList.toggle("hidden");
+    };
+
+    // Eventlistener für den Button "Spielanleitung" und den "Zurück"
+    impressumButton.addEventListener("click", hidemenuSettings);
+    zuruckImpressumButton.addEventListener("click", hidemenuSettings);
 
 
 //------------------------------------------------------------------------------------------------------------ //
@@ -765,6 +792,7 @@ function drawMoorhuhn(){
         menu.classList.toggle("hidden");
         frageHighscoreDIV.classList.toggle("hidden");
         buttonsDiv.classList.toggle("hidden");
+        impressumButton.classList.toggle("hidden");
         hightscoreDiv.classList.toggle("hidden");
 
         window.setTimeout( function() {

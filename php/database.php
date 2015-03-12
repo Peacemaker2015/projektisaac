@@ -1,15 +1,64 @@
 <?php
 
+$dbServer = "localhost";
+$dbUser = "root";
+$dbName = "projektmm";
+$tblName = "t_highscore";
 
 if ($_GET["aaction"] == 0) {
-// Erzeugen der Datenbank
 
+    // Datenbankverbindung aufbauen
+    $mysqli = new mysqli($dbServer,$dbUser,"","");
 
+    if ($mysqli->connect_errno) {
+
+        echo "Keine Verbindung zum Datenbankserver möglich: " . $mysqli->connect_error;
+
+    }else{
+
+        // Zeichensatz setzen
+        $mysqli->set_charset('utf8');
+
+        //-------------------------------------------------------------------- //
+        /*
+        **  Befehlsausführungen, um die Datenbank anzulegen
+        */
+
+        /*
+        // Query vorbereiten
+        $dir = getcwd();
+        $sql = 'SOURCE ' . $dir . '\\createDB.sql';
+        echo $sql;
+
+        //Übergabe an DB
+        $result = $mysqli->query($sql);
+        */
+
+        // Query vorbereiten
+        $sql = "create database if not exists ".$dbName;
+        $result = $mysqli->query($sql);
+
+        $sql = "alter database ".$dbName."default character set latin1 default collate latin1_german2_ci";
+        $result = $mysqli->query($sql);
+
+        $sql = "use ".$dbName;
+        $result = $mysqli->query($sql);
+
+        $sql = "create table if not exists ".$tblName."(
+                    id MEDIUMINT NOT NULL AUTO_INCREMENT,
+                    name CHAR(30) NOT NULL,
+                    punkte DECIMAL(65),
+                    PRIMARY KEY (id)
+                ) engine=InnoDB";
+
+        $result = $mysqli->query($sql);
+
+    }
 
 }else{
 
     // Datenbankverbindung aufbauen
-    $mysqli = new mysqli("localhost", "root", "", "projektmm");
+    $mysqli = new mysqli($dbServer,$dbUser,"",$dbName);
 
     if ($mysqli->connect_errno) {
 
@@ -53,7 +102,7 @@ if ($_GET["aaction"] == 0) {
             */
 
             // Query vorbereiten
-            $sql = "select Name, Punkte from t_highscore order by Punkte desc limit 5";
+            $sql = "select Name, Punkte from ".$tblName." order by Punkte desc limit 5";
 
             //Übergabe an DB
             $result = $mysqli->query($sql);
@@ -86,7 +135,7 @@ if ($_GET["aaction"] == 0) {
             */
 
             // Query vorbereiten
-            $sql = "DELETE FROM t_highscore";
+            $sql = "DELETE FROM ".$tblName;
 
             //Übergabe an DB
             $result = $mysqli->query($sql);

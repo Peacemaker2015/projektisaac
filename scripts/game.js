@@ -802,6 +802,9 @@ function drawMoorhuhn(){
         xmlhttp.open('GET', 'php/database.php?&aaction=' + action, true);
         xmlhttp.send();
 
+        //document.getElementById("deleteYes").checked = false;
+        //document.getElementById("deleteNo").checked = true;
+
     }
 
 

@@ -1,9 +1,5 @@
-.fang {
-    height: 100px;
-    width: 200px;
-    padding: 25px 0;
-    margin: 0;
-    float: left;
+body{
+	padding: 10px;
 }
 
 #logoSchrift {
@@ -13,29 +9,17 @@
     font-family: 'Cabin Sketch', cursive;
 }
 
-body{
-	padding: 10px;
-}
-
-h1 {
-
-font-family: 'Bubblegum Sans', cursive;
-font-size:20px;
-
-}
-
 #content {
     padding: 10px;
     font-family: 'Bubblegum Sans', cursive;
 	font-size: 23px;
 }
 
-
 #img{
     padding: 10px;
 }
 
-#menu {
+#menu{
     position: absolute;
     padding-top: 40px;
     padding-left: 40px;
@@ -43,25 +27,17 @@ font-size:20px;
     padding-bottom: 130px;
     width: 700;
     height: 400px;
-
     background-color:  rgba(255,255,255, .8);
+    box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
         -moz-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
         -webki t-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
-    box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
     border-radius: 40px;
         -moz-border-radius: 40px;
         -webkit-border-radius: 40px;
-
     text-align: center;
     margin-left: 125px;
     top: 150;
     left: 100px;
-}
-
-
-#buttons{
-
-    margin-top: 0px;
 }
 
 #zuruckAnleitungButton, #zuruckEinstellungenButton {
@@ -69,14 +45,12 @@ font-size:20px;
 
 }
 
-.animate
-{
+.animate{
 	transition: all 0.1s;
 	-webkit-transition: all 0.1s;
 }
 
-.action-button
-{
+.action-button{
 
     position: relative;
 	padding: 10px 40px;
@@ -90,61 +64,50 @@ font-size:20px;
 	text-decoration: none;
 }
 
-.blue
-{
+.blue{
 	background-color: #3498DB;
 	border-bottom: 5px solid #2980B9;
 	text-shadow: 0px -2px #2980B9;
 }
 
-.blue:hover
-{
+.blue:hover{
 	background-color: #34a6db;
 }
 
-
-
-.red
-{
+.red{
 	background-color: #E74C3C;
 	border-bottom: 5px solid #BD3E31;
 	text-shadow: 0px -2px #BD3E31;
 }
 
-.red:hover
-{
+.red:hover{
 	background-color: #ea6153;
 }
 
-.green
-{
+.green{
 	background-color: #82BF56;
 	border-bottom: 5px solid #669644;
 	text-shadow: 0px -2px #669644;
 }
 
-.green:hover
-{
+.green:hover{
 	background-color: #9dcd7b;
 }
 
-.yellow
-{
+.yellow{
 	background-color: #eec136;
 	border-bottom: 5px solid #deac13;
 	text-shadow: 0px -2px #deac13;
 }
 
-.yellow:hover
-{
+.yellow:hover{
 	background-color: #f0c84e;
 }
 
 
-.action-button:active
-{
+.action-button:active{
 	transform: translate(0px,5px);
-  -webkit-transform: translate(0px,5px);
+     -webkit-transform: translate(0px,5px);
 	border-bottom: 1px solid;
 }
 
@@ -160,7 +123,6 @@ font-size:20px;
     padding-bottom: 130px;
     width: 700;
     height: 400px;
-
     background-color:  rgba(255,255,255, .8);
         -moz-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
         -webki t-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
@@ -168,26 +130,17 @@ font-size:20px;
     border-radius: 40px;
         -moz-border-radius: 40px;
         -webkit-border-radius: 40px;
-
     text-align: center;
     margin-left: 215px;
     top: 125;
 
 }
 
-.show{
-    transition: all 1s linear 1s;
-    -webkit-transition: all 1s linear 1s;
-    -moz-transition: all 1s linear 1s;
-    -o-transition: all 1s linear 1s;
-    opacity: 1;
-}
 #onlymenubuttondiv {
 
     position: absolute;
     top: 10px;
     left: -150;
-
 }
 
 .menubutton {
@@ -207,27 +160,12 @@ font-size:20px;
 .menubutton:active{
 
     transform: translate(0px,5px);
-  -webkit-transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
 	border-bottom: 1px solid;
 }
 
 /*CSS für die Einstellungen des Spiels*/
 
-.toggle label {
-    display:block;
-    padding:3px 0;
-    position:relative;
-    width:100%;
-    z-index:3;
-}
-.toggle input {
-    opacity:0;
-    position:absolute;
-    z-index:5;
-}
-.toggle input:focus ~ .toggle-button {
-    outline:1px dotted #6B6B6B;
-}
 .switch {
     border:0;
     color:#000;
@@ -329,28 +267,11 @@ font-size:20px;
     left:83.26%;
 }
 
-.switch.fcRed .switch-button {
-    border-bottom:solid 1px red;
-}
-.switch.fcRed input:checked + label {
-    color:red;
-}
-}
 
 .spaceEmOut {
     margin-bottom:15px;
 }
-
-.row.pad-btm-40 {
-    margin-left:-20px;
-}
-
-.switch .switch-button2 {
-
-
 /* ENDE CSS für die Einstellungen des Spiels*/
-}
-
 
 .switch .switch-button {
 
@@ -368,23 +289,6 @@ font-size:20px;
     z-index:1;
 }
 
-#logosytle {
-    float: left;
-}
-
-#logotext {
-    font-size: 50px;
-}
-
-.isaacimg {
-    padding: 0;
-    margin: 0;
-    width: 100px;
-    height: 100px;
-    float:left;
-}
-
-
 /* Highscore CSS */
 
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
@@ -393,16 +297,6 @@ html{
     background:url(../images/hintergrund1.jpg) no-repeat;
     background-size: cover;
     height:100%;
-}
-
-#feedback-page{
-	text-align:center;
-}
-
-#form-main{
-	width:100%;
-	float:left;
-	padding-top:0px;
 }
 
 #form-div {
@@ -455,6 +349,7 @@ html{
 }
 
 /* Icons ---------------------------------- */
+
 #name{
 	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
 	background-size: 30px 30px;
@@ -462,67 +357,8 @@ html{
 	background-repeat: no-repeat;
 }
 
-#name:focus{
-	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
-	background-size: 30px 30px;
-	background-position: 8px 5px;
-  background-position: 11px 8px;
-	background-repeat: no-repeat;
-}
-
-
-
-textarea {
-    width: 100%;
-    height: 150px;
-    line-height: 150%;
-    resize:vertical;
-}
-
-#sendenButton:hover{
-	background-color: rgba(0,0,0,0);
-	color: #0493bd;
-}
-
-.submit:hover {
-	color: #3498db;
-}
-
-.ease {
-	width: 0px;
-	height: 74px;
-	background-color: #fbfbfb;
-	-webkit-transition: .3s ease;
-	-moz-transition: .3s ease;
-	-o-transition: .3s ease;
-	-ms-transition: .3s ease;
-	transition: .3s ease;
-}
-
-.submit:hover .ease{
-  width:100%;
-  background-color:white;
-}
-
-@media only screen and (max-width: 580px) {
-	#form-div{
-		left: 3%;
-		margin-right: 3%;
-		width: 88%;
-		margin-left: 0;
-		padding-left: 3%;
-		padding-right: 3%;
-	}
-}
-
-
 #buttonsDiv {
     position: absolute;
-}
-
-
-.hiddenGameContent {
-    display: none;
 }
 
 /* CSS für die Highscore Tabelle */
@@ -535,17 +371,17 @@ table {
 
 .bordered {
     border: solid #ccc 1px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
     border-radius: 6px;
-    -webkit-box-shadow: 0 1px 1px #ccc;
-    -moz-box-shadow: 0 1px 1px #ccc;
+        -webkit-box-shadow: 0 1px 1px #ccc;
+        -moz-box-shadow: 0 1px 1px #ccc;
     box-shadow: 0 1px 1px #ccc;
     font-size: 20px;
     font-family: 'Bubblegum Sans', cursive;
     box-shadow: 5px 5px 5px rgba(0,0,0,.4);
-    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 
 }
@@ -615,20 +451,6 @@ table {
     border-radius: 0 0 6px 0;
 }
 
-/* Valiederung für das Input Feld */
-
-input:required:invalid, input:focus:invalid {
-    background-image: url(../images/invalid.png);
-    background-position: right top;
-    background-repeat: no-repeat;
-  }
-
-input:required:valid {
-    background-image: url(images/valid.png);
-    background-position: right top;
-    background-repeat: no-repeat;
-  }
-
 #highscoreSendenButton {
     top: 170px;
 }
@@ -653,25 +475,21 @@ input:required:valid {
                0 20px 20px rgba(0,0,0,.15);
 }
 
+/*
+**  Beim Nachladen soll ab 3 Patronen die Schrift anfangen zu pulsieren
+*/
+
 .nachladen{
     -webkit-animation: farbe 500ms infinite;
 }
 
+
 @-webkit-keyframes farbe {
-        0% {
-
-
+        0% { }
+        50%{   text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;
+               transform: scale(2);
         }
-        50%{
-
-        text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;
-        transform: scale(2);
-
-        }
-        100%{
-
-
-        }
+        100%{  }
     }
 
 #aktiverspieler{
@@ -680,20 +498,15 @@ input:required:valid {
 }
 
 @-webkit-keyframes hintergrund {
-        0% {
-            background-color: lightcoral;
-
-        }
-        50%{
-
-            background-color: white;
-
-        }
-        100%{
-            background-color: lightcoral;
-
-        }
+        0%   {      background-color: lightcoral;    }
+        50%  {      background-color: white;         }
+        100% {      background-color: lightcoral;    }
     }
+
+/*
+*   Style für den Impressum Link auf der Startseite
+*/
+
 .stempel {
     display:inline-block;
      -moz-transform:rotate(-10deg);
@@ -709,20 +522,23 @@ input:required:valid {
     margin-left: 550px;
     margin-top: 475px;
     opacity: 0.6
-
 }
 
+/*
+*   Style für die Bilder im Impressum
+*/
 
+    .profil {
 
-.profil {
+      -webkit-box-shadow: 0 15px 10px #777;
+      -moz-box-shadow: 0 15px 10px #777;
+      box-shadow: 0 15px 10px #777;
+    }
 
-  -webkit-box-shadow: 0 15px 10px #777;
-  -moz-box-shadow: 0 15px 10px #777;
-  box-shadow: 0 15px 10px #777;
+/*
+*   Style für die Tabelle im Impressum
+*/
 
-
-}
-
-#tdprofil {
-    text-align: center;
-}
+    #tdprofil {
+        text-align: center;
+    }

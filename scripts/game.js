@@ -393,7 +393,7 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
-var maxTime = 5;
+var maxTime = 60;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;

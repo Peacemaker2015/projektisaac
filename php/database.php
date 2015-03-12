@@ -2,7 +2,7 @@
 
 $dbServer = "localhost";
 $dbUser = "root";
-$dbName = "projektmm";
+$dbName = "db_isaac";
 $tblName = "t_highscore";
 
 if ($_GET["aaction"] == 0) {

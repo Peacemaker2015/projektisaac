@@ -1,9 +1,8 @@
+drop database if exists `db_isaac`;
 
-drop database if exists `projektmm`;
-
-create database if not exists projektmm;
-alter database projektmm default character set latin1 default collate latin1_german2_ci;
-use projektmm;
+create database if not exists db_isaac;
+alter database db_isaac default character set latin1 default collate latin1_german2_ci;
+use db_isaac;
 
 drop table if exists `t_highscore`;
 

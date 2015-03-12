@@ -223,7 +223,6 @@ function game(){
     var musikOnSchalter = document.getElementById("yes");
     var musikOffSchalter = document.getElementById("no");
     var highscoreLeerenSchalter = document.getElementById("deleteYes");
-    var abfrageDiv = document.getElementById("abfrageDiv");
 
     // Funktion für den Eventlistener für die Buttons
     var highscoreLeeren = function () {
@@ -259,6 +258,7 @@ function game(){
     spieleinstellungenButton.addEventListener("click", hidemenusettings);
     zuruckButtonEinstellungen.addEventListener("click", hidemenusettings);
 
+
     //-------------------------------------------------------------------- //
     /*
     **  Befehlsausführungen, für das verschwinden lassen
@@ -282,6 +282,7 @@ function game(){
     highscoreButton.addEventListener("click", hidemenuhighscore);
     zuruckButtonHighscore.addEventListener("click", hidemenuhighscore);
 
+
     //-------------------------------------------------------------------- //
     /*
     **  Befehlsausführungen, für das verschwinden lassen
@@ -289,23 +290,21 @@ function game(){
     */
 
     // Elemente des DIVs werden in Variablen gespeichert
+    var abfrageDiv = document.getElementById("abfrageDiv");
     var abfrageJaButton = document.getElementById("abfrageJaButton");
     var abfrageNeinButton = document.getElementById("abfrageNeinButton");
 
     // Funktion um den Highscore zu löschen und den AbfrageDiv zu schließen und wieder die Einstellungen anzuzeigen
     var leerenJa = function () {
-
         dropHighscore();
         spieleinstellungenDiv.classList.toggle("hidden");
         abfrageDiv.classList.toggle("hidden");
-         document.getElementById("deleteYes").checked = false;
-         document.getElementById("deleteNo").checked = true;
-
+        document.getElementById("deleteYes").checked = false;
+        document.getElementById("deleteNo").checked = true;
     };
 
     // Funktion um den Highscore NICHT zu löschen und den AbfrageDiv zu schließen und wieder die Einstellungen anzuzeigen
     var leerenNein = function () {
-
         spieleinstellungenDiv.classList.toggle("hidden");
         abfrageDiv.classList.toggle("hidden");
         document.getElementById("deleteYes").checked = false;
@@ -315,7 +314,6 @@ function game(){
     // Eventlistener für den Button "Highscore" und den "Zurück"
     abfrageJaButton.addEventListener("click", leerenJa);
     abfrageNeinButton.addEventListener("click", leerenNein);
-
 
 
     //-------------------------------------------------------------------- //
@@ -355,6 +353,7 @@ function game(){
     // Eventlistener für den Button "Zurück"
     zuruckMenuButton.addEventListener("click",hideAbfrageHighscore);
     sendenButton.addEventListener("click", schreiben);
+
 
     //-------------------------------------------------------------------- //
     /*

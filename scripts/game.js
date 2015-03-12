@@ -219,8 +219,13 @@ function game(){
     var zuruckButtonEinstellungen = document.getElementById("zuruckEinstellungenButton");
     var musikOnSchalter = document.getElementById("yes");
     var musikOffSchalter = document.getElementById("no");
+    var highscoreLeerenSchalter = document.getElementById("deleteYes");
 
     // Funktion für den Eventlistener für die Buttons
+    var highscoreLeeren = function () {
+        dropHighscore();
+    };
+
     var musicOn = function () {
         activateMusic();
     };
@@ -240,7 +245,8 @@ function game(){
         }
     };
 
-    // Eventlistener für den Button "Einstellungen" und den "Zurück"
+    // Eventlistener für die Buttons
+    highscoreLeerenSchalter.addEventListener("click", highscoreLeeren);
     musikOnSchalter.addEventListener("click", musicOn);
     musikOffSchalter.addEventListener("click", musicOff);
     spieleinstellungenButton.addEventListener("click", hidemenusettings);
@@ -733,59 +739,69 @@ function drawMoorhuhn(){
 */
 //------------------------------------------------------------------------------------------------------------ //
 
-function createDatabase(){
+    function createDatabase(){
 
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', 'php/database.php?&aaction="0"', true);
-    xmlhttp.send();
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', 'php/database.php?&aaction="0"', true);
+        xmlhttp.send();
 
-}
-
-
-function schreiben(){
-
-    // Das HIGHSCORE-Eintragen-Div wird ausgeblendet und das Highscore-Anzeigen-DIV eingeblendet
-    var action = 1;
-    var name = document.getElementById("name").value;
-    var score = document.getElementById("score").innerHTML;
-
-    var xmlhttp = new XMLHttpRequest();
-    //xmlhttp.open('GET', 'php/db_schreiben.php?&nname=' + name + '&ppunkte=' + score, true);
-    xmlhttp.open('GET', 'php/database.php?&aaction=' + action + '&nname=' + name + '&ppunkte=' + score, true);
-    xmlhttp.send();
-
-    stopGame();
-
-    menu.classList.toggle("hidden");
-    frageHighscoreDIV.classList.toggle("hidden");
-    buttonsDiv.classList.toggle("hidden");
-    hightscoreDiv.classList.toggle("hidden");
-
-    window.setTimeout( function() {
-
-        auslesen(name, score);
-
-    }, 1000 );
-
-};
+    }
 
 
+    function schreiben(){
+
+        // Das HIGHSCORE-Eintragen-Div wird ausgeblendet und das Highscore-Anzeigen-DIV eingeblendet
+        var action = 1;
+        var name = document.getElementById("name").value;
+        var score = document.getElementById("score").innerHTML;
+
+        var xmlhttp = new XMLHttpRequest();
+        //xmlhttp.open('GET', 'php/db_schreiben.php?&nname=' + name + '&ppunkte=' + score, true);
+        xmlhttp.open('GET', 'php/database.php?&aaction=' + action + '&nname=' + name + '&ppunkte=' + score, true);
+        xmlhttp.send();
+
+        stopGame();
+
+        menu.classList.toggle("hidden");
+        frageHighscoreDIV.classList.toggle("hidden");
+        buttonsDiv.classList.toggle("hidden");
+        hightscoreDiv.classList.toggle("hidden");
+
+        window.setTimeout( function() {
+
+            auslesen(name, score);
+
+        }, 1000 );
+
+    };
 
 
-function auslesen(name,score){
-    var action = 2;
-    var xmlhttp = new XMLHttpRequest();
-    //xmlhttp.open('GET', 'php/db_lesen.php?&nname=' + name + '&ppunkte=' + score, true);
-    xmlhttp.open('GET', 'php/database.php?&aaction=' + action + '&nname=' + name + '&ppunkte=' + score, true);
 
-    xmlhttp.addEventListener('readystatechange', function() {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            //console.log(xmlhttp.responseText);
-            document.getElementById('tabelle').innerHTML = xmlhttp.responseText;
-        }
-    });
-    xmlhttp.send();
-}
+
+    function auslesen(name,score){
+        var action = 2;
+        var xmlhttp = new XMLHttpRequest();
+        //xmlhttp.open('GET', 'php/db_lesen.php?&nname=' + name + '&ppunkte=' + score, true);
+        xmlhttp.open('GET', 'php/database.php?&aaction=' + action + '&nname=' + name + '&ppunkte=' + score, true);
+
+        xmlhttp.addEventListener('readystatechange', function() {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                //console.log(xmlhttp.responseText);
+                document.getElementById('tabelle').innerHTML = xmlhttp.responseText;
+            }
+        });
+        xmlhttp.send();
+    }
+
+
+    function dropHighscore(){
+
+        var action = 3;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', 'php/database.php?&aaction=' + action, true);
+        xmlhttp.send();
+
+    }
 
 
 

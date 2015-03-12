@@ -23,7 +23,7 @@ if ($_GET["aaction"] == 0) {
         if ($_GET["aaction"] == 1) {
             //-------------------------------------------------------------------- //
             /*
-            **  Befehlsausführungen, um in die Datenbank zu schreiben
+            **  Befehlsausführungen, um den Highscore zu schreiben
             */
 
             if ((isset($_GET['nname']) && $_GET['nname'] != "")) {
@@ -49,7 +49,7 @@ if ($_GET["aaction"] == 0) {
         } elseif ($_GET["aaction"] == 2) {
             //-------------------------------------------------------------------- //
             /*
-            **  Befehlsausführungen, um aus der Datenbank zu lesen
+            **  Befehlsausführungen, um den Highscore zu lesen
             */
 
             // Query vorbereiten
@@ -78,6 +78,19 @@ if ($_GET["aaction"] == 0) {
                 }
             }
             echo "</table>";
+
+        }elseif ($_GET["aaction"] == 3) {
+            //-------------------------------------------------------------------- //
+            /*
+            **  Befehlsausführungen, um den Highscore zu leeren
+            */
+
+            // Query vorbereiten
+            $sql = "DELETE FROM t_highscore";
+
+            //Übergabe an DB
+            $result = $mysqli->query($sql);
+
         }
     }
 }

@@ -24,16 +24,6 @@ if ($_GET["aaction"] == 0) {
         **  Befehlsausführungen, um die Datenbank anzulegen
         */
 
-        /*
-        // Query vorbereiten
-        $dir = getcwd();
-        $sql = 'SOURCE ' . $dir . '\\createDB.sql';
-        echo $sql;
-
-        //Übergabe an DB
-        $result = $mysqli->query($sql);
-        */
-
         // Query vorbereiten
         $sql = "create database if not exists ".$dbName;
         $result = $mysqli->query($sql);

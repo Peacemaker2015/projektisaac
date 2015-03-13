@@ -9,50 +9,72 @@ body{
 	padding: 10px;
 }
 
-#logoSchrift {
-    margin-left: 80px;
-    left: 80px;
-    font-size: 100px;
-    font-family: 'Cabin Sketch', cursive;
-}
+/**************************************************************
+*
+*    Darstellung des Startgrafik
+*
+***************************************************************/
 
-#content {
-    padding: 10px;
-    font-family: 'Bubblegum Sans', cursive;
-	font-size: 23px;
-}
+    #logoSchrift {
+        margin-left: 80px;
+        left: 80px;
+        font-size: 100px;
+        font-family: 'Cabin Sketch', cursive;
+    }
+
+/**************************************************************
+*
+*    Darstellung der Inhaltstexte
+*
+***************************************************************/
+
+    #content {
+        padding: 10px;
+        font-family: 'Bubblegum Sans', cursive;
+        font-size: 23px;
+    }
 
 #img{
     padding: 10px;
 }
 
-#menu{
-    position: absolute;
-    padding-top: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 130px;
-    width: 700;
-    height: 400px;
-    background-color:  rgba(255,255,255, .8);
-    box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
-        -moz-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
-        -webki t-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
-    border-radius: 40px;
-        -moz-border-radius: 40px;
-        -webkit-border-radius: 40px;
-    text-align: center;
-    margin-left: 125px;
-    top: 150;
-    left: 100px;
-}
+/**************************************************************
+*
+*    Darstellung des Menüs
+*
+***************************************************************/
 
-#zuruckAnleitungButton, #zuruckEinstellungenButton {
-    margin-top: 50px;
+    #menu{
+        position: absolute;
+        padding-top: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 130px;
+        width: 700;
+        height: 400px;
+        background-color:  rgba(255,255,255, .8);
+        box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
+            -moz-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
+            -webki t-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
+        border-radius: 40px;
+            -moz-border-radius: 40px;
+            -webkit-border-radius: 40px;
+        text-align: center;
+        margin-left: 125px;
+        top: 150;
+        left: 100px;
+    }
 
-}
+/**************************************************************
+*
+*    Ausrichtung Buttons
+*
+***************************************************************/
 
+    #zuruckAnleitungButton, #zuruckEinstellungenButton {
+        margin-top: 50px;
 
+    }
 
 /**************************************************************
 *

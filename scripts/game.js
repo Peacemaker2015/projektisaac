@@ -33,10 +33,11 @@ function game(){
         drawMoorhuhn();
         // Es wird überprüft, ob ein Spiel mit
         // ausreichender Spielzeit vorhanden ist
-        if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=maxTime){
+        if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=spielfeld.maxTime){
             onlymenu.click();
         }else{
             active = false;
+            spielfeld.show = "engine";
             // Andere Elemente ausblenden
             onlymenubutton.classList.toggle("hidden");
             ammo.classList.toggle("hidden");
@@ -146,12 +147,14 @@ function game(){
         else if(document.getElementById("Experte").checked === true){
             startGame(3);
         }
+        spielfeld.show = "engine";
     };
 
     // Funktion für den Eventlistener für den kleinen Menübutton oben links,
     // wenn das Hauptmenü ausgeblendet ist. Auf "Click" wird der Menü Button
     // ausgeblendet und das Hauptmenü eingeblendet
     var hidemenufornewgamesmall = function (){
+        spielfeld.show = "menu";
         // Spiel wird gestoppt
         stopGame();
         // Spielstand wird gespeichert
@@ -181,7 +184,7 @@ function game(){
 
     // Funktion für den Eventlistener für den Button "Weiter"
     var hidemenupause = function () {
-        if(level===null){
+        if(spielfeld.level===null){
             // Spiel wird gestartet
             if(document.getElementById("Einfach").checked === true){
                 startGame(1);
@@ -194,7 +197,7 @@ function game(){
             }
         }else{
             // Spiel wird gestartet
-            startGame(level);
+            startGame(spielfeld.level);
         }
         // PauseDIV wird ausgeblendet
         pauseDiv.classList.toggle("hidden");
@@ -398,12 +401,10 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
-var maxTime = 20;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;
 var sound = true;
-var level = null;
 var moorhuhn = [];
 
 // Timer vorbereiten
@@ -461,7 +462,7 @@ function loadGame(){
         document.getElementById('ammo').innerHTML = spielfeld.ammo;
         // Spielzeit wird überprüft
         if(isNaN(spielfeld.time) || spielfeld.time<=0){
-            spielfeld.time = maxTime;
+            spielfeld.time = spielfeld.maxTime;
             ;
         }
         document.getElementById('time').innerHTML = spielfeld.time;
@@ -488,7 +489,7 @@ function loadGame(){
 
 function startGame(a){
     // Level wird festgesetzt
-    level = a;
+    spielfeld.level = a;
 
     if(spielfeld.time===0){
         window.localStorage.clear();
@@ -547,9 +548,14 @@ function saveGame(){
 /* Dinge für das Spielfeld */
 
 function createSpielfeld(){
+    this.maxTime = 20;
     this.time = null;
+
+    this.level = null;
+
     this.score = null;
     this.ammo = null;
+    this.show = null;
 }
 
 function timeSpielfeld(){
@@ -576,12 +582,12 @@ function keydownSpielfeld(e){
         }
 
         // Spiel mit Leertaste unterbrechen oder fortsetzen
-        else if (e.keyCode === 32) {
+        else if (e.keyCode === 32 && spielfeld.show === "engine") {
             if(active===true){
                 // Spiel anhalten
                 stopGame();
             }else{
-                if(level===null){
+                if(spielfeld.level===null){
                     // Spiel wird gestartet
                     if(document.getElementById("Einfach").checked === true){
                         startGame(1);
@@ -594,7 +600,7 @@ function keydownSpielfeld(e){
                     }
                 }else{
                     // Spiel wird gestartet
-                    startGame(level);
+                    startGame(spielfeld.level);
                 }
             }
             // Andere Elemente ausblenden
@@ -642,15 +648,15 @@ function mousedownSpielfeld(e){
 
                         // Punkte werden vergeben
                         if(moorhuhn[i].scale <= 1.05){
-                            spielfeld.score += (15 * level);
+                            spielfeld.score += (15 * spielfeld.level);
                             document.getElementById('score').innerHTML = spielfeld.score;
                         }else{
                             if(moorhuhn[i].scale <= 1.35){
-                                spielfeld.score += (10 * level);
+                                spielfeld.score += (10 * spielfeld.level);
                                 document.getElementById('score').innerHTML = spielfeld.score;
                             }
                             else if(moorhuhn[i].scale > 1.35){
-                                spielfeld.score += (5 * level);
+                                spielfeld.score += (5 * spielfeld.level);
                                 document.getElementById('score').innerHTML = spielfeld.score;
                             }
                         }
@@ -680,10 +686,10 @@ function createMoorhuhn(direction){
     }
 
     this.hit = false;
-    this.speed = (parseInt(level) * 2) + 0.5;
+    this.speed = (parseInt(spielfeld.level) * 2) + 0.5;
     this.direction = direction;
 
-    if(level===3){
+    if(spielfeld.level===3){
         this.scale = 0.7;
     }else{
         this.scale = 0.7 + (Math.random() * 0.8);

@@ -392,6 +392,9 @@ function game(){
 */
 //------------------------------------------------------------------------------------------------------------ //
 
+// Spielfeld vorbereiten
+var spielfeld = new createSpielfeld();
+
 // Canvas vorbereiten
 var canvas = document.getElementById('game');
 var ctx = canvas.getContext('2d');
@@ -401,9 +404,8 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
-var spielfeld = new createSpielfeld();
-var music = true;
-var sound = true;
+//var music = true;
+//var sound = true;
 
 // Timer vorbereiten
 var timeTimer;
@@ -414,20 +416,20 @@ var moorhuhnTimer;
 
 function activateMusic() {
     document.getElementById('background_music').muted = false;
-    music = true;
+    spielfeld.music = true;
 }
 
 function deactivateMusic() {
     document.getElementById('background_music').muted = true;
-    music = false;
+    spielfeld.music = false;
 }
 
 function activateSound() {
-    sound = true;
+    spielfeld.sound = true;
 }
 
 function deactivateSound() {
-    sound = false;
+    spielfeld.sound = false;
 }
 
 function playSound(elementID){
@@ -554,6 +556,9 @@ function createSpielfeld(){
     this.level = null;
     this.active = true;
 
+    this.music = true;
+    this.sound = true;
+
     this.score = null;
     this.ammo = null;
     this.show = null;
@@ -577,7 +582,7 @@ function keydownSpielfeld(e){
             spielfeld.ammo = 10;
             document.getElementById('ammo').innerHTML = spielfeld.ammo;
             // Sound wiedergeben
-            if(sound===true){
+            if(spielfeld.sound===true){
                 playSound("reload_sound");
             }
         }
@@ -633,7 +638,7 @@ function mousedownSpielfeld(e){
 
             document.getElementById('ammo').innerHTML = spielfeld.ammo;
             //Sound wiedergeben
-            if(sound===true){
+            if(spielfeld.sound===true){
                 playSound("shot_sound");
             }
             // Prüfen, ob Moorhuhn getroffen

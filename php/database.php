@@ -12,7 +12,7 @@ if ($_GET["aaction"] == 0) {
 
     if ($mysqli->connect_errno) {
 
-        echo "Keine Verbindung zum Datenbankserver möglich: " . $mysqli->connect_error;
+        echo "Keine Verbindung zum Datenbankserver möglich: "; //. $mysqli->connect_error;
 
     }else{
 
@@ -52,7 +52,7 @@ if ($_GET["aaction"] == 0) {
 
     if ($mysqli->connect_errno) {
 
-        echo "Keine Verbindung zum Datenbankserver möglich: " . $mysqli->connect_error;
+        echo "Keine Verbindung zum Datenbankserver möglich: "; //. $mysqli->connect_error//;
 
     }else{
 
@@ -108,7 +108,7 @@ if ($_GET["aaction"] == 0) {
                 if ( ($row->Name) == $_GET['nname'] & ($row->Punkte) == $_GET['ppunkte']){
 
                     echo "<tr id=aktiverspieler><td>$pokale</td><td>".$row->Name."</td><td>".$row->Punkte."</td></tr>";
-                    $row++;
+                    $i = $i+1;
                 }
                 else{
 

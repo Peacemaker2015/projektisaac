@@ -20,8 +20,9 @@
       opacity: 0.7;
 }
 
+
 #fehler{
-    -webkit-animation: farbe 2s infinite;
+    -webkit-animation: farbefehler 2s infinite;
     padding: 20px;
     font-size: 25px;
     color: black;
@@ -29,19 +30,10 @@
     font-family: 'Bubblegum Sans', cursive
 }
 
-@-webkit-keyframes farbe {
-        0% {
-            /*color: black;*/
 
-        }
-        50%{
-/*            color: red;*/
-            text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;
-
-        }
-        100%{
-/*            color: black;*/
-
-        }
+@-webkit-keyframes farbefehler {
+        0%     {   }
+        50%    { text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;   }
+        100%   {    }
     }
 

@@ -401,7 +401,11 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
+<<<<<<< HEAD
 //var maxTime = 5;
+=======
+var maxTime = 20;
+>>>>>>> origin/master
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;

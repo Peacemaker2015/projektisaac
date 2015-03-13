@@ -1,3 +1,10 @@
+html{
+    background:url(../images/hintergrund1.jpg) no-repeat;
+    background-size: cover;
+    height:100%;
+}
+
+
 body{
 	padding: 10px;
 }
@@ -45,489 +52,715 @@ body{
 
 }
 
-.animate{
-	transition: all 0.1s;
-	-webkit-transition: all 0.1s;
-}
-
-.action-button{
-
-    position: relative;
-	padding: 10px 40px;
-    margin: 0px 10px 20px 160px;
-    display: block;
-    width: 300px;
-	border-radius: 10px;
-    font-family: 'Bubblegum Sans', cursive;
-	font-size: 30px;
-	color: #FFF;
-	text-decoration: none;
-}
-
-.blue{
-	background-color: #3498DB;
-	border-bottom: 5px solid #2980B9;
-	text-shadow: 0px -2px #2980B9;
-}
-
-.blue:hover{
-	background-color: #34a6db;
-}
-
-.red{
-	background-color: #E74C3C;
-	border-bottom: 5px solid #BD3E31;
-	text-shadow: 0px -2px #BD3E31;
-}
-
-.red:hover{
-	background-color: #ea6153;
-}
-
-.green{
-	background-color: #82BF56;
-	border-bottom: 5px solid #669644;
-	text-shadow: 0px -2px #669644;
-}
-
-.green:hover{
-	background-color: #9dcd7b;
-}
-
-.yellow{
-	background-color: #eec136;
-	border-bottom: 5px solid #deac13;
-	text-shadow: 0px -2px #deac13;
-}
-
-.yellow:hover{
-	background-color: #f0c84e;
-}
 
 
-.action-button:active{
-	transform: translate(0px,5px);
-     -webkit-transform: translate(0px,5px);
-	border-bottom: 1px solid;
-}
+/**************************************************************
+*
+*    Darstellung der Menübuttons
+*
+***************************************************************/
 
-.hidden{
-    display: none;
-}
+    .action-button{
 
-.postionHighscoreAbfrage{
-    position: relative;
-    padding-top: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 130px;
-    width: 700;
-    height: 400px;
-    background-color:  rgba(255,255,255, .8);
-        -moz-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
-        -webki t-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
-    box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
-    border-radius: 40px;
-        -moz-border-radius: 40px;
-        -webkit-border-radius: 40px;
-    text-align: center;
-    margin-left: 215px;
-    top: 125;
+        position: relative;
+        padding: 10px 40px;
+        margin: 0px 10px 20px 160px;
+        display: block;
+        width: 300px;
+        border-radius: 10px;
+        font-family: 'Bubblegum Sans', cursive;
+        font-size: 30px;
+        color: #FFF;
+        text-decoration: none;
+    }
 
-}
+    .animate{
+        transition: all 0.1s;
+        -webkit-transition: all 0.1s;
+    }
 
-#onlymenubuttondiv {
+    .blue{
+        background-color: #3498DB;
+        border-bottom: 5px solid #2980B9;
+        text-shadow: 0px -2px #2980B9;
+    }
 
-    position: absolute;
-    top: 10px;
-    left: -150;
-}
+    .blue:hover{
+        background-color: #34a6db;
+    }
 
-.menubutton {
-    position: relative;
-	padding: 10px 10px;
-    margin: 0px 10px 20px 160px;
-    display: block;
-    width: 40px;
-	border-radius: 10px;
-	font-family: 'Bubblegum Sans', cursive;
-	font-size: 15px;
-	color: #FFF;
-	text-decoration: none;
+    .red{
+        background-color: #E74C3C;
+        border-bottom: 5px solid #BD3E31;
+        text-shadow: 0px -2px #BD3E31;
+    }
 
-}
+    .red:hover{
+        background-color: #ea6153;
+    }
 
-.menubutton:active{
+    .green{
+        background-color: #82BF56;
+        border-bottom: 5px solid #669644;
+        text-shadow: 0px -2px #669644;
+    }
 
-    transform: translate(0px,5px);
-        -webkit-transform: translate(0px,5px);
-	border-bottom: 1px solid;
-}
+    .green:hover{
+        background-color: #9dcd7b;
+    }
 
-/*CSS für die Einstellungen des Spiels*/
+    .yellow{
+        background-color: #eec136;
+        border-bottom: 5px solid #deac13;
+        text-shadow: 0px -2px #deac13;
+    }
 
-.switch {
-    border:0;
-    color:#000;
-    font-family: 'Bubblegum Sans', cursive;
-    font-size:25px;
-    padding:0;
-    position:relative;
-    width:700px;
-}
-.switch legend {
-    color:#000;
-    display:block;
-    float:left;
-    font-size:25px;
-    line-height:15px;
-    padding:7px 10% 3px 0;
-    text-align:center;
-    width:40%;
-}
-.switch input {
-    opacity:0;
-    position:absolute;
-}
-.switch legend:after {
-    border-radius:3px;
-    content:'';
-    height:100%;
-    left:50%;
-    padding:2px;
-    position:absolute;
-    top:0;
-    width:50%;
-    z-index:0;
-}
-.switch label {
-    color:#000;
-    cursor:pointer;
-    float:left;
-    margin-top:2px;
-    padding:5px 0 3px 0;
-    position:relative;
-    text-align:center;
-    width:25%;
-    z-index:2;
-}
-.switch input:checked + label {
-    color:#f1831e;
-    moz-transition:all 0.4s ease-in 0s;
-    o-transition:all 0.4s ease-in 0s;
-    transition:all 0.4s ease-in 0s;
-    webkit-transition:all 0.4s ease-in 0s;
-}
-.switch input:focus + label {
-    background-color:#EDEDED;
-    moz-transition:all 0.4s ease-in 0s;
-    o-transition:all 0.4s ease-in 0s;
-    transition:all 0.4s ease-in 0s;
-    webkit-transition:all 0.4s ease-in 0s;
-}
-.switch .switch-button {
-    border-bottom:solid 1px #6B6B6B;
-    clear:both;
-    height:100%;
-    left:50%;
-    margin:2px;
-    moz-transition:all 0.3s ease-out;
-    o-transition:all 0.3s ease-out;
-    position:absolute;
-    top:0;
-    transition:all 0.3s ease-out;
-    webkit-transition:all 0.3s ease-out;
-    z-index:1;
-}
-.switch input:last-of-type:checked ~ .switch-button {
-    left:75%;
-}
-.switch.switch-two label {
-    width:16.6%;
-}
-.switch.switch-two .switch-button {
-    width:16%;
-}
-.switch.switch-two input:checked:nth-of-type(2) ~ .switch-button {
-    left:66.6%;
-}
-.switch.switch-two input:checked:last-of-type ~ .switch-button {
-    left:66.26%;
-}
-.switch.switch-three label {
-    width:16.6%;
-}
-.switch.switch-three .switch-button {
-    width:16%;
-}
-.switch.switch-three input:checked:nth-of-type(2) ~ .switch-button {
-    left:66.6%;
-}
-.switch.switch-three input:checked:last-of-type ~ .switch-button {
-    left:83.26%;
-}
+    .yellow:hover{
+        background-color: #f0c84e;
+    }
 
 
-.spaceEmOut {
-    margin-bottom:15px;
-}
-/* ENDE CSS für die Einstellungen des Spiels*/
-
-.switch .switch-button {
-
-    border-bottom:solid 1px #6b6b6b;
-    clear:both;
-    height:100%;
-    left:50%;
-    margin:2px;
-    moz-transition:all 0.3s ease-out;
-    o-transition:all 0.3s ease-out;
-    position:absolute;
-    top:0;
-    transition:all 0.3s ease-out;
-    webkit-transition:all 0.3s ease-out;
-    z-index:1;
-}
-
-/* Highscore CSS */
-
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-html{
-    background:url(../images/hintergrund1.jpg) no-repeat;
-    background-size: cover;
-    height:100%;
-}
-
-#form-div {
-	background-color:rgba(72,72,72,0.4);
-	padding-left:35px;
-	padding-right:35px;
-	padding-top:35px;
-	padding-bottom:50px;
-	width: 450px;
-    height: 225px;
-	float: left;
-	left: 50%;
-	position: absolute;
-    margin-top:30px;
-	margin-left: -260px;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-}
-
-.feedback-input {
-	color:#3c3c3c;
-	font-family: Helvetica, Arial, sans-serif;
-    font-weight:500;
-	font-size: 18px;
-	border-radius: 0;
-	line-height: 22px;
-	background-color: #fbfbfb;
-	padding: 13px 13px 13px 54px;
-	margin-bottom: 10px;
-	width:100%;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
-  border: 3px solid rgba(0,0,0,0);
-}
-
-.feedback-input:focus{
-	background: #fff;
-	box-shadow: 0;
-	border: 3px solid #3498db;
-	color: #3498db;
-	outline: none;
-  padding: 13px 13px 13px 54px;
-}
-
-.focused{
-	color:#30aed6;
-	border:#30aed6 solid 3px;
-}
-
-/* Icons ---------------------------------- */
-
-#name{
-	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
-	background-size: 30px 30px;
-	background-position: 11px 8px;
-	background-repeat: no-repeat;
-}
-
-#buttonsDiv {
-    position: absolute;
-}
-
-/* CSS für die Highscore Tabelle */
-
-table {
-    *border-collapse: collapse; /* IE7 and lower */
-    border-spacing: 0;
-    width: 100%;
-}
-
-.bordered {
-    border: solid #ccc 1px;
-        -moz-border-radius: 6px;
-        -webkit-border-radius: 6px;
-    border-radius: 6px;
-        -webkit-box-shadow: 0 1px 1px #ccc;
-        -moz-box-shadow: 0 1px 1px #ccc;
-    box-shadow: 0 1px 1px #ccc;
-    font-size: 20px;
-    font-family: 'Bubblegum Sans', cursive;
-    box-shadow: 5px 5px 5px rgba(0,0,0,.4);
-        -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-        -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-
-}
-
-.bordered tr:hover {
-    background: #fbf8e9;
-    -o-transition: all 0.1s ease-in-out;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -ms-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
-}
-
-.bordered td, .bordered th {
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-.bordered th {
-    background-color: #3498db;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
-    background-image: -webkit-linear-gradient(top, #3498db, #dce9f9);
-    background-image:    -moz-linear-gradient(top, #3498db, #dce9f9);
-    background-image:     -ms-linear-gradient(top, #3498db, #dce9f9);
-    background-image:      -o-linear-gradient(top, #3498db, #dce9f9);
-    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
-    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
-    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
-    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
-    border-top: none;
-    text-shadow: 2px 2px 2px rgba(255,255,255,.5);
-}
-
-.bordered td:first-child, .bordered th:first-child {
-    border-left: none;
-}
-
-.bordered th:first-child {
-    -moz-border-radius: 6px 0 0 0;
-    -webkit-border-radius: 6px 0 0 0;
-    border-radius: 6px 0 0 0;
-}
-
-.bordered th:last-child {
-    -moz-border-radius: 0 6px 0 0;
-    -webkit-border-radius: 0 6px 0 0;
-    border-radius: 0 6px 0 0;
-}
-
-.bordered th:only-child{
-    -moz-border-radius: 6px 6px 0 0;
-    -webkit-border-radius: 6px 6px 0 0;
-    border-radius: 6px 6px 0 0;
-}
-
-.bordered tr:last-child td:first-child {
-    -moz-border-radius: 0 0 0 6px;
-    -webkit-border-radius: 0 0 0 6px;
-    border-radius: 0 0 0 6px;
-}
-
-.bordered tr:last-child td:last-child {
-    -moz-border-radius: 0 0 6px 0;
-    -webkit-border-radius: 0 0 6px 0;
-    border-radius: 0 0 6px 0;
-}
-
-#highscoreSendenButton {
-    top: 170px;
-}
-
-/* Animation Anzeige der Punkte im EintragenHighscoreDiv*/
-
-#punkte {
-  color: red;
-  font-family: 'Bubblegum Sans', cursive;
-  font-size: 50px;
-  text-shadow: 0 1px 0 #ccc,
-               0 2px 0 #c9c9c9,
-               0 3px 0 #bbb,
-               0 4px 0 #b9b9b9,
-               0 5px 0 #aaa,
-               0 6px 1px rgba(0,0,0,.1),
-               0 0 5px rgba(0,0,0,.1),
-               0 1px 3px rgba(0,0,0,.3),
-               0 3px 5px rgba(0,0,0,.2),
-               0 5px 10px rgba(0,0,0,.25),
-               0 10px 10px rgba(0,0,0,.2),
-               0 20px 20px rgba(0,0,0,.15);
-}
-
-/*
-**  Beim Nachladen soll ab 3 Patronen die Schrift anfangen zu pulsieren
-*/
-
-.nachladen{
-    -webkit-animation: farbe 500ms infinite;
-}
+    .action-button:active{
+        transform: translate(0px,5px);
+         -webkit-transform: translate(0px,5px);
+        border-bottom: 1px solid;
+    }
 
 
-@-webkit-keyframes farbe {
-        0% { }
-        50%{   text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;
-               transform: scale(2);
+/**************************************************************
+*
+*    CSS Klassen für die Positionierung der Spielelemente
+*
+***************************************************************/
+
+    #moorhuhnL0{
+
+        display: none;
+        width: 75px;
+        height: 50px;
+
+    }
+
+    #moorhuhnL1{
+
+        display: none;
+        width: 75px;
+        height: 50px;
+
+    }
+
+    #moorhuhnL2{
+
+        display: none;
+        width: 75px;
+        height: 50px;
+
+    }
+
+    #moorhuhnR0{
+
+        display: none;
+        width: 75px;
+        height: 50px;
+
+    }
+
+    #moorhuhnR1{
+
+        display: none;
+        width: 75px;
+        height: 50px;
+
+    }
+
+    #moorhuhnR2{
+
+        display: none;
+        width: 75px;
+        height: 50px;
+
+    }
+
+    #kugel{
+
+        /* Kugel nicht klickbar machen*/
+
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+
+        width: 32px;
+        height: 65px;
+        position: absolute;
+        margin: 730px 0 0 950px;
+        text-shadow: 0 1px 0 #ccc,
+                   0 2px 0 #c9c9c9,
+                   0 3px 0 #bbb,
+                   0 4px 0 #b9b9b9,
+                   0 5px 0 #aaa,
+                   0 6px 1px rgba(0,0,0,.1),
+                   0 0 5px rgba(0,0,0,.1),
+                   0 1px 3px rgba(0,0,0,.3),
+                   0 3px 5px rgba(0,0,0,.2),
+                   0 5px 10px rgba(0,0,0,.25),
+                   0 10px 10px rgba(0,0,0,.2),
+                   0 20px 20px rgba(0,0,0,.15);
+        position: absolute;
+        font-family: 'Bubblegum Sans', cursive;
+        font-size:40px;
+    }
+
+    #ammo{
+        color: #444;
+        margin: 745px 0 0 1000px;
+        text-shadow: 0 1px 0 #ccc,
+                   0 2px 0 #c9c9c9,
+                   0 3px 0 #bbb,
+                   0 4px 0 #b9b9b9,
+                   0 5px 0 #aaa,
+                   0 6px 1px rgba(0,0,0,.1),
+                   0 0 5px rgba(0,0,0,.1),
+                   0 1px 3px rgba(0,0,0,.3),
+                   0 3px 5px rgba(0,0,0,.2),
+                   0 5px 10px rgba(0,0,0,.25),
+                   0 10px 10px rgba(0,0,0,.2),
+                   0 20px 20px rgba(0,0,0,.15);
+        position: absolute;
+        font-family: 'Bubblegum Sans', cursive;
+        font-size:40px;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+         user-select: none;
+    }
+
+    #score{
+        color: #222222;
+        margin: 745px 0 0 550;
+        text-shadow: 0 1px 0 #ccc,
+                   0 2px 0 #c9c9c9,
+                   0 3px 0 #bbb,
+                   0 4px 0 #b9b9b9,
+                   0 5px 0 #aaa,
+                   0 6px 1px rgba(0,0,0,.1),
+                   0 0 5px rgba(0,0,0,.1),
+                   0 1px 3px rgba(0,0,0,.3),
+                   0 3px 5px rgba(0,0,0,.2),
+                   0 5px 10px rgba(0,0,0,.25),
+                   0 10px 10px rgba(0,0,0,.2),
+                   0 20px 20px rgba(0,0,0,.15);
+        position: absolute;
+        font-family: 'Bubblegum Sans', cursive;
+        font-size:40px;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+         user-select: none;
+
+    }
+
+    #time{
+        color: black;
+        margin: 745px 0 0 155px;
+        text-shadow: 0 1px 0 #ccc,
+                   0 2px 0 #c9c9c9,
+                   0 3px 0 #bbb,
+                   0 4px 0 #b9b9b9,
+                   0 5px 0 #aaa,
+                   0 6px 1px rgba(0,0,0,.1),
+                   0 0 5px rgba(0,0,0,.1),
+                   0 1px 3px rgba(0,0,0,.3),
+                   0 3px 5px rgba(0,0,0,.2),
+                   0 5px 10px rgba(0,0,0,.25),
+                   0 10px 10px rgba(0,0,0,.2),
+                   0 20px 20px rgba(0,0,0,.15);
+        position: absolute;
+        font-family: 'Bubblegum Sans', cursive;
+        font-size:40px;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+         user-select: none;
+    }
+
+    #game{
+
+        cursor: url(../images/fadenkreuz.png), default;
+        background-image: url(../images/background.jpg);
+        position: absolute;
+        width: 1024px;
+        height: 768px;
+        left: 100px;
+        top: 50px;
+        border: 1px solid #FFF;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        box-shadow: 5px 5px 5px rgba(0,0,0,.4);
+
+    }
+
+/**************************************************************
+*
+*    Ein / Ausblenden der Element über Javasrcipt
+*
+***************************************************************/
+
+    .hidden{
+        display: none;
+    }
+
+/**************************************************************
+*
+*    CSS Klassen für die Positionierung der Spielelemente
+*
+***************************************************************/
+
+    .postionHighscoreAbfrage{
+        position: relative;
+        padding-top: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 130px;
+        width: 700;
+        height: 400px;
+        background-color:  rgba(255,255,255, .8);
+            -moz-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
+            -webki t-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
+        box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
+        border-radius: 40px;
+            -moz-border-radius: 40px;
+            -webkit-border-radius: 40px;
+        text-align: center;
+        margin-left: 215px;
+        top: 125;
+
+    }
+
+/**************************************************************
+*
+*    Darstellung des kleinen Menü während das Spiel aktiv ist
+*
+***************************************************************/
+
+    #onlymenubuttondiv {
+
+        position: absolute;
+        top: 10px;
+        left: -150;
+    }
+
+    .menubutton {
+        position: relative;
+        padding: 10px 10px;
+        margin: 0px 10px 20px 160px;
+        display: block;
+        width: 40px;
+        border-radius: 10px;
+        font-family: 'Bubblegum Sans', cursive;
+        font-size: 15px;
+        color: #FFF;
+        text-decoration: none;
+
+    }
+
+    .menubutton:active{
+
+        transform: translate(0px,5px);
+            -webkit-transform: translate(0px,5px);
+        border-bottom: 1px solid;
+    }
+
+/**************************************************************
+*
+*    Einstellungen für das Spiel
+*
+***************************************************************/
+
+    .switch {
+        border:0;
+        color:#000;
+        font-family: 'Bubblegum Sans', cursive;
+        font-size:25px;
+        padding:0;
+        position:relative;
+        width:700px;
+    }
+    .switch legend {
+        color:#000;
+        display:block;
+        float:left;
+        font-size:25px;
+        line-height:15px;
+        padding:7px 10% 3px 0;
+        text-align:center;
+        width:40%;
+    }
+    .switch input {
+        opacity:0;
+        position:absolute;
+    }
+    .switch legend:after {
+        border-radius:3px;
+        content:'';
+        height:100%;
+        left:50%;
+        padding:2px;
+        position:absolute;
+        top:0;
+        width:50%;
+        z-index:0;
+    }
+    .switch label {
+        color:#000;
+        cursor:pointer;
+        float:left;
+        margin-top:2px;
+        padding:5px 0 3px 0;
+        position:relative;
+        text-align:center;
+        width:25%;
+        z-index:2;
+    }
+    .switch input:checked + label {
+        color:#f1831e;
+        moz-transition:all 0.4s ease-in 0s;
+        o-transition:all 0.4s ease-in 0s;
+        transition:all 0.4s ease-in 0s;
+        webkit-transition:all 0.4s ease-in 0s;
+    }
+    .switch input:focus + label {
+        background-color:#EDEDED;
+        moz-transition:all 0.4s ease-in 0s;
+        o-transition:all 0.4s ease-in 0s;
+        transition:all 0.4s ease-in 0s;
+        webkit-transition:all 0.4s ease-in 0s;
+    }
+    .switch .switch-button {
+        border-bottom:solid 1px #6B6B6B;
+        clear:both;
+        height:100%;
+        left:50%;
+        margin:2px;
+        moz-transition:all 0.3s ease-out;
+        o-transition:all 0.3s ease-out;
+        position:absolute;
+        top:0;
+        transition:all 0.3s ease-out;
+        webkit-transition:all 0.3s ease-out;
+        z-index:1;
+    }
+    .switch input:last-of-type:checked ~ .switch-button {
+        left:75%;
+    }
+    .switch.switch-two label {
+        width:16.6%;
+    }
+    .switch.switch-two .switch-button {
+        width:16%;
+    }
+    .switch.switch-two input:checked:nth-of-type(2) ~ .switch-button {
+        left:66.6%;
+    }
+    .switch.switch-two input:checked:last-of-type ~ .switch-button {
+        left:66.26%;
+    }
+    .switch.switch-three label {
+        width:16.6%;
+    }
+    .switch.switch-three .switch-button {
+        width:16%;
+    }
+    .switch.switch-three input:checked:nth-of-type(2) ~ .switch-button {
+        left:66.6%;
+    }
+    .switch.switch-three input:checked:last-of-type ~ .switch-button {
+        left:83.26%;
+    }
+
+
+    .spaceEmOut {
+        margin-bottom:15px;
+    }
+
+
+
+    .switch .switch-button {
+
+        border-bottom:solid 1px #6b6b6b;
+        clear:both;
+        height:100%;
+        left:50%;
+        margin:2px;
+        moz-transition:all 0.3s ease-out;
+        o-transition:all 0.3s ease-out;
+        position:absolute;
+        top:0;
+        transition:all 0.3s ease-out;
+        webkit-transition:all 0.3s ease-out;
+        z-index:1;
+    }
+
+
+/**************************************************************
+*
+*    CSS Klassen für die Darstellung des Highscores
+*
+***************************************************************/
+
+    #form-div {
+        background-color:rgba(72,72,72,0.4);
+        padding-left:35px;
+        padding-right:35px;
+        padding-top:35px;
+        padding-bottom:50px;
+        width: 450px;
+        height: 225px;
+        float: left;
+        left: 50%;
+        position: absolute;
+        margin-top:30px;
+        margin-left: -260px;
+      -moz-border-radius: 7px;
+      -webkit-border-radius: 7px;
+    }
+
+    .feedback-input {
+        color:#3c3c3c;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight:500;
+        font-size: 18px;
+        border-radius: 0;
+        line-height: 22px;
+        background-color: #fbfbfb;
+        padding: 13px 13px 13px 54px;
+        margin-bottom: 10px;
+        width:100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+      border: 3px solid rgba(0,0,0,0);
+    }
+
+    .feedback-input:focus{
+        background: #fff;
+        box-shadow: 0;
+        border: 3px solid #3498db;
+        color: #3498db;
+        outline: none;
+      padding: 13px 13px 13px 54px;
+    }
+
+    .focused{
+        color:#30aed6;
+        border:#30aed6 solid 3px;
+    }
+
+    #name{
+        background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+
+    #buttonsDiv {
+        position: absolute;
+    }
+
+/**************************************************************
+*
+*    CSS für die Highscore Tabelle
+*
+***************************************************************/
+
+    table {
+        *border-collapse: collapse; /* IE7 and lower */
+        border-spacing: 0;
+        width: 100%;
+    }
+
+    .bordered {
+        border: solid #ccc 1px;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+        border-radius: 6px;
+            -webkit-box-shadow: 0 1px 1px #ccc;
+            -moz-box-shadow: 0 1px 1px #ccc;
+        box-shadow: 0 1px 1px #ccc;
+        font-size: 20px;
+        font-family: 'Bubblegum Sans', cursive;
+        box-shadow: 5px 5px 5px rgba(0,0,0,.4);
+            -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+
+    }
+
+    .bordered tr:hover {
+        background: #fbf8e9;
+        -o-transition: all 0.1s ease-in-out;
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition: all 0.1s ease-in-out;
+        -ms-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+    }
+
+    .bordered td, .bordered th {
+        border-left: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .bordered th {
+        background-color: #3498db;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+        background-image: -webkit-linear-gradient(top, #3498db, #dce9f9);
+        background-image:    -moz-linear-gradient(top, #3498db, #dce9f9);
+        background-image:     -ms-linear-gradient(top, #3498db, #dce9f9);
+        background-image:      -o-linear-gradient(top, #3498db, #dce9f9);
+        background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+        -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+        -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+        box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+        border-top: none;
+        text-shadow: 2px 2px 2px rgba(255,255,255,.5);
+    }
+
+    .bordered td:first-child, .bordered th:first-child {
+        border-left: none;
+    }
+
+    .bordered th:first-child {
+        -moz-border-radius: 6px 0 0 0;
+        -webkit-border-radius: 6px 0 0 0;
+        border-radius: 6px 0 0 0;
+    }
+
+    .bordered th:last-child {
+        -moz-border-radius: 0 6px 0 0;
+        -webkit-border-radius: 0 6px 0 0;
+        border-radius: 0 6px 0 0;
+    }
+
+    .bordered th:only-child{
+        -moz-border-radius: 6px 6px 0 0;
+        -webkit-border-radius: 6px 6px 0 0;
+        border-radius: 6px 6px 0 0;
+    }
+
+    .bordered tr:last-child td:first-child {
+        -moz-border-radius: 0 0 0 6px;
+        -webkit-border-radius: 0 0 0 6px;
+        border-radius: 0 0 0 6px;
+    }
+
+    .bordered tr:last-child td:last-child {
+        -moz-border-radius: 0 0 6px 0;
+        -webkit-border-radius: 0 0 6px 0;
+        border-radius: 0 0 6px 0;
+    }
+
+    #highscoreSendenButton {
+        top: 170px;
+    }
+
+/**************************************************************
+*
+*    Darstellung der erreichten Punkte nach einem Spiel
+*    im Div PunkteEintragen
+*
+***************************************************************/
+
+    #punkte {
+      color: red;
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 50px;
+      text-shadow: 0 1px 0 #ccc,
+                   0 2px 0 #c9c9c9,
+                   0 3px 0 #bbb,
+                   0 4px 0 #b9b9b9,
+                   0 5px 0 #aaa,
+                   0 6px 1px rgba(0,0,0,.1),
+                   0 0 5px rgba(0,0,0,.1),
+                   0 1px 3px rgba(0,0,0,.3),
+                   0 3px 5px rgba(0,0,0,.2),
+                   0 5px 10px rgba(0,0,0,.25),
+                   0 10px 10px rgba(0,0,0,.2),
+                   0 20px 20px rgba(0,0,0,.15);
+    }
+
+/**************************************************************
+*
+*    Beim Nachladen soll ab 3 Patronen die Schrift anfangen zu pulsieren
+*
+***************************************************************/
+
+    .nachladen{
+        -webkit-animation: farbe 500ms infinite;
+    }
+
+    @-webkit-keyframes farbe {
+            0% { }
+            50%{   text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;
+                   transform: scale(2);
+            }
+            100%{  }
         }
-        100%{  }
+
+/**************************************************************
+*
+*    Im Highscore soll nach dem Eintragen in den Highscore, der jeweilige Spieler farblich markiert werden
+*
+***************************************************************/
+
+
+    #aktiverspieler{
+
+         -webkit-animation: hintergrund 2000ms infinite;
     }
 
-#aktiverspieler{
+    @-webkit-keyframes hintergrund {
+            0%   {      background-color: lightcoral;    }
+            50%  {      background-color: white;         }
+            100% {      background-color: lightcoral;    }
+        }
 
-     -webkit-animation: hintergrund 2000ms infinite;
-}
 
-@-webkit-keyframes hintergrund {
-        0%   {      background-color: lightcoral;    }
-        50%  {      background-color: white;         }
-        100% {      background-color: lightcoral;    }
+/**************************************************************
+*
+*    Style für den Impressum Link auf der Startseite
+*
+***************************************************************/
+
+    .stempel {
+        display:inline-block;
+         -moz-transform:rotate(-10deg);
+        -webkit-transform:rotate(-10deg);
+        -o-transform:rotate(-10deg);
+        -ms-transform:rotate(-10deg);
+        transform:rotate(-10deg);
+        font-size: 25px;
+        text-shadow: 0 -1px 1px #666666, 0 2px 2px #FFFFFF;
+        font-family: 'Cabin Sketch', cursive;    color: black;
+        color: black;
+        text-decoration: none;
+        margin-left: 550px;
+        margin-top: 475px;
+        opacity: 0.6
     }
 
-/*
-*   Style für den Impressum Link auf der Startseite
-*/
-
-.stempel {
-    display:inline-block;
-     -moz-transform:rotate(-10deg);
-    -webkit-transform:rotate(-10deg);
-    -o-transform:rotate(-10deg);
-    -ms-transform:rotate(-10deg);
-    transform:rotate(-10deg);
-    font-size: 25px;
-    text-shadow: 0 -1px 1px #666666, 0 2px 2px #FFFFFF;
-    font-family: 'Cabin Sketch', cursive;    color: black;
-    color: black;
-    text-decoration: none;
-    margin-left: 550px;
-    margin-top: 475px;
-    opacity: 0.6
-}
-
-/*
-*   Style für die Bilder im Impressum
-*/
-
+/**************************************************************
+*
+*    Style für die Bilder im Impressum
+*
+***************************************************************/
     .profil {
 
       -webkit-box-shadow: 0 15px 10px #777;
@@ -535,9 +768,12 @@ table {
       box-shadow: 0 15px 10px #777;
     }
 
-/*
-*   Style für die Tabelle im Impressum
-*/
+
+/**************************************************************
+*
+*    Style für die Tabelle im Impressum
+*
+***************************************************************/
 
     #tdprofil {
         text-align: center;

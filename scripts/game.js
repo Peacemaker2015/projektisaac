@@ -404,7 +404,6 @@ document.addEventListener('keydown', keydownSpielfeld);
 var spielfeld = new createSpielfeld();
 var music = true;
 var sound = true;
-var moorhuhn = [];
 
 // Timer vorbereiten
 var timeTimer;
@@ -441,7 +440,7 @@ function loadGame(){
         // Spielfeld leeren
         ctx.clearRect(0,0,1024,768);
         // Speicher für Moorhühner leeren
-        moorhuhn = [];
+        spielfeld.moorhuhn = [];
         // Punktestand wird geladen
         spielfeld.score = parseInt(window.localStorage.getItem("GameScore"));
         // Munition wird geladen
@@ -472,14 +471,14 @@ function loadGame(){
             if((window.localStorage.getItem("Moorhuhn"+i)===null)){
                 found=0;
             }else{
-                moorhuhn.push(new createMoorhuhn(""));
-                moorhuhn[i].src = document.getElementById("moorhuhn");
-                moorhuhn[i].y = parseInt(window.localStorage.getItem("Moorhuhn"+i+".y"));
-                moorhuhn[i].x = parseInt(window.localStorage.getItem("Moorhuhn"+i+".x"));
-                moorhuhn[i].hit = window.localStorage.getItem("Moorhuhn"+i+".hit");
-                moorhuhn[i].speed = window.localStorage.getItem("Moorhuhn"+i+".speed");
-                moorhuhn[i].direction = window.localStorage.getItem("Moorhuhn"+i+".direction");
-                moorhuhn[i].scale = window.localStorage.getItem("Moorhuhn"+i+".scale");
+                spielfeld.moorhuhn.push(new createMoorhuhn(""));
+                spielfeld.moorhuhn[i].src = document.getElementById("moorhuhn");
+                spielfeld.moorhuhn[i].y = parseInt(window.localStorage.getItem("Moorhuhn"+i+".y"));
+                spielfeld.moorhuhn[i].x = parseInt(window.localStorage.getItem("Moorhuhn"+i+".x"));
+                spielfeld.moorhuhn[i].hit = window.localStorage.getItem("Moorhuhn"+i+".hit");
+                spielfeld.moorhuhn[i].speed = window.localStorage.getItem("Moorhuhn"+i+".speed");
+                spielfeld.moorhuhn[i].direction = window.localStorage.getItem("Moorhuhn"+i+".direction");
+                spielfeld.moorhuhn[i].scale = window.localStorage.getItem("Moorhuhn"+i+".scale");
             }
             i++;
         }
@@ -492,7 +491,7 @@ function startGame(a){
 
     if(spielfeld.time===0){
         window.localStorage.clear();
-        moorhuhn = [];
+        spielfeld.moorhuhn = [];
         loadGame();
     }
     timeTimer = setInterval(function(){
@@ -528,18 +527,18 @@ function saveGame(){
         window.localStorage.setItem("GameScore", spielfeld.score);
         window.localStorage.setItem("GameAmmo", spielfeld.ammo);
 
-        for(var i=0; i < moorhuhn.length; i++){
+        for(var i=0; i < spielfeld.moorhuhn.length; i++){
             window.localStorage.setItem("Moorhuhn"+i, "Moorhuhn"+i);
-            window.localStorage.setItem("Moorhuhn"+i+".y", moorhuhn[i].y);
-            window.localStorage.setItem("Moorhuhn"+i+".x", moorhuhn[i].x);
-            window.localStorage.setItem("Moorhuhn"+i+".hit", moorhuhn[i].hit);
-            window.localStorage.setItem("Moorhuhn"+i+".speed", moorhuhn[i].speed);
-            window.localStorage.setItem("Moorhuhn"+i+".direction", moorhuhn[i].direction);
-            window.localStorage.setItem("Moorhuhn"+i+".scale", moorhuhn[i].scale);
+            window.localStorage.setItem("Moorhuhn"+i+".y", spielfeld.moorhuhn[i].y);
+            window.localStorage.setItem("Moorhuhn"+i+".x", spielfeld.moorhuhn[i].x);
+            window.localStorage.setItem("Moorhuhn"+i+".hit", spielfeld.moorhuhn[i].hit);
+            window.localStorage.setItem("Moorhuhn"+i+".speed", spielfeld.moorhuhn[i].speed);
+            window.localStorage.setItem("Moorhuhn"+i+".direction", spielfeld.moorhuhn[i].direction);
+            window.localStorage.setItem("Moorhuhn"+i+".scale", spielfeld.moorhuhn[i].scale);
         }
     }
     else if(spielfeld.time<=0){
-        moorhuhn = [];
+        spielfeld.moorhuhn = [];
         window.localStorage.clear();
     }
 }
@@ -547,6 +546,8 @@ function saveGame(){
 /* Dinge für das Spielfeld */
 
 function createSpielfeld(){
+    this.moorhuhn = [];
+
     this.maxTime = 20;
     this.time = null;
 
@@ -636,33 +637,33 @@ function mousedownSpielfeld(e){
                 playSound("shot_sound");
             }
             // Prüfen, ob Moorhuhn getroffen
-            for(var i=0;i<moorhuhn.length;i++){
+            for(var i=0;i<spielfeld.moorhuhn.length;i++){
 
-                if( mouseX > (moorhuhn[i].x - 30)
-                        && mouseX < (moorhuhn[i].x + (30 * moorhuhn[i].scale) - 15)
-                        && mouseY > (moorhuhn[i].y - 30)
-                        && mouseY < (moorhuhn[i].y + (50 * moorhuhn[i].scale) - 15) ){
+                if( mouseX > (spielfeld.moorhuhn[i].x - 30)
+                        && mouseX < (spielfeld.moorhuhn[i].x + (30 * spielfeld.moorhuhn[i].scale) - 15)
+                        && mouseY > (spielfeld.moorhuhn[i].y - 30)
+                        && mouseY < (spielfeld.moorhuhn[i].y + (50 * spielfeld.moorhuhn[i].scale) - 15) ){
 
 
-                    if(moorhuhn[i].hit === false){
+                    if(spielfeld.moorhuhn[i].hit === false){
 
                         // Punkte werden vergeben
-                        if(moorhuhn[i].scale <= 1.05){
+                        if(spielfeld.moorhuhn[i].scale <= 1.05){
                             spielfeld.score += (15 * spielfeld.level);
                             document.getElementById('score').innerHTML = spielfeld.score;
                         }else{
-                            if(moorhuhn[i].scale <= 1.35){
+                            if(spielfeld.moorhuhn[i].scale <= 1.35){
                                 spielfeld.score += (10 * spielfeld.level);
                                 document.getElementById('score').innerHTML = spielfeld.score;
                             }
-                            else if(moorhuhn[i].scale > 1.35){
+                            else if(spielfeld.moorhuhn[i].scale > 1.35){
                                 spielfeld.score += (5 * spielfeld.level);
                                 document.getElementById('score').innerHTML = spielfeld.score;
                             }
                         }
                     }
                     // Trefferstatus wird gesetzt
-                    moorhuhn[i].hit = true;
+                    spielfeld.moorhuhn[i].hit = true;
                 }
             }
         }
@@ -698,17 +699,17 @@ function createMoorhuhn(direction){
 
 function addMoorhuhn(){
     // Moorhuhn ("links fliegend") hinzufügen
-    moorhuhn.push(new createMoorhuhn("move_left"));
+    spielfeld.moorhuhn.push(new createMoorhuhn("move_left"));
     // Moorhuhn ("rechts fliegend") hinzufügen
-    moorhuhn.push(new createMoorhuhn("move_right"));
+    spielfeld.moorhuhn.push(new createMoorhuhn("move_right"));
 }
 
 function moveMoorhuhn(){
     // Spielfeld leeren
     ctx.clearRect(0,0,1024,768);
     // Morrhühner in die jeweilige Richtung bewegen
-    for(var i=0;i<moorhuhn.length;i++){
-        if(moorhuhn[i].direction === "move_right"){
+    for(var i=0;i<spielfeld.moorhuhn.length;i++){
+        if(spielfeld.moorhuhn[i].direction === "move_right"){
             moveMoorhuhnRight(i);
         }
         else{
@@ -718,92 +719,92 @@ function moveMoorhuhn(){
 }
 
 function moveMoorhuhnRight(i){
-    if(moorhuhn[i].hit === true){
+    if(spielfeld.moorhuhn[i].hit === true){
         // Anzeigebild
-        if(moorhuhn[i].srcid === 0){
-            moorhuhn[i].src = document.getElementById("moorhuhnRH0");
-            moorhuhn[i].srcid = 1;
+        if(spielfeld.moorhuhn[i].srcid === 0){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnRH0");
+            spielfeld.moorhuhn[i].srcid = 1;
         }
-        else if(moorhuhn[i].srcid === 1){
-            moorhuhn[i].src = document.getElementById("moorhuhnRH0");
-            moorhuhn[i].srcid = 2;
+        else if(spielfeld.moorhuhn[i].srcid === 1){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnRH0");
+            spielfeld.moorhuhn[i].srcid = 2;
         }
-        else if(moorhuhn[i].srcid === 2){
-            moorhuhn[i].src = document.getElementById("moorhuhnRH1");
-            moorhuhn[i].srcid = 0;
+        else if(spielfeld.moorhuhn[i].srcid === 2){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnRH1");
+            spielfeld.moorhuhn[i].srcid = 0;
         }
         // Bewegungsrichtung
-        moorhuhn[i].y += +1;
-        if(moorhuhn[i].y > 768){
-            window.localStorage.removeItem(moorhuhn[i]);
+        spielfeld.moorhuhn[i].y += +1;
+        if(spielfeld.moorhuhn[i].y > 768){
+            window.localStorage.removeItem(spielfeld.moorhuhn[i]);
         }
     }else{
         // Anzeigebild
-        if(moorhuhn[i].srcid === 0){
-            moorhuhn[i].src = document.getElementById("moorhuhnR0");
-            moorhuhn[i].srcid = 1;
+        if(spielfeld.moorhuhn[i].srcid === 0){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnR0");
+            spielfeld.moorhuhn[i].srcid = 1;
         }
-        else if(moorhuhn[i].srcid === 1){
-            moorhuhn[i].src = document.getElementById("moorhuhnR0");
-            moorhuhn[i].srcid = 2;
+        else if(spielfeld.moorhuhn[i].srcid === 1){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnR0");
+            spielfeld.moorhuhn[i].srcid = 2;
         }
-        else if(moorhuhn[i].srcid === 2){
-            moorhuhn[i].src = document.getElementById("moorhuhnR1");
-            moorhuhn[i].srcid = 0;
+        else if(spielfeld.moorhuhn[i].srcid === 2){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnR1");
+            spielfeld.moorhuhn[i].srcid = 0;
         }
         // Bewegungsrichtung
-        moorhuhn[i].x += - moorhuhn[i].speed;
-        if(moorhuhn[i].x<0){
-            window.localStorage.removeItem(moorhuhn[i]);
+        spielfeld.moorhuhn[i].x += - spielfeld.moorhuhn[i].speed;
+        if(spielfeld.moorhuhn[i].x<0){
+            window.localStorage.removeItem(spielfeld.moorhuhn[i]);
         }
     }
 }
 
 function moveMoorhuhnLeft(i){
-    if(moorhuhn[i].hit === true){
+    if(spielfeld.moorhuhn[i].hit === true){
         // Anzeigebild
-        if(moorhuhn[i].srcid === 0){
-            moorhuhn[i].src = document.getElementById("moorhuhnLH0");
-            moorhuhn[i].srcid = 1;
+        if(spielfeld.moorhuhn[i].srcid === 0){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnLH0");
+            spielfeld.moorhuhn[i].srcid = 1;
         }
-        else if(moorhuhn[i].srcid === 1){
-            moorhuhn[i].src = document.getElementById("moorhuhnLH0");
-            moorhuhn[i].srcid = 2;
+        else if(spielfeld.moorhuhn[i].srcid === 1){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnLH0");
+            spielfeld.moorhuhn[i].srcid = 2;
         }
-        else if(moorhuhn[i].srcid === 2){
-            moorhuhn[i].src = document.getElementById("moorhuhnLH1");
-            moorhuhn[i].srcid = 0;
+        else if(spielfeld.moorhuhn[i].srcid === 2){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnLH1");
+            spielfeld.moorhuhn[i].srcid = 0;
         }
         // Bewegungsrichtung
-        moorhuhn[i].y += +1;
-        if(moorhuhn[i].y > 768){
-            window.localStorage.removeItem(moorhuhn[i]);
+        spielfeld.moorhuhn[i].y += +1;
+        if(spielfeld.moorhuhn[i].y > 768){
+            window.localStorage.removeItem(spielfeld.moorhuhn[i]);
         }
     }else{
         // Anzeigebild
-        if(moorhuhn[i].srcid === 0){
-            moorhuhn[i].src = document.getElementById("moorhuhnL0");
-            moorhuhn[i].srcid = 1;
+        if(spielfeld.moorhuhn[i].srcid === 0){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnL0");
+            spielfeld.moorhuhn[i].srcid = 1;
         }
-        else if(moorhuhn[i].srcid === 1){
-            moorhuhn[i].src = document.getElementById("moorhuhnL0");
-            moorhuhn[i].srcid = 2;
+        else if(spielfeld.moorhuhn[i].srcid === 1){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnL0");
+            spielfeld.moorhuhn[i].srcid = 2;
         }
-        else if(moorhuhn[i].srcid === 2){
-            moorhuhn[i].src = document.getElementById("moorhuhnL1");
-            moorhuhn[i].srcid = 0;
+        else if(spielfeld.moorhuhn[i].srcid === 2){
+            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnL1");
+            spielfeld.moorhuhn[i].srcid = 0;
         }
         // Bewegungsrichtung
-        moorhuhn[i].x += + moorhuhn[i].speed;
-        if(moorhuhn[i].x<0){
-            window.localStorage.removeItem(moorhuhn[i]);
+        spielfeld.moorhuhn[i].x += + spielfeld.moorhuhn[i].speed;
+        if(spielfeld.moorhuhn[i].x<0){
+            window.localStorage.removeItem(spielfeld.moorhuhn[i]);
         }
     }
 }
 
 function drawMoorhuhn(){
-    for(var i=0;i<moorhuhn.length;i++){
-        ctx.drawImage(moorhuhn[i].src, moorhuhn[i].x, moorhuhn[i].y, 40 * moorhuhn[i].scale, 50 * moorhuhn[i].scale);
+    for(var i=0;i<spielfeld.moorhuhn.length;i++){
+        ctx.drawImage(spielfeld.moorhuhn[i].src, spielfeld.moorhuhn[i].x, spielfeld.moorhuhn[i].y, 40 * spielfeld.moorhuhn[i].scale, 50 * spielfeld.moorhuhn[i].scale);
     }
 }
 

@@ -33,10 +33,11 @@ function game(){
         drawMoorhuhn();
         // Es wird überprüft, ob ein Spiel mit
         // ausreichender Spielzeit vorhanden ist
-        if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=maxTime){
+        if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=spielfeld.maxTime){
             onlymenu.click();
         }else{
             active = false;
+            spielfeld.show = "engine";
             // Andere Elemente ausblenden
             onlymenubutton.classList.toggle("hidden");
             ammo.classList.toggle("hidden");
@@ -400,7 +401,7 @@ canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
-var maxTime = 5;
+//var maxTime = 5;
 var spielfeld = new createSpielfeld();
 var active = true;
 var music = true;
@@ -463,7 +464,7 @@ function loadGame(){
         document.getElementById('ammo').innerHTML = spielfeld.ammo;
         // Spielzeit wird überprüft
         if(isNaN(spielfeld.time) || spielfeld.time<=0){
-            spielfeld.time = maxTime;
+            spielfeld.time = spielfeld.maxTime;
             ;
         }
         document.getElementById('time').innerHTML = spielfeld.time;
@@ -549,11 +550,14 @@ function saveGame(){
 /* Dinge für das Spielfeld */
 
 function createSpielfeld(){
+    this.maxTime = 20;
     this.time = null;
+
+    this.level = null;
+
     this.score = null;
     this.ammo = null;
     this.show = null;
-    this.level = null;
 }
 
 function timeSpielfeld(){

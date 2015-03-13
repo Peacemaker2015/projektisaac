@@ -146,12 +146,14 @@ function game(){
         else if(document.getElementById("Experte").checked === true){
             startGame(3);
         }
+        spielfeld.show = "engine";
     };
 
     // Funktion für den Eventlistener für den kleinen Menübutton oben links,
     // wenn das Hauptmenü ausgeblendet ist. Auf "Click" wird der Menü Button
     // ausgeblendet und das Hauptmenü eingeblendet
     var hidemenufornewgamesmall = function (){
+        spielfeld.show = "menu";
         // Spiel wird gestoppt
         stopGame();
         // Spielstand wird gespeichert
@@ -550,6 +552,7 @@ function createSpielfeld(){
     this.time = null;
     this.score = null;
     this.ammo = null;
+    this.show = null;
 }
 
 function timeSpielfeld(){
@@ -576,7 +579,7 @@ function keydownSpielfeld(e){
         }
 
         // Spiel mit Leertaste unterbrechen oder fortsetzen
-        else if (e.keyCode === 32) {
+        else if (e.keyCode === 32 && spielfeld.show === "engine") {
             if(active===true){
                 // Spiel anhalten
                 stopGame();

@@ -36,7 +36,7 @@ function game(){
         if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=spielfeld.maxTime){
             onlymenu.click();
         }else{
-            active = false;
+            spielfeld.active = false;
             spielfeld.show = "engine";
             // Andere Elemente ausblenden
             onlymenubutton.classList.toggle("hidden");
@@ -402,7 +402,6 @@ document.addEventListener('keydown', keydownSpielfeld);
 
 // Variablen vorbereiten
 var spielfeld = new createSpielfeld();
-var active = true;
 var music = true;
 var sound = true;
 var moorhuhn = [];
@@ -509,14 +508,14 @@ function startGame(a){
         addMoorhuhn();
     }, 1000);
 
-    active=true;
+    spielfeld.active=true;
 }
 
 function stopGame(){
     window.clearInterval(timeTimer);
     window.clearInterval(moveTimer);
     window.clearInterval(moorhuhnTimer);
-    active=false;
+    spielfeld.active=false;
 }
 
 function saveGame(){
@@ -552,6 +551,7 @@ function createSpielfeld(){
     this.time = null;
 
     this.level = null;
+    this.active = true;
 
     this.score = null;
     this.ammo = null;
@@ -571,7 +571,7 @@ function timeSpielfeld(){
 function keydownSpielfeld(e){
     if(spielfeld.time > 0){
         // Munition mit Strg nachladen
-        if (e.keyCode === 17  && active===true){
+        if (e.keyCode === 17  && spielfeld.active===true){
             document.getElementById('ammo').setAttribute( "class", "");
             spielfeld.ammo = 10;
             document.getElementById('ammo').innerHTML = spielfeld.ammo;
@@ -583,7 +583,7 @@ function keydownSpielfeld(e){
 
         // Spiel mit Leertaste unterbrechen oder fortsetzen
         else if (e.keyCode === 32 && spielfeld.show === "engine") {
-            if(active===true){
+            if(spielfeld.active===true){
                 // Spiel anhalten
                 stopGame();
             }else{
@@ -618,7 +618,7 @@ function keydownSpielfeld(e){
 function mousedownSpielfeld(e){
 
     // Prüfen, ob Munition vorhanden ist
-    if(active===true && spielfeld.ammo > 0){
+    if(spielfeld.active===true && spielfeld.ammo > 0){
 
         var mouseX = e.pageX - document.getElementById('game').offsetLeft;
         var mouseY = e.pageY - document.getElementById('game').offsetTop;

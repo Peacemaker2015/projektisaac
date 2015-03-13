@@ -282,7 +282,7 @@ function game(){
         // Inhalt des DIVs "Tabelle" wieder zurücksetzen um alte Highscore zu löschen
 
         document.getElementById('tabelle').innerHTML = '';
-        auslesen(name, score);
+        readHighscore(name, score);
     };
 
     // Eventlistener für den Button "Ja" und "Nein" beim HighscoreLöschenDialog
@@ -329,7 +329,7 @@ function game(){
     **  des HauptmenüDIVs und Anzeigen des HighScoreEintragenDivs
     **
     **  HINWEIS: Button "Eintragen" wird direkt aus der HTML-Datei
-    **  die Funktion schreiben() aufrufen
+    **  die Funktion writeHighscore() aufrufen
     */
 
     // Elemente des DIVs werden in Variablen gespeichert
@@ -360,7 +360,7 @@ function game(){
 
     // Eventlistener für den Button "Zurück"
     zuruckMenuButton.addEventListener("click",hideAbfrageHighscore);
-    sendenButton.addEventListener("click", schreiben);
+    sendenButton.addEventListener("click", writeHighscore);
 
 
     //-------------------------------------------------------------------- //
@@ -824,7 +824,7 @@ function drawMoorhuhn(){
     }
 
 
-    function schreiben(){
+    function writeHighscore(){
 
         // Das HIGHSCORE-Eintragen-Div wird ausgeblendet und das Highscore-Anzeigen-DIV eingeblendet
         var action = 1;
@@ -849,7 +849,7 @@ function drawMoorhuhn(){
 
         window.setTimeout( function() {
 
-            auslesen(name, score);
+            readHighscore(name, score);
 
         }, 1000 );
 
@@ -858,7 +858,7 @@ function drawMoorhuhn(){
 
 
 
-    function auslesen(name,score){
+    function readHighscore(name,score){
         var action = 2;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open('GET', 'php/database.php?&aaction=' + action + '&nname=' + name + '&ppunkte=' + score, true);

@@ -1,0 +1,36 @@
+#game{
+
+        cursor: url(../images/fadenkreuz.png), default;
+        background-image: url(../images/background.jpg);
+        position: absolute;
+        width: 1024px;
+        height: 768px;
+        left: 0px;
+        top: 0px;
+        border: 1px solid #FFF;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        box-shadow: 5px 5px 5px rgba(0,0,0,.4);
+
+    }
+
+#menu{
+        position: absolute;
+        padding-top: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 130px;
+        width: 700;
+        height: 400px;
+        background-color:  rgba(255,255,255, .8);
+        box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
+            -moz-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
+            -webki t-box-shadow: inset 0 0 15px 5px rgba(200,200,200, .9);
+        border-radius: 40px;
+            -moz-border-radius: 40px;
+            -webkit-border-radius: 40px;
+        text-align: center;
+        margin-left: 125px;
+
+    }

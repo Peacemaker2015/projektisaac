@@ -333,6 +333,7 @@ function game(){
     */
 
     // Elemente des DIVs werden in Variablen gespeichert
+    var textName = document.getElementById("name");
     var frageHighscoreDIV = document.getElementById("eintragenHighscoreDiv");
     var sendenButton = document.getElementById("highscoreSendenButton");
     var zuruckMenuButton = document.getElementById("zurückzumMenüButton");
@@ -358,7 +359,15 @@ function game(){
         frageHighscoreDIV.classList.toggle("hidden");
     }
 
+    var enterName = function (e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            writeHighscore();
+        }
+    }
+
     // Eventlistener für den Button "Zurück"
+    textName.addEventListener("keydown", enterName);
     zuruckMenuButton.addEventListener("click",hideAbfrageHighscore);
     sendenButton.addEventListener("click", writeHighscore);
 
@@ -431,7 +440,7 @@ function playSound(elementID){
 function createGame(){
     this.isaac = [];
 
-    this.maxTime = 20;
+    this.maxTime = 5;
     this.time = null;
 
     this.level = null;
@@ -826,7 +835,6 @@ function drawIsaac(){
 
 
     function writeHighscore(){
-
         // Das HIGHSCORE-Eintragen-Div wird ausgeblendet und das Highscore-Anzeigen-DIV eingeblendet
         var action = 1;
         var name = document.getElementById("name").value;
@@ -853,7 +861,6 @@ function drawIsaac(){
             readHighscore(name, score);
 
         }, 1000 );
-
     };
 
 

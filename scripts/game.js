@@ -429,7 +429,7 @@ function playSound(elementID){
 }
 
 function createGame(){
-    this.moorhuhn = [];
+    this.isaac = [];
 
     this.maxTime = 20;
     this.time = null;
@@ -446,7 +446,7 @@ function createGame(){
 
     this.timeTimer;
     this.moveTimer;
-    this.moorhuhnTimer;
+    this.isaacTimer;
 }
 
 function loadGame(){
@@ -454,7 +454,7 @@ function loadGame(){
         // Spielfeld leeren
         ctx.clearRect(0,0,1024,768);
         // Speicher für Moorhühner leeren
-        game.moorhuhn = [];
+        game.isaac = [];
         // Punktestand wird geladen
         game.score = parseInt(window.localStorage.getItem("GameScore"));
         // Munition wird geladen
@@ -482,17 +482,17 @@ function loadGame(){
         var i=0;
         var found = 1;
         while(found===1){
-            if((window.localStorage.getItem("Moorhuhn"+i)===null)){
+            if((window.localStorage.getItem("Isaac"+i)===null)){
                 found=0;
             }else{
-                game.moorhuhn.push(new createIsaac(""));
-                game.moorhuhn[i].src = document.getElementById("moorhuhn");
-                game.moorhuhn[i].y = parseInt(window.localStorage.getItem("Moorhuhn"+i+".y"));
-                game.moorhuhn[i].x = parseInt(window.localStorage.getItem("Moorhuhn"+i+".x"));
-                game.moorhuhn[i].hit = window.localStorage.getItem("Moorhuhn"+i+".hit");
-                game.moorhuhn[i].speed = window.localStorage.getItem("Moorhuhn"+i+".speed");
-                game.moorhuhn[i].direction = window.localStorage.getItem("Moorhuhn"+i+".direction");
-                game.moorhuhn[i].scale = window.localStorage.getItem("Moorhuhn"+i+".scale");
+                game.isaac.push(new createIsaac(""));
+                game.isaac[i].src = document.getElementById("moorhuhn");
+                game.isaac[i].y = parseInt(window.localStorage.getItem("Isaac"+i+".y"));
+                game.isaac[i].x = parseInt(window.localStorage.getItem("Isaac"+i+".x"));
+                game.isaac[i].hit = window.localStorage.getItem("Isaac"+i+".hit");
+                game.isaac[i].speed = window.localStorage.getItem("Isaac"+i+".speed");
+                game.isaac[i].direction = window.localStorage.getItem("Isaac"+i+".direction");
+                game.isaac[i].scale = window.localStorage.getItem("Isaac"+i+".scale");
             }
             i++;
         }
@@ -505,7 +505,7 @@ function startGame(a){
 
     if(game.time===0){
         window.localStorage.clear();
-        game.moorhuhn = [];
+        game.isaac = [];
         loadGame();
     }
     game.timeTimer = setInterval(function(){
@@ -517,7 +517,7 @@ function startGame(a){
         drawIsaac();
     }, 15);
 
-    game.moorhuhnTimer = setInterval(function(){
+    game.isaacTimer = setInterval(function(){
         addIsaac();
     }, 1000);
 
@@ -537,7 +537,7 @@ function timeGame(){
 function stopGame(){
     window.clearInterval(game.timeTimer);
     window.clearInterval(game.moveTimer);
-    window.clearInterval(game.moorhuhnTimer);
+    window.clearInterval(game.isaacTimer);
     game.active=false;
 }
 
@@ -551,18 +551,18 @@ function saveGame(){
         window.localStorage.setItem("GameScore", game.score);
         window.localStorage.setItem("GameAmmo", game.ammo);
 
-        for(var i=0; i < game.moorhuhn.length; i++){
-            window.localStorage.setItem("Moorhuhn"+i, "Moorhuhn"+i);
-            window.localStorage.setItem("Moorhuhn"+i+".y", game.moorhuhn[i].y);
-            window.localStorage.setItem("Moorhuhn"+i+".x", game.moorhuhn[i].x);
-            window.localStorage.setItem("Moorhuhn"+i+".hit", game.moorhuhn[i].hit);
-            window.localStorage.setItem("Moorhuhn"+i+".speed", game.moorhuhn[i].speed);
-            window.localStorage.setItem("Moorhuhn"+i+".direction", game.moorhuhn[i].direction);
-            window.localStorage.setItem("Moorhuhn"+i+".scale", game.moorhuhn[i].scale);
+        for(var i=0; i < game.isaac.length; i++){
+            window.localStorage.setItem("Isaac"+i, "Isaac"+i);
+            window.localStorage.setItem("Isaac"+i+".y", game.isaac[i].y);
+            window.localStorage.setItem("Isaac"+i+".x", game.isaac[i].x);
+            window.localStorage.setItem("Isaac"+i+".hit", game.isaac[i].hit);
+            window.localStorage.setItem("Isaac"+i+".speed", game.isaac[i].speed);
+            window.localStorage.setItem("Isaac"+i+".direction", game.isaac[i].direction);
+            window.localStorage.setItem("Isaac"+i+".scale", game.isaac[i].scale);
         }
     }
     else if(game.time<=0){
-        game.moorhuhn = [];
+        game.isaac = [];
         window.localStorage.clear();
     }
 }
@@ -634,34 +634,34 @@ function mousedownGame(e){
             if(game.sound===true){
                 playSound("shot_sound");
             }
-            // Prüfen, ob Moorhuhn getroffen
-            for(var i=0;i<game.moorhuhn.length;i++){
+            // Prüfen, ob Isaac getroffen
+            for(var i=0;i<game.isaac.length;i++){
 
-                if( mouseX > (game.moorhuhn[i].x - 30)
-                        && mouseX < (game.moorhuhn[i].x + (30 * game.moorhuhn[i].scale) - 15)
-                        && mouseY > (game.moorhuhn[i].y - 30)
-                        && mouseY < (game.moorhuhn[i].y + (50 * game.moorhuhn[i].scale) - 15) ){
+                if( mouseX > (game.isaac[i].x - 30)
+                        && mouseX < (game.isaac[i].x + (30 * game.isaac[i].scale) - 15)
+                        && mouseY > (game.isaac[i].y - 30)
+                        && mouseY < (game.isaac[i].y + (50 * game.isaac[i].scale) - 15) ){
 
 
-                    if(game.moorhuhn[i].hit === false){
+                    if(game.isaac[i].hit === false){
 
                         // Punkte werden vergeben
-                        if(game.moorhuhn[i].scale <= 1.05){
+                        if(game.isaac[i].scale <= 1.05){
                             game.score += (15 * game.level);
                             document.getElementById('score').innerHTML = game.score;
                         }else{
-                            if(game.moorhuhn[i].scale <= 1.35){
+                            if(game.isaac[i].scale <= 1.35){
                                 game.score += (10 * game.level);
                                 document.getElementById('score').innerHTML = game.score;
                             }
-                            else if(game.moorhuhn[i].scale > 1.35){
+                            else if(game.isaac[i].scale > 1.35){
                                 game.score += (5 * game.level);
                                 document.getElementById('score').innerHTML = game.score;
                             }
                         }
                     }
                     // Trefferstatus wird gesetzt
-                    game.moorhuhn[i].hit = true;
+                    game.isaac[i].hit = true;
                 }
             }
         }
@@ -696,18 +696,18 @@ function createIsaac(direction){
 }
 
 function addIsaac(){
-    // Moorhuhn ("links fliegend") hinzufügen
-    game.moorhuhn.push(new createIsaac("move_left"));
-    // Moorhuhn ("rechts fliegend") hinzufügen
-    game.moorhuhn.push(new createIsaac("move_right"));
+    // Isaac ("links fliegend") hinzufügen
+    game.isaac.push(new createIsaac("move_left"));
+    // Isaac ("rechts fliegend") hinzufügen
+    game.isaac.push(new createIsaac("move_right"));
 }
 
 function moveIsaac(){
     // Spielfeld leeren
     ctx.clearRect(0,0,1024,768);
     // Morrhühner in die jeweilige Richtung bewegen
-    for(var i=0;i<game.moorhuhn.length;i++){
-        if(game.moorhuhn[i].direction === "move_right"){
+    for(var i=0;i<game.isaac.length;i++){
+        if(game.isaac[i].direction === "move_right"){
             moveIsaacRight(i);
         }
         else{
@@ -717,92 +717,92 @@ function moveIsaac(){
 }
 
 function moveIsaacRight(i){
-    if(game.moorhuhn[i].hit === true){
+    if(game.isaac[i].hit === true){
         // Anzeigebild
-        if(game.moorhuhn[i].srcid === 0){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnRH0");
-            game.moorhuhn[i].srcid = 1;
+        if(game.isaac[i].srcid === 0){
+            game.isaac[i].src = document.getElementById("moorhuhnRH0");
+            game.isaac[i].srcid = 1;
         }
-        else if(game.moorhuhn[i].srcid === 1){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnRH0");
-            game.moorhuhn[i].srcid = 2;
+        else if(game.isaac[i].srcid === 1){
+            game.isaac[i].src = document.getElementById("moorhuhnRH0");
+            game.isaac[i].srcid = 2;
         }
-        else if(game.moorhuhn[i].srcid === 2){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnRH1");
-            game.moorhuhn[i].srcid = 0;
+        else if(game.isaac[i].srcid === 2){
+            game.isaac[i].src = document.getElementById("moorhuhnRH1");
+            game.isaac[i].srcid = 0;
         }
         // Bewegungsrichtung
-        game.moorhuhn[i].y += +1;
-        if(game.moorhuhn[i].y > 768){
-            window.localStorage.removeItem(game.moorhuhn[i]);
+        game.isaac[i].y += +1;
+        if(game.isaac[i].y > 768){
+            window.localStorage.removeItem(game.isaac[i]);
         }
     }else{
         // Anzeigebild
-        if(game.moorhuhn[i].srcid === 0){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnR0");
-            game.moorhuhn[i].srcid = 1;
+        if(game.isaac[i].srcid === 0){
+            game.isaac[i].src = document.getElementById("moorhuhnR0");
+            game.isaac[i].srcid = 1;
         }
-        else if(game.moorhuhn[i].srcid === 1){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnR0");
-            game.moorhuhn[i].srcid = 2;
+        else if(game.isaac[i].srcid === 1){
+            game.isaac[i].src = document.getElementById("moorhuhnR0");
+            game.isaac[i].srcid = 2;
         }
-        else if(game.moorhuhn[i].srcid === 2){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnR1");
-            game.moorhuhn[i].srcid = 0;
+        else if(game.isaac[i].srcid === 2){
+            game.isaac[i].src = document.getElementById("moorhuhnR1");
+            game.isaac[i].srcid = 0;
         }
         // Bewegungsrichtung
-        game.moorhuhn[i].x += - game.moorhuhn[i].speed;
-        if(game.moorhuhn[i].x<0){
-            window.localStorage.removeItem(game.moorhuhn[i]);
+        game.isaac[i].x += - game.isaac[i].speed;
+        if(game.isaac[i].x<0){
+            window.localStorage.removeItem(game.isaac[i]);
         }
     }
 }
 
 function moveIsaacLeft(i){
-    if(game.moorhuhn[i].hit === true){
+    if(game.isaac[i].hit === true){
         // Anzeigebild
-        if(game.moorhuhn[i].srcid === 0){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnLH0");
-            game.moorhuhn[i].srcid = 1;
+        if(game.isaac[i].srcid === 0){
+            game.isaac[i].src = document.getElementById("moorhuhnLH0");
+            game.isaac[i].srcid = 1;
         }
-        else if(game.moorhuhn[i].srcid === 1){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnLH0");
-            game.moorhuhn[i].srcid = 2;
+        else if(game.isaac[i].srcid === 1){
+            game.isaac[i].src = document.getElementById("moorhuhnLH0");
+            game.isaac[i].srcid = 2;
         }
-        else if(game.moorhuhn[i].srcid === 2){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnLH1");
-            game.moorhuhn[i].srcid = 0;
+        else if(game.isaac[i].srcid === 2){
+            game.isaac[i].src = document.getElementById("moorhuhnLH1");
+            game.isaac[i].srcid = 0;
         }
         // Bewegungsrichtung
-        game.moorhuhn[i].y += +1;
-        if(game.moorhuhn[i].y > 768){
-            window.localStorage.removeItem(game.moorhuhn[i]);
+        game.isaac[i].y += +1;
+        if(game.isaac[i].y > 768){
+            window.localStorage.removeItem(game.isaac[i]);
         }
     }else{
         // Anzeigebild
-        if(game.moorhuhn[i].srcid === 0){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnL0");
-            game.moorhuhn[i].srcid = 1;
+        if(game.isaac[i].srcid === 0){
+            game.isaac[i].src = document.getElementById("moorhuhnL0");
+            game.isaac[i].srcid = 1;
         }
-        else if(game.moorhuhn[i].srcid === 1){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnL0");
-            game.moorhuhn[i].srcid = 2;
+        else if(game.isaac[i].srcid === 1){
+            game.isaac[i].src = document.getElementById("moorhuhnL0");
+            game.isaac[i].srcid = 2;
         }
-        else if(game.moorhuhn[i].srcid === 2){
-            game.moorhuhn[i].src = document.getElementById("moorhuhnL1");
-            game.moorhuhn[i].srcid = 0;
+        else if(game.isaac[i].srcid === 2){
+            game.isaac[i].src = document.getElementById("moorhuhnL1");
+            game.isaac[i].srcid = 0;
         }
         // Bewegungsrichtung
-        game.moorhuhn[i].x += + game.moorhuhn[i].speed;
-        if(game.moorhuhn[i].x<0){
-            window.localStorage.removeItem(game.moorhuhn[i]);
+        game.isaac[i].x += + game.isaac[i].speed;
+        if(game.isaac[i].x<0){
+            window.localStorage.removeItem(game.isaac[i]);
         }
     }
 }
 
 function drawIsaac(){
-    for(var i=0;i<game.moorhuhn.length;i++){
-        ctx.drawImage(game.moorhuhn[i].src, game.moorhuhn[i].x, game.moorhuhn[i].y, 40 * game.moorhuhn[i].scale, 50 * game.moorhuhn[i].scale);
+    for(var i=0;i<game.isaac.length;i++){
+        ctx.drawImage(game.isaac[i].src, game.isaac[i].x, game.isaac[i].y, 40 * game.isaac[i].scale, 50 * game.isaac[i].scale);
     }
 }
 

@@ -342,7 +342,6 @@ function game(){
     var showHighscoreabfrage = function () {
         var text = "Wow, Du hast " + game.score + " Punkte !!!";
         document.getElementById("punkte").innerHTML = text;
-
         ammo.classList.toggle("hidden");
         time.classList.toggle("hidden");
         score.classList.toggle("hidden");
@@ -351,6 +350,8 @@ function game(){
         onlymenubutton.classList.toggle("hidden");
 
         frageHighscoreDIV.classList.toggle("hidden");
+
+        textName.focus();
     }
 
     // Funktion für den Eventlistener für die Buttons

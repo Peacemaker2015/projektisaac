@@ -660,7 +660,7 @@ function mousedownGame(e){
                         }
                     }
                     // Trefferstatus wird gesetzt
-                    game.isaac[i].hit = true;
+                    game.isaac[i].hit = "true";
                 }
             }
         }

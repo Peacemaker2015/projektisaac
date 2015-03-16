@@ -475,7 +475,7 @@ function loadGame(){
         // Spielzeit wird überprüft
         if(isNaN(game.time) || game.time<=0){
             game.time = game.maxTime;
-            ;
+            //;
         }
         document.getElementById('time').innerHTML = game.time;
         // Moorhühner werden geladen
@@ -486,7 +486,6 @@ function loadGame(){
                 found=0;
             }else{
                 game.isaac.push(new createIsaac(""));
-                game.isaac[i].src = document.getElementById("moorhuhn");
                 game.isaac[i].y = parseInt(window.localStorage.getItem("Isaac"+i+".y"));
                 game.isaac[i].x = parseInt(window.localStorage.getItem("Isaac"+i+".x"));
                 game.isaac[i].hit = window.localStorage.getItem("Isaac"+i+".hit");
@@ -675,7 +674,6 @@ function createIsaac(direction){
     var max = 600;
 
     this.srcid = 0;
-    this.src = document.getElementById("moorhuhn0");
     this.y = Math.floor(Math.random() * (max - min)) + min;
 
     if(direction === "move_right"){
@@ -720,15 +718,15 @@ function moveIsaacRight(i){
     if(game.isaac[i].hit === true){
         // Anzeigebild
         if(game.isaac[i].srcid === 0){
-            game.isaac[i].src = document.getElementById("moorhuhnRH0");
+            game.isaac[i].src = document.getElementById("isaacRH0");
             game.isaac[i].srcid = 1;
         }
         else if(game.isaac[i].srcid === 1){
-            game.isaac[i].src = document.getElementById("moorhuhnRH0");
+            game.isaac[i].src = document.getElementById("isaacRH0");
             game.isaac[i].srcid = 2;
         }
         else if(game.isaac[i].srcid === 2){
-            game.isaac[i].src = document.getElementById("moorhuhnRH1");
+            game.isaac[i].src = document.getElementById("isaacRH1");
             game.isaac[i].srcid = 0;
         }
         // Bewegungsrichtung
@@ -739,15 +737,15 @@ function moveIsaacRight(i){
     }else{
         // Anzeigebild
         if(game.isaac[i].srcid === 0){
-            game.isaac[i].src = document.getElementById("moorhuhnR0");
+            game.isaac[i].src = document.getElementById("isaacR0");
             game.isaac[i].srcid = 1;
         }
         else if(game.isaac[i].srcid === 1){
-            game.isaac[i].src = document.getElementById("moorhuhnR0");
+            game.isaac[i].src = document.getElementById("isaacR0");
             game.isaac[i].srcid = 2;
         }
         else if(game.isaac[i].srcid === 2){
-            game.isaac[i].src = document.getElementById("moorhuhnR1");
+            game.isaac[i].src = document.getElementById("isaacR1");
             game.isaac[i].srcid = 0;
         }
         // Bewegungsrichtung
@@ -762,15 +760,15 @@ function moveIsaacLeft(i){
     if(game.isaac[i].hit === true){
         // Anzeigebild
         if(game.isaac[i].srcid === 0){
-            game.isaac[i].src = document.getElementById("moorhuhnLH0");
+            game.isaac[i].src = document.getElementById("isaacLH0");
             game.isaac[i].srcid = 1;
         }
         else if(game.isaac[i].srcid === 1){
-            game.isaac[i].src = document.getElementById("moorhuhnLH0");
+            game.isaac[i].src = document.getElementById("isaacLH0");
             game.isaac[i].srcid = 2;
         }
         else if(game.isaac[i].srcid === 2){
-            game.isaac[i].src = document.getElementById("moorhuhnLH1");
+            game.isaac[i].src = document.getElementById("isaacLH1");
             game.isaac[i].srcid = 0;
         }
         // Bewegungsrichtung
@@ -781,15 +779,15 @@ function moveIsaacLeft(i){
     }else{
         // Anzeigebild
         if(game.isaac[i].srcid === 0){
-            game.isaac[i].src = document.getElementById("moorhuhnL0");
+            game.isaac[i].src = document.getElementById("isaacL0");
             game.isaac[i].srcid = 1;
         }
         else if(game.isaac[i].srcid === 1){
-            game.isaac[i].src = document.getElementById("moorhuhnL0");
+            game.isaac[i].src = document.getElementById("isaacL0");
             game.isaac[i].srcid = 2;
         }
         else if(game.isaac[i].srcid === 2){
-            game.isaac[i].src = document.getElementById("moorhuhnL1");
+            game.isaac[i].src = document.getElementById("isaacL1");
             game.isaac[i].srcid = 0;
         }
         // Bewegungsrichtung

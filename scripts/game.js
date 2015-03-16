@@ -33,11 +33,11 @@ function game(){
         drawMoorhuhn();
         // Es wird überprüft, ob ein Spiel mit
         // ausreichender Spielzeit vorhanden ist
-        if(isNaN(spielfeld.time) || spielfeld.time<=0 || spielfeld.time>=spielfeld.maxTime){
+        if(isNaN(game.time) || game.time<=0 || game.time>=game.maxTime){
             onlymenu.click();
         }else{
-            spielfeld.active = false;
-            spielfeld.show = "engine";
+            game.active = false;
+            game.show = "engine";
             // Andere Elemente ausblenden
             onlymenubutton.classList.toggle("hidden");
             ammo.classList.toggle("hidden");
@@ -147,14 +147,14 @@ function game(){
         else if(document.getElementById("Experte").checked === true){
             startGame(3);
         }
-        spielfeld.show = "engine";
+        game.show = "engine";
     };
 
     // Funktion für den Eventlistener für den kleinen Menübutton oben links,
     // wenn das Hauptmenü ausgeblendet ist. Auf "Click" wird der Menü Button
     // ausgeblendet und das Hauptmenü eingeblendet
     var hidemenufornewgamesmall = function (){
-        spielfeld.show = "menu";
+        game.show = "menu";
         // Spiel wird gestoppt
         stopGame();
         // Spielstand wird gespeichert
@@ -184,7 +184,7 @@ function game(){
 
     // Funktion für den Eventlistener für den Button "Weiter"
     var hidemenupause = function () {
-        if(spielfeld.level===null){
+        if(game.level===null){
             // Spiel wird gestartet
             if(document.getElementById("Einfach").checked === true){
                 startGame(1);
@@ -197,7 +197,7 @@ function game(){
             }
         }else{
             // Spiel wird gestartet
-            startGame(spielfeld.level);
+            startGame(game.level);
         }
         // PauseDIV wird ausgeblendet
         pauseDiv.classList.toggle("hidden");
@@ -339,7 +339,7 @@ function game(){
 
     // Funktion zum Anzeigen des HighScoreEintragenDivs
     var showHighscoreabfrage = function () {
-        var text = "Wow, Du hast " + spielfeld.score + " Punkte !!!";
+        var text = "Wow, Du hast " + game.score + " Punkte !!!";
         document.getElementById("punkte").innerHTML = text;
 
         ammo.classList.toggle("hidden");
@@ -393,7 +393,7 @@ function game(){
 //------------------------------------------------------------------------------------------------------------ //
 
 // Spielfeld vorbereiten
-var spielfeld = new createGame();
+var game = new createGame();
 
 // Canvas vorbereiten
 var canvas = document.getElementById('game');
@@ -407,20 +407,20 @@ document.addEventListener('keydown', keydownGame);
 
 function activateMusic() {
     document.getElementById('background_music').muted = false;
-    spielfeld.music = true;
+    game.music = true;
 }
 
 function deactivateMusic() {
     document.getElementById('background_music').muted = true;
-    spielfeld.music = false;
+    game.music = false;
 }
 
 function activateSound() {
-    spielfeld.sound = true;
+    game.sound = true;
 }
 
 function deactivateSound() {
-    spielfeld.sound = false;
+    game.sound = false;
 }
 
 function playSound(elementID){
@@ -450,34 +450,34 @@ function createGame(){
 }
 
 function loadGame(){
-    if(spielfeld.time<=0){
+    if(game.time<=0){
         // Spielfeld leeren
         ctx.clearRect(0,0,1024,768);
         // Speicher für Moorhühner leeren
-        spielfeld.moorhuhn = [];
+        game.moorhuhn = [];
         // Punktestand wird geladen
-        spielfeld.score = parseInt(window.localStorage.getItem("GameScore"));
+        game.score = parseInt(window.localStorage.getItem("GameScore"));
         // Munition wird geladen
-        spielfeld.ammo = parseInt(window.localStorage.getItem("GameAmmo"));
+        game.ammo = parseInt(window.localStorage.getItem("GameAmmo"));
         // Spielzeit wird geladen
-        spielfeld.time = parseInt(window.localStorage.getItem("GameTime"));
+        game.time = parseInt(window.localStorage.getItem("GameTime"));
         // Punktestand wird überprüft
-        if(isNaN(spielfeld.score) || spielfeld.time<=0){
-            spielfeld.score = 0;
+        if(isNaN(game.score) || game.time<=0){
+            game.score = 0;
         }
-        document.getElementById('score').innerHTML = spielfeld.score;
+        document.getElementById('score').innerHTML = game.score;
         // Munition wird überprüft
-        if(isNaN(spielfeld.ammo) || spielfeld.time<=0){
-            spielfeld.ammo = 10;
+        if(isNaN(game.ammo) || game.time<=0){
+            game.ammo = 10;
             document.getElementById('ammo').setAttribute( "class", "");
         }
-        document.getElementById('ammo').innerHTML = spielfeld.ammo;
+        document.getElementById('ammo').innerHTML = game.ammo;
         // Spielzeit wird überprüft
-        if(isNaN(spielfeld.time) || spielfeld.time<=0){
-            spielfeld.time = spielfeld.maxTime;
+        if(isNaN(game.time) || game.time<=0){
+            game.time = game.maxTime;
             ;
         }
-        document.getElementById('time').innerHTML = spielfeld.time;
+        document.getElementById('time').innerHTML = game.time;
         // Moorhühner werden geladen
         var i=0;
         var found = 1;
@@ -485,14 +485,14 @@ function loadGame(){
             if((window.localStorage.getItem("Moorhuhn"+i)===null)){
                 found=0;
             }else{
-                spielfeld.moorhuhn.push(new createMoorhuhn(""));
-                spielfeld.moorhuhn[i].src = document.getElementById("moorhuhn");
-                spielfeld.moorhuhn[i].y = parseInt(window.localStorage.getItem("Moorhuhn"+i+".y"));
-                spielfeld.moorhuhn[i].x = parseInt(window.localStorage.getItem("Moorhuhn"+i+".x"));
-                spielfeld.moorhuhn[i].hit = window.localStorage.getItem("Moorhuhn"+i+".hit");
-                spielfeld.moorhuhn[i].speed = window.localStorage.getItem("Moorhuhn"+i+".speed");
-                spielfeld.moorhuhn[i].direction = window.localStorage.getItem("Moorhuhn"+i+".direction");
-                spielfeld.moorhuhn[i].scale = window.localStorage.getItem("Moorhuhn"+i+".scale");
+                game.moorhuhn.push(new createMoorhuhn(""));
+                game.moorhuhn[i].src = document.getElementById("moorhuhn");
+                game.moorhuhn[i].y = parseInt(window.localStorage.getItem("Moorhuhn"+i+".y"));
+                game.moorhuhn[i].x = parseInt(window.localStorage.getItem("Moorhuhn"+i+".x"));
+                game.moorhuhn[i].hit = window.localStorage.getItem("Moorhuhn"+i+".hit");
+                game.moorhuhn[i].speed = window.localStorage.getItem("Moorhuhn"+i+".speed");
+                game.moorhuhn[i].direction = window.localStorage.getItem("Moorhuhn"+i+".direction");
+                game.moorhuhn[i].scale = window.localStorage.getItem("Moorhuhn"+i+".scale");
             }
             i++;
         }
@@ -501,92 +501,92 @@ function loadGame(){
 
 function startGame(a){
     // Level wird festgesetzt
-    spielfeld.level = a;
+    game.level = a;
 
-    if(spielfeld.time===0){
+    if(game.time===0){
         window.localStorage.clear();
-        spielfeld.moorhuhn = [];
+        game.moorhuhn = [];
         loadGame();
     }
-    spielfeld.timeTimer = setInterval(function(){
+    game.timeTimer = setInterval(function(){
         timeGame();
     }, 1000);
 
-    spielfeld.moveTimer = setInterval(function(){
+    game.moveTimer = setInterval(function(){
         moveMoorhuhn();
         drawMoorhuhn();
     }, 15);
 
-    spielfeld.moorhuhnTimer = setInterval(function(){
+    game.moorhuhnTimer = setInterval(function(){
         addMoorhuhn();
     }, 1000);
 
-    spielfeld.active=true;
+    game.active=true;
 }
 
 function timeGame(){
-    spielfeld.time --;
-    document.getElementById('time').innerHTML = spielfeld.time;
+    game.time --;
+    document.getElementById('time').innerHTML = game.time;
 
-    if(spielfeld.time<=0){
+    if(game.time<=0){
         stopGame();
         showHighscoreabfrage();
     }
 }
 
 function stopGame(){
-    window.clearInterval(spielfeld.timeTimer);
-    window.clearInterval(spielfeld.moveTimer);
-    window.clearInterval(spielfeld.moorhuhnTimer);
-    spielfeld.active=false;
+    window.clearInterval(game.timeTimer);
+    window.clearInterval(game.moveTimer);
+    window.clearInterval(game.moorhuhnTimer);
+    game.active=false;
 }
 
 function saveGame(){
 
     window.localStorage.clear();
 
-    if(spielfeld.time > 0){
+    if(game.time > 0){
         window.localStorage.clear();
-        window.localStorage.setItem("GameTime", spielfeld.time);
-        window.localStorage.setItem("GameScore", spielfeld.score);
-        window.localStorage.setItem("GameAmmo", spielfeld.ammo);
+        window.localStorage.setItem("GameTime", game.time);
+        window.localStorage.setItem("GameScore", game.score);
+        window.localStorage.setItem("GameAmmo", game.ammo);
 
-        for(var i=0; i < spielfeld.moorhuhn.length; i++){
+        for(var i=0; i < game.moorhuhn.length; i++){
             window.localStorage.setItem("Moorhuhn"+i, "Moorhuhn"+i);
-            window.localStorage.setItem("Moorhuhn"+i+".y", spielfeld.moorhuhn[i].y);
-            window.localStorage.setItem("Moorhuhn"+i+".x", spielfeld.moorhuhn[i].x);
-            window.localStorage.setItem("Moorhuhn"+i+".hit", spielfeld.moorhuhn[i].hit);
-            window.localStorage.setItem("Moorhuhn"+i+".speed", spielfeld.moorhuhn[i].speed);
-            window.localStorage.setItem("Moorhuhn"+i+".direction", spielfeld.moorhuhn[i].direction);
-            window.localStorage.setItem("Moorhuhn"+i+".scale", spielfeld.moorhuhn[i].scale);
+            window.localStorage.setItem("Moorhuhn"+i+".y", game.moorhuhn[i].y);
+            window.localStorage.setItem("Moorhuhn"+i+".x", game.moorhuhn[i].x);
+            window.localStorage.setItem("Moorhuhn"+i+".hit", game.moorhuhn[i].hit);
+            window.localStorage.setItem("Moorhuhn"+i+".speed", game.moorhuhn[i].speed);
+            window.localStorage.setItem("Moorhuhn"+i+".direction", game.moorhuhn[i].direction);
+            window.localStorage.setItem("Moorhuhn"+i+".scale", game.moorhuhn[i].scale);
         }
     }
-    else if(spielfeld.time<=0){
-        spielfeld.moorhuhn = [];
+    else if(game.time<=0){
+        game.moorhuhn = [];
         window.localStorage.clear();
     }
 }
 
 function keydownGame(e){
-    if(spielfeld.time > 0){
+    if(game.time > 0){
         // Munition mit Strg nachladen
-        if (e.keyCode === 17  && spielfeld.active===true){
+        if (e.keyCode === 17  && game.active===true){
             document.getElementById('ammo').setAttribute( "class", "");
-            spielfeld.ammo = 10;
-            document.getElementById('ammo').innerHTML = spielfeld.ammo;
+            game.ammo = 10;
+            document.getElementById('ammo').innerHTML = game.ammo;
             // Sound wiedergeben
-            if(spielfeld.sound===true){
+            if(game.sound===true){
                 playSound("reload_sound");
             }
         }
 
         // Spiel mit Leertaste unterbrechen oder fortsetzen
-        else if (e.keyCode === 32 && spielfeld.show === "engine") {
-            if(spielfeld.active===true){
+        else if (e.keyCode === 32 && game.show === "engine") {
+            if(game.active===true){
                 // Spiel anhalten
                 stopGame();
             }else{
-                if(spielfeld.level===null){
+                if(game.level===null){
                     // Spiel wird gestartet
                     if(document.getElementById("Einfach").checked === true){
                         startGame(1);
@@ -599,7 +599,7 @@ function keydownGame(e){
                     }
                 }else{
                     // Spiel wird gestartet
-                    startGame(spielfeld.level);
+                    startGame(game.level);
                 }
             }
             // Andere Elemente ausblenden
@@ -617,51 +617,51 @@ function keydownGame(e){
 function mousedownGame(e){
 
     // Prüfen, ob Munition vorhanden ist
-    if(spielfeld.active===true && spielfeld.ammo > 0){
+    if(game.active===true && game.ammo > 0){
 
         var mouseX = e.pageX - document.getElementById('game').offsetLeft;
         var mouseY = e.pageY - document.getElementById('game').offsetTop;
-        if(spielfeld.time > 0){
+        if(game.time > 0){
 
-            spielfeld.ammo += -1;
+            game.ammo += -1;
 
-            if(spielfeld.ammo<=3){
+            if(game.ammo<=3){
                 document.getElementById('ammo').setAttribute( "class", "nachladen");
             }
 
-            document.getElementById('ammo').innerHTML = spielfeld.ammo;
+            document.getElementById('ammo').innerHTML = game.ammo;
             //Sound wiedergeben
-            if(spielfeld.sound===true){
+            if(game.sound===true){
                 playSound("shot_sound");
             }
             // Prüfen, ob Moorhuhn getroffen
-            for(var i=0;i<spielfeld.moorhuhn.length;i++){
+            for(var i=0;i<game.moorhuhn.length;i++){
 
-                if( mouseX > (spielfeld.moorhuhn[i].x - 30)
-                        && mouseX < (spielfeld.moorhuhn[i].x + (30 * spielfeld.moorhuhn[i].scale) - 15)
-                        && mouseY > (spielfeld.moorhuhn[i].y - 30)
-                        && mouseY < (spielfeld.moorhuhn[i].y + (50 * spielfeld.moorhuhn[i].scale) - 15) ){
+                if( mouseX > (game.moorhuhn[i].x - 30)
+                        && mouseX < (game.moorhuhn[i].x + (30 * game.moorhuhn[i].scale) - 15)
+                        && mouseY > (game.moorhuhn[i].y - 30)
+                        && mouseY < (game.moorhuhn[i].y + (50 * game.moorhuhn[i].scale) - 15) ){
 
 
-                    if(spielfeld.moorhuhn[i].hit === false){
+                    if(game.moorhuhn[i].hit === false){
 
                         // Punkte werden vergeben
-                        if(spielfeld.moorhuhn[i].scale <= 1.05){
-                            spielfeld.score += (15 * spielfeld.level);
-                            document.getElementById('score').innerHTML = spielfeld.score;
+                        if(game.moorhuhn[i].scale <= 1.05){
+                            game.score += (15 * game.level);
+                            document.getElementById('score').innerHTML = game.score;
                         }else{
-                            if(spielfeld.moorhuhn[i].scale <= 1.35){
-                                spielfeld.score += (10 * spielfeld.level);
-                                document.getElementById('score').innerHTML = spielfeld.score;
+                            if(game.moorhuhn[i].scale <= 1.35){
+                                game.score += (10 * game.level);
+                                document.getElementById('score').innerHTML = game.score;
                             }
-                            else if(spielfeld.moorhuhn[i].scale > 1.35){
-                                spielfeld.score += (5 * spielfeld.level);
-                                document.getElementById('score').innerHTML = spielfeld.score;
+                            else if(game.moorhuhn[i].scale > 1.35){
+                                game.score += (5 * game.level);
+                                document.getElementById('score').innerHTML = game.score;
                             }
                         }
                     }
                     // Trefferstatus wird gesetzt
-                    spielfeld.moorhuhn[i].hit = true;
+                    game.moorhuhn[i].hit = true;
                 }
             }
         }
@@ -685,10 +685,10 @@ function createMoorhuhn(direction){
     }
 
     this.hit = false;
-    this.speed = (parseInt(spielfeld.level) * 2) + 0.5;
+    this.speed = (parseInt(game.level) * 2) + 0.5;
     this.direction = direction;
 
-    if(spielfeld.level===3){
+    if(game.level===3){
         this.scale = 0.7;
     }else{
         this.scale = 0.7 + (Math.random() * 0.8);
@@ -697,17 +697,17 @@ function createMoorhuhn(direction){
 
 function addMoorhuhn(){
     // Moorhuhn ("links fliegend") hinzufügen
-    spielfeld.moorhuhn.push(new createMoorhuhn("move_left"));
+    game.moorhuhn.push(new createMoorhuhn("move_left"));
     // Moorhuhn ("rechts fliegend") hinzufügen
-    spielfeld.moorhuhn.push(new createMoorhuhn("move_right"));
+    game.moorhuhn.push(new createMoorhuhn("move_right"));
 }
 
 function moveMoorhuhn(){
     // Spielfeld leeren
     ctx.clearRect(0,0,1024,768);
     // Morrhühner in die jeweilige Richtung bewegen
-    for(var i=0;i<spielfeld.moorhuhn.length;i++){
-        if(spielfeld.moorhuhn[i].direction === "move_right"){
+    for(var i=0;i<game.moorhuhn.length;i++){
+        if(game.moorhuhn[i].direction === "move_right"){
             moveMoorhuhnRight(i);
         }
         else{
@@ -717,92 +717,92 @@ function moveMoorhuhn(){
 }
 
 function moveMoorhuhnRight(i){
-    if(spielfeld.moorhuhn[i].hit === true){
+    if(game.moorhuhn[i].hit === true){
         // Anzeigebild
-        if(spielfeld.moorhuhn[i].srcid === 0){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnRH0");
-            spielfeld.moorhuhn[i].srcid = 1;
+        if(game.moorhuhn[i].srcid === 0){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnRH0");
+            game.moorhuhn[i].srcid = 1;
         }
-        else if(spielfeld.moorhuhn[i].srcid === 1){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnRH0");
-            spielfeld.moorhuhn[i].srcid = 2;
+        else if(game.moorhuhn[i].srcid === 1){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnRH0");
+            game.moorhuhn[i].srcid = 2;
         }
-        else if(spielfeld.moorhuhn[i].srcid === 2){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnRH1");
-            spielfeld.moorhuhn[i].srcid = 0;
+        else if(game.moorhuhn[i].srcid === 2){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnRH1");
+            game.moorhuhn[i].srcid = 0;
         }
         // Bewegungsrichtung
-        spielfeld.moorhuhn[i].y += +1;
-        if(spielfeld.moorhuhn[i].y > 768){
-            window.localStorage.removeItem(spielfeld.moorhuhn[i]);
+        game.moorhuhn[i].y += +1;
+        if(game.moorhuhn[i].y > 768){
+            window.localStorage.removeItem(game.moorhuhn[i]);
         }
     }else{
         // Anzeigebild
-        if(spielfeld.moorhuhn[i].srcid === 0){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnR0");
-            spielfeld.moorhuhn[i].srcid = 1;
+        if(game.moorhuhn[i].srcid === 0){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnR0");
+            game.moorhuhn[i].srcid = 1;
         }
-        else if(spielfeld.moorhuhn[i].srcid === 1){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnR0");
-            spielfeld.moorhuhn[i].srcid = 2;
+        else if(game.moorhuhn[i].srcid === 1){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnR0");
+            game.moorhuhn[i].srcid = 2;
         }
-        else if(spielfeld.moorhuhn[i].srcid === 2){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnR1");
-            spielfeld.moorhuhn[i].srcid = 0;
+        else if(game.moorhuhn[i].srcid === 2){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnR1");
+            game.moorhuhn[i].srcid = 0;
         }
         // Bewegungsrichtung
-        spielfeld.moorhuhn[i].x += - spielfeld.moorhuhn[i].speed;
-        if(spielfeld.moorhuhn[i].x<0){
-            window.localStorage.removeItem(spielfeld.moorhuhn[i]);
+        game.moorhuhn[i].x += - game.moorhuhn[i].speed;
+        if(game.moorhuhn[i].x<0){
+            window.localStorage.removeItem(game.moorhuhn[i]);
         }
     }
 }
 
 function moveMoorhuhnLeft(i){
-    if(spielfeld.moorhuhn[i].hit === true){
+    if(game.moorhuhn[i].hit === true){
         // Anzeigebild
-        if(spielfeld.moorhuhn[i].srcid === 0){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnLH0");
-            spielfeld.moorhuhn[i].srcid = 1;
+        if(game.moorhuhn[i].srcid === 0){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnLH0");
+            game.moorhuhn[i].srcid = 1;
         }
-        else if(spielfeld.moorhuhn[i].srcid === 1){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnLH0");
-            spielfeld.moorhuhn[i].srcid = 2;
+        else if(game.moorhuhn[i].srcid === 1){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnLH0");
+            game.moorhuhn[i].srcid = 2;
         }
-        else if(spielfeld.moorhuhn[i].srcid === 2){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnLH1");
-            spielfeld.moorhuhn[i].srcid = 0;
+        else if(game.moorhuhn[i].srcid === 2){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnLH1");
+            game.moorhuhn[i].srcid = 0;
         }
         // Bewegungsrichtung
-        spielfeld.moorhuhn[i].y += +1;
-        if(spielfeld.moorhuhn[i].y > 768){
-            window.localStorage.removeItem(spielfeld.moorhuhn[i]);
+        game.moorhuhn[i].y += +1;
+        if(game.moorhuhn[i].y > 768){
+            window.localStorage.removeItem(game.moorhuhn[i]);
         }
     }else{
         // Anzeigebild
-        if(spielfeld.moorhuhn[i].srcid === 0){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnL0");
-            spielfeld.moorhuhn[i].srcid = 1;
+        if(game.moorhuhn[i].srcid === 0){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnL0");
+            game.moorhuhn[i].srcid = 1;
         }
-        else if(spielfeld.moorhuhn[i].srcid === 1){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnL0");
-            spielfeld.moorhuhn[i].srcid = 2;
+        else if(game.moorhuhn[i].srcid === 1){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnL0");
+            game.moorhuhn[i].srcid = 2;
         }
-        else if(spielfeld.moorhuhn[i].srcid === 2){
-            spielfeld.moorhuhn[i].src = document.getElementById("moorhuhnL1");
-            spielfeld.moorhuhn[i].srcid = 0;
+        else if(game.moorhuhn[i].srcid === 2){
+            game.moorhuhn[i].src = document.getElementById("moorhuhnL1");
+            game.moorhuhn[i].srcid = 0;
         }
         // Bewegungsrichtung
-        spielfeld.moorhuhn[i].x += + spielfeld.moorhuhn[i].speed;
-        if(spielfeld.moorhuhn[i].x<0){
-            window.localStorage.removeItem(spielfeld.moorhuhn[i]);
+        game.moorhuhn[i].x += + game.moorhuhn[i].speed;
+        if(game.moorhuhn[i].x<0){
+            window.localStorage.removeItem(game.moorhuhn[i]);
         }
     }
 }
 
 function drawMoorhuhn(){
-    for(var i=0;i<spielfeld.moorhuhn.length;i++){
-        ctx.drawImage(spielfeld.moorhuhn[i].src, spielfeld.moorhuhn[i].x, spielfeld.moorhuhn[i].y, 40 * spielfeld.moorhuhn[i].scale, 50 * spielfeld.moorhuhn[i].scale);
+    for(var i=0;i<game.moorhuhn.length;i++){
+        ctx.drawImage(game.moorhuhn[i].src, game.moorhuhn[i].x, game.moorhuhn[i].y, 40 * game.moorhuhn[i].scale, 50 * game.moorhuhn[i].scale);
     }
 }
 

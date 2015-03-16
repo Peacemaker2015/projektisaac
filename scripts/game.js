@@ -453,7 +453,7 @@ function loadGame(){
     if(game.time<=0){
         // Spielfeld leeren
         ctx.clearRect(0,0,1024,768);
-        // Speicher für Moorhühner leeren
+        // Speicher für Isaac`s leeren
         game.isaac = [];
         // Punktestand wird geladen
         game.score = parseInt(window.localStorage.getItem("GameScore"));
@@ -478,7 +478,7 @@ function loadGame(){
             //;
         }
         document.getElementById('time').innerHTML = game.time;
-        // Moorhühner werden geladen
+        // Isaac`s werden geladen
         var i=0;
         var found = 1;
         while(found===1){
@@ -667,7 +667,7 @@ function mousedownGame(e){
     }
 }
 
-/* Dinge für die Moorhühner */
+/* Dinge für die Isaac`s */
 
 function createIsaac(direction){
     var min = 0;

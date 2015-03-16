@@ -29,8 +29,8 @@ function game(){
         // Spielstand wird geladen
         loadGame();
         // Spielfeld wird gezeichnet
-        moveMoorhuhn();
-        drawMoorhuhn();
+        moveIsaac();
+        drawIsaac();
         // Es wird überprüft, ob ein Spiel mit
         // ausreichender Spielzeit vorhanden ist
         if(isNaN(game.time) || game.time<=0 || game.time>=game.maxTime){
@@ -485,7 +485,7 @@ function loadGame(){
             if((window.localStorage.getItem("Moorhuhn"+i)===null)){
                 found=0;
             }else{
-                game.moorhuhn.push(new createMoorhuhn(""));
+                game.moorhuhn.push(new createIsaac(""));
                 game.moorhuhn[i].src = document.getElementById("moorhuhn");
                 game.moorhuhn[i].y = parseInt(window.localStorage.getItem("Moorhuhn"+i+".y"));
                 game.moorhuhn[i].x = parseInt(window.localStorage.getItem("Moorhuhn"+i+".x"));
@@ -513,12 +513,12 @@ function startGame(a){
     }, 1000);
 
     game.moveTimer = setInterval(function(){
-        moveMoorhuhn();
-        drawMoorhuhn();
+        moveIsaac();
+        drawIsaac();
     }, 15);
 
     game.moorhuhnTimer = setInterval(function(){
-        addMoorhuhn();
+        addIsaac();
     }, 1000);
 
     game.active=true;
@@ -670,7 +670,7 @@ function mousedownGame(e){
 
 /* Dinge für die Moorhühner */
 
-function createMoorhuhn(direction){
+function createIsaac(direction){
     var min = 0;
     var max = 600;
 
@@ -695,28 +695,28 @@ function createMoorhuhn(direction){
     }
 }
 
-function addMoorhuhn(){
+function addIsaac(){
     // Moorhuhn ("links fliegend") hinzufügen
-    game.moorhuhn.push(new createMoorhuhn("move_left"));
+    game.moorhuhn.push(new createIsaac("move_left"));
     // Moorhuhn ("rechts fliegend") hinzufügen
-    game.moorhuhn.push(new createMoorhuhn("move_right"));
+    game.moorhuhn.push(new createIsaac("move_right"));
 }
 
-function moveMoorhuhn(){
+function moveIsaac(){
     // Spielfeld leeren
     ctx.clearRect(0,0,1024,768);
     // Morrhühner in die jeweilige Richtung bewegen
     for(var i=0;i<game.moorhuhn.length;i++){
         if(game.moorhuhn[i].direction === "move_right"){
-            moveMoorhuhnRight(i);
+            moveIsaacRight(i);
         }
         else{
-            moveMoorhuhnLeft(i);
+            moveIsaacLeft(i);
         }
     }
 }
 
-function moveMoorhuhnRight(i){
+function moveIsaacRight(i){
     if(game.moorhuhn[i].hit === true){
         // Anzeigebild
         if(game.moorhuhn[i].srcid === 0){
@@ -758,7 +758,7 @@ function moveMoorhuhnRight(i){
     }
 }
 
-function moveMoorhuhnLeft(i){
+function moveIsaacLeft(i){
     if(game.moorhuhn[i].hit === true){
         // Anzeigebild
         if(game.moorhuhn[i].srcid === 0){
@@ -800,7 +800,7 @@ function moveMoorhuhnLeft(i){
     }
 }
 
-function drawMoorhuhn(){
+function drawIsaac(){
     for(var i=0;i<game.moorhuhn.length;i++){
         ctx.drawImage(game.moorhuhn[i].src, game.moorhuhn[i].x, game.moorhuhn[i].y, 40 * game.moorhuhn[i].scale, 50 * game.moorhuhn[i].scale);
     }

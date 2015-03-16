@@ -715,7 +715,7 @@ function moveIsaac(){
 }
 
 function moveIsaacRight(i){
-    if(game.isaac[i].hit === true){
+    if(game.isaac[i].hit === "true"){
         // Anzeigebild
         if(game.isaac[i].srcid === 0){
             game.isaac[i].src = document.getElementById("isaacRH0");
@@ -757,7 +757,7 @@ function moveIsaacRight(i){
 }
 
 function moveIsaacLeft(i){
-    if(game.isaac[i].hit === true){
+    if(game.isaac[i].hit === "true"){
         // Anzeigebild
         if(game.isaac[i].srcid === 0){
             game.isaac[i].src = document.getElementById("isaacLH0");

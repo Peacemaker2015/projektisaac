@@ -527,6 +527,10 @@ function timeGame(){
     game.time --;
     document.getElementById('time').innerHTML = game.time;
 
+    if(game.time<=10){
+        document.getElementById('time').setAttribute( "class", "nachladen");
+    }
+
     if(game.time<=0){
         stopGame();
         showHighscoreabfrage();

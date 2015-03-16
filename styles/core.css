@@ -7,22 +7,34 @@ html{
 
 body{
 
-    animation: schnee 20s linear infinite;
-        -webkit-animation: schnee 20s linear infinite;
+/**************************************************************
+*
+*    Es kann wenn gewünscht Schneefall eingeblendet werden
+*    Allerdings sehr Performancelastig, daher erst einmal deaktiviert
+*
+***************************************************************/
+
+    /*animation: schnee 20s linear infinite;
+       -webkit-animation: schnee 20s linear infinite;*/
 
 	padding: 10px;
-    background: url('../images/schnee_hintergrund_1.png'), url('../images/schnee_hintergrund_2.png'), url('../images/schnee_hintergrund_3.png') repeat-x left bottom; }
+    background: url('../images/schnee_hintergrund_1.png'), url('../images/schnee_hintergrund_2.png') repeat-x left bottom; }
 
 
 }
 
 @keyframes schnee{
-        0%      {background-position:0px 0px,0px 0px,0px 0px}
-        100%    {background-position:500px 1000px,400px 400px,300px 300px}}
+        0%      {background-position:0px 0px,0px 0px,0px 0px;            }
+
+        100%    {background-position:500px 1000px,400px 400px,300px 300px}
+}
 
     @-webkit-keyframes schnee{
-        0%      {background-position:0px 0px,0px 0px,0px 0px}
-        100%    {background-position:500px 1000px,400px 400px,300px 300px;}}
+       0%      {background-position:0px 0px,0px 0px,0px 0px;     }
+
+        100%   {background-position:500px 1000px,400px 400px,300px 300px}
+    }
+
 
 /**************************************************************
 *

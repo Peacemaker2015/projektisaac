@@ -403,15 +403,6 @@ var ctx = canvas.getContext('2d');
 canvas.addEventListener("mousedown", mousedownSpielfeld, false);
 document.addEventListener('keydown', keydownSpielfeld);
 
-// Variablen vorbereiten
-//var music = true;
-//var sound = true;
-
-// Timer vorbereiten
-var timeTimer;
-var moveTimer;
-var moorhuhnTimer;
-
 /* Dinge für das Spiel (allgemein) */
 
 function activateMusic() {
@@ -496,16 +487,16 @@ function startGame(a){
         spielfeld.moorhuhn = [];
         loadGame();
     }
-    timeTimer = setInterval(function(){
+    spielfeld.timeTimer = setInterval(function(){
         timeSpielfeld();
     }, 1000);
 
-    moveTimer = setInterval(function(){
+    spielfeld.moveTimer = setInterval(function(){
         moveMoorhuhn();
         drawMoorhuhn();
     }, 15);
 
-    moorhuhnTimer = setInterval(function(){
+    spielfeld.moorhuhnTimer = setInterval(function(){
         addMoorhuhn();
     }, 1000);
 
@@ -513,9 +504,9 @@ function startGame(a){
 }
 
 function stopGame(){
-    window.clearInterval(timeTimer);
-    window.clearInterval(moveTimer);
-    window.clearInterval(moorhuhnTimer);
+    window.clearInterval(spielfeld.timeTimer);
+    window.clearInterval(spielfeld.moveTimer);
+    window.clearInterval(spielfeld.moorhuhnTimer);
     spielfeld.active=false;
 }
 
@@ -562,6 +553,10 @@ function createSpielfeld(){
     this.score = null;
     this.ammo = null;
     this.show = null;
+
+    this.timeTimer;
+    this.moveTimer;
+    this.moorhuhnTimer;
 }
 
 function timeSpielfeld(){

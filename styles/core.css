@@ -1,3 +1,7 @@
+@font-face { font-family: 'schnee';
+             src: url('../fonts/ChristmasSnow.ttf') format('truetype'); }
+
+
 html{
     background:url(../images/hintergrund1.jpg) no-repeat;
     background-size: cover;
@@ -46,7 +50,9 @@ body{
         margin-left: 80px;
         left: 80px;
         font-size: 100px;
-        font-family: 'Cabin Sketch', cursive;
+/*        font-family: 'Cabin Sketch', cursive;*/
+        font-family: 'schnee';
+
     }
 
 /**************************************************************

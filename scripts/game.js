@@ -393,15 +393,15 @@ function game(){
 //------------------------------------------------------------------------------------------------------------ //
 
 // Spielfeld vorbereiten
-var spielfeld = new createSpielfeld();
+var spielfeld = new createGame();
 
 // Canvas vorbereiten
 var canvas = document.getElementById('game');
 var ctx = canvas.getContext('2d');
 
 // Listener hinzufügen
-canvas.addEventListener("mousedown", mousedownSpielfeld, false);
-document.addEventListener('keydown', keydownSpielfeld);
+canvas.addEventListener("mousedown", mousedownGame, false);
+document.addEventListener('keydown', keydownGame);
 
 /* Dinge für das Spiel (allgemein) */
 
@@ -426,6 +426,27 @@ function deactivateSound() {
 function playSound(elementID){
     document.getElementById(elementID).load();
     document.getElementById(elementID).play();
+}
+
+function createGame(){
+    this.moorhuhn = [];
+
+    this.maxTime = 20;
+    this.time = null;
+
+    this.level = null;
+    this.active = true;
+
+    this.music = true;
+    this.sound = true;
+
+    this.score = null;
+    this.ammo = null;
+    this.show = null;
+
+    this.timeTimer;
+    this.moveTimer;
+    this.moorhuhnTimer;
 }
 
 function loadGame(){
@@ -488,7 +509,7 @@ function startGame(a){
         loadGame();
     }
     spielfeld.timeTimer = setInterval(function(){
-        timeSpielfeld();
+        timeGame();
     }, 1000);
 
     spielfeld.moveTimer = setInterval(function(){
@@ -501,6 +522,16 @@ function startGame(a){
     }, 1000);
 
     spielfeld.active=true;
+}
+
+function timeGame(){
+    spielfeld.time --;
+    document.getElementById('time').innerHTML = spielfeld.time;
+
+    if(spielfeld.time<=0){
+        stopGame();
+        showHighscoreabfrage();
+    }
 }
 
 function stopGame(){
@@ -536,40 +567,7 @@ function saveGame(){
     }
 }
 
-/* Dinge für das Spielfeld */
-
-function createSpielfeld(){
-    this.moorhuhn = [];
-
-    this.maxTime = 20;
-    this.time = null;
-
-    this.level = null;
-    this.active = true;
-
-    this.music = true;
-    this.sound = true;
-
-    this.score = null;
-    this.ammo = null;
-    this.show = null;
-
-    this.timeTimer;
-    this.moveTimer;
-    this.moorhuhnTimer;
-}
-
-function timeSpielfeld(){
-    spielfeld.time --;
-    document.getElementById('time').innerHTML = spielfeld.time;
-
-    if(spielfeld.time<=0){
-        stopGame();
-        showHighscoreabfrage();
-    }
-}
-
-function keydownSpielfeld(e){
+function keydownGame(e){
     if(spielfeld.time > 0){
         // Munition mit Strg nachladen
         if (e.keyCode === 17  && spielfeld.active===true){
@@ -616,7 +614,7 @@ function keydownSpielfeld(e){
     }
 }
 
-function mousedownSpielfeld(e){
+function mousedownGame(e){
 
     // Prüfen, ob Munition vorhanden ist
     if(spielfeld.active===true && spielfeld.ammo > 0){

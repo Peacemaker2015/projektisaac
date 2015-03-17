@@ -789,7 +789,7 @@ function mousedownGame(e){
                         var childElementText = document.createTextNode('Punkte');
                         // Eigenschaften zum Kind-Div-Element setzen
                         childElement.appendChild(childElementText);
-                        childElement.setAttribute("id", "anzeigenTreffer" );
+                        childElement.setAttribute("class", "anzeigenTreffer");
                         childElement.style.position = "absolute";
                         childElement.style.zIndex = "1";
                         childElement.style.top = e.pageY+"px";

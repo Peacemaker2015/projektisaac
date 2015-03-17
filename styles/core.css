@@ -18,11 +18,16 @@ body{
 *
 ***************************************************************/
 
-    /*animation: schnee 20s linear infinite;
-       -webkit-animation: schnee 20s linear infinite;*/
+    animation: schnee 20s linear infinite;
+       -webkit-animation: schnee 20s linear infinite;
 
 	padding: 10px;
-    background: url('../images/schnee_hintergrund_1.png'), url('../images/schnee_hintergrund_2.png') repeat-x left bottom; }
+    background:
+
+        url('../images/schnee_hintergrund_1.png'),
+       /*url('../images/schnee_hintergrund_2.png'),
+        url('../images/schnee_hintergrund_3.png')*/
+        repeat-x left bottom;
 
 
 }

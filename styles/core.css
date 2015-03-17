@@ -70,6 +70,7 @@ body{
         padding: 10px;
         font-family: 'Bubblegum Sans', cursive;
         font-size: 23px;
+        margin: auto;
     }
 
 #img{
@@ -836,10 +837,20 @@ body{
 ***************************************************************/
 
     .anzeigenTreffer{
+        cursor: url(../images/fadenkreuz.png), default;
+
+        /* Div nicht klickbar machen*/
+
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+           -o-user-select: none;
+              user-select: none;
         -webkit-animation: position 1000ms;
         color: green;
         font-family: 'Bubblegum Sans', cursive;
         opacity: 0;
+
     }
 
         @-webkit-keyframes position {
@@ -884,3 +895,9 @@ body{
 
 
 
+
+
+
+#tdprofil {
+    text-align: center;
+}

@@ -758,7 +758,7 @@ function mousedownGame(e){
                         && mouseY > (game.isaac[i].y - 30)
                         && mouseY < (game.isaac[i].y + (50 * game.isaac[i].scale) - 15) ){
 
-                    if(game.isaac[i].hit === false){
+                    if(game.isaac[i].hit === false || game.isaac[i].hit === "false"){
                         // Punkte werden vergeben
                         if(game.isaac[i].scale <= 1.05){
                             hidPoints = (15 * game.level)

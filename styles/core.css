@@ -866,12 +866,21 @@ body{
             }
     }
 
-    .anzeigenMinus{
+    .anzeigenAbzug{
+        cursor: url(../images/fadenkreuz.png), default;
+
+        /* Div nicht klickbar machen*/
+
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+           -o-user-select: none;
+              user-select: none;
         -webkit-animation: position 1000ms;
         color: red;
-        transform: scale(1.5);
         font-family: 'Bubblegum Sans', cursive;
         opacity: 0;
+
     }
 
         @-webkit-keyframes position {
@@ -884,12 +893,6 @@ body{
                 -o-transform: translate(0,-200px);
                 -ms-transform: translate(0,-200px);
                 transform: translate(0,-200px);
-
-                -webkit-user-select: none;
-                 -khtml-user-select: none;
-                   -moz-user-select: none;
-                     -o-user-select: none;
-                        user-select: none;
             }
     }
 

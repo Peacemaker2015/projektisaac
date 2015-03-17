@@ -1,14 +1,15 @@
 <?php
 
 $dbServer = "localhost";
-$dbUser = "root";
-$dbName = "db_isaac";
+$dbUser = "hs01-2";
+$dbPassword = "WCbAab4efpM73Uq4";
+$dbName = "hs01-2";
 $tblName = "t_highscore";
 
 if ($_GET["aaction"] == 0) {
 
     // Datenbankverbindung aufbauen
-    $mysqli = new mysqli($dbServer,$dbUser,"","");
+    $mysqli = new mysqli($dbServer,$dbUser,$dbPassword,$dbName);
 
     if ($mysqli->connect_errno) {
 
@@ -48,7 +49,7 @@ if ($_GET["aaction"] == 0) {
 }else{
 
     // Datenbankverbindung aufbauen
-    $mysqli = new mysqli($dbServer,$dbUser,"",$dbName);
+    $mysqli = new mysqli($dbServer,$dbUser,$dbPassword,$dbName);
 
     if ($mysqli->connect_errno) {
 

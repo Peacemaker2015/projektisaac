@@ -780,6 +780,25 @@ function mousedownGame(e){
                     }
                     // Trefferstatus wird gesetzt
                     game.isaac[i].hit = "true";
+
+                    document.getElementById('game_object').onclick = function () {
+                        // Eltern-Div-Element auswählen
+                        var parentElement = document.getElementById('game_object');
+                        // Neues Kind-Div-Element erzeugen
+                        var childElement = document.createElement('pkt');
+                        var childElementText = document.createTextNode('Punkte');
+                        // Eigenschaften zum Kind-Div-Element setzen
+                        childElement.appendChild(childElementText);
+                        childElement.setAttribute("id", "anzeigenTreffer" );
+                        childElement.style.position = "absolute";
+                        childElement.style.zIndex = "1";
+                        childElement.style.top = e.pageY+"px";
+                        childElement.style.left = e.pageX+"px";
+                        // zum Eltern-Div-Element hinzufügen
+                        parentElement.appendChild(childElement);
+
+                        return false;
+                    }
                 }
             }
         }

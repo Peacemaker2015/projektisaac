@@ -769,7 +769,7 @@ body{
     @-webkit-keyframes farbe {
             0% { }
             50%{   text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;
-                   transform: scale(2);
+                   transform: scale(1.5);
             }
             100%{  }
         }
@@ -821,7 +821,7 @@ body{
 *    Style für die Bilder im Impressum
 *
 ***************************************************************/
-    .profil {
+.   profil {
 
       -webkit-box-shadow: 0 15px 10px #777;
       -moz-box-shadow: 0 15px 10px #777;
@@ -835,14 +835,14 @@ body{
 *
 ***************************************************************/
 
-.anzeigenTreffer{
+    .anzeigenTreffer{
         -webkit-animation: position 1000ms;
         color: green;
         font-family: 'Bubblegum Sans', cursive;
         opacity: 0;
     }
 
-@-webkit-keyframes position {
+        @-webkit-keyframes position {
             0% {opacity: 1}
 
             100%{
@@ -853,6 +853,34 @@ body{
                 -ms-transform: translate(0,-200px);
                 transform: translate(0,-200px);
             }
- }
+    }
+
+    .anzeigenMinus{
+        -webkit-animation: position 1000ms;
+        color: red;
+        transform: scale(1.5);
+        font-family: 'Bubblegum Sans', cursive;
+        opacity: 0;
+    }
+
+        @-webkit-keyframes position {
+            0% {opacity: 1}
+
+            100%{
+                opacity: 0;
+                -webkit-transform: translate(0,-200px);
+                -moz-transform: translate(0,-200px);
+                -o-transform: translate(0,-200px);
+                -ms-transform: translate(0,-200px);
+                transform: translate(0,-200px);
+
+                -webkit-user-select: none;
+                 -khtml-user-select: none;
+                   -moz-user-select: none;
+                     -o-user-select: none;
+                        user-select: none;
+            }
+    }
+
 
 

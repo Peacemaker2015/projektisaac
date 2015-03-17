@@ -111,7 +111,7 @@ body{
 ***************************************************************/
 
     #zuruckAnleitungButton, #zuruckEinstellungenButton {
-        margin-top: 50px;
+        margin-top: 20px;
 
     }
 
@@ -850,6 +850,7 @@ body{
         color: green;
         font-family: 'Bubblegum Sans', cursive;
         opacity: 0;
+        transform: scale(1.5);
 
     }
 
@@ -880,7 +881,7 @@ body{
         color: red;
         font-family: 'Bubblegum Sans', cursive;
         opacity: 0;
-
+        transform: scale(2);
     }
 
         @-webkit-keyframes position {

@@ -627,14 +627,16 @@ function startGame(a){
     }, 1000);
 
     game.active=true;
+    document.getElementById('time').removeAttribute("class");
 }
 
 function timeGame(){
     game.time --;
+    document.getElementById('time').removeAttribute("class");
     document.getElementById('time').innerHTML = game.time;
 
     if(game.time<=10){
-        document.getElementById('time').setAttribute( "class", "nachladen");
+        document.getElementById('time').setAttribute("class", "nachladen");
     }
 
     if(game.time<=0){

@@ -831,10 +831,27 @@ body{
 
 /**************************************************************
 *
-*    Style für die Tabelle im Impressum
+*    Animation zum Verschieben der Punkteanzeige beim Treffen eines Isaacs
 *
 ***************************************************************/
 
-    #tdprofil {
-        text-align: center;
+#anzeigenTreffer{
+        -webkit-animation: position 1000ms 1;
     }
+
+@-webkit-keyframes position {
+            0% {
+
+
+            100%{
+                opacity: 0;
+                -webkit-transform: translate(0,-200px);
+                -moz-transform: translate(0,-200px);
+                -o-transform: translate(0,-200px);
+                -ms-transform: translate(0,-200px);
+                transform: translate(0,-200px);
+            }
+
+            }
+    }
+

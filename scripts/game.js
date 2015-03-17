@@ -688,6 +688,31 @@ function keydownGame(e){
             document.getElementById('ammo').setAttribute( "class", "");
             game.ammo = 10;
             document.getElementById('ammo').innerHTML = game.ammo;
+            if(game.score>=10){
+                game.score += -10;
+                document.getElementById('score').innerHTML = game.score;
+            }else{
+                game.score = 0;
+                document.getElementById('score').innerHTML = game.score;
+            }
+            // Eltern-Div-Element auswählen
+            var parentElement = document.getElementById('game_object');
+            // Neues Kind-Div-Element erzeugen
+            var childElement = document.createElement('div');
+            childElement.innerHTML = "- 10";
+            // Eigenschaften zum Kind-Div-Element setzen
+            childElement.setAttribute("class", "anzeigenAbzug");
+            childElement.style.position = "absolute";
+            childElement.style.zIndex = "1";
+            childElement.style.top = "725px";
+            childElement.style.left = "580px";
+            // zum Eltern-Div-Element hinzufügen
+            parentElement.appendChild(childElement);
+            // Kind-Div-Element verschwinden lassen
+            var moveChildElement = setInterval(function(){
+                childElement.style.top = "0px";
+                childElement.style.left = "0px";
+            }, 1000);
             // Sound wiedergeben
             if(game.sound===true){
                 playSound("reload_sound");

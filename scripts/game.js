@@ -729,14 +729,11 @@ function keydownGame(e){
 }
 
 function mousedownGame(e){
-
     // Prüfen, ob Munition vorhanden ist
     if(game.active===true && game.ammo > 0){
-
         var mouseX = e.pageX - document.getElementById('game').offsetLeft;
         var mouseY = e.pageY - document.getElementById('game').offsetTop;
         if(game.time > 0){
-
             game.ammo += -1;
 
             if(game.ammo<=3){
@@ -756,15 +753,12 @@ function mousedownGame(e){
             for(var i=0;i<game.isaac.length;i++){
 
                 var hidPoints;
-
                 if( mouseX > (game.isaac[i].x - 30)
                         && mouseX < (game.isaac[i].x + (30 * game.isaac[i].scale) - 15)
                         && mouseY > (game.isaac[i].y - 30)
                         && mouseY < (game.isaac[i].y + (50 * game.isaac[i].scale) - 15) ){
 
-
                     if(game.isaac[i].hit === false){
-
                         // Punkte werden vergeben
                         if(game.isaac[i].scale <= 1.05){
                             hidPoints = (15 * game.level)
@@ -782,18 +776,13 @@ function mousedownGame(e){
                                 document.getElementById('score').innerHTML = game.score;
                             }
                         }
-                    }
-                    // Trefferstatus wird gesetzt
-                    game.isaac[i].hit = "true";
 
-                    document.getElementById('game_object').onclick = function () {
                         // Eltern-Div-Element auswählen
                         var parentElement = document.getElementById('game_object');
                         // Neues Kind-Div-Element erzeugen
-                        var childElement = document.createElement('pkt');
-                        var childElementText = document.createTextNode('+ '+hidPoints);
+                        var childElement = document.createElement('div');
+                        childElement.innerHTML = "+ " + hidPoints;
                         // Eigenschaften zum Kind-Div-Element setzen
-                        childElement.appendChild(childElementText);
                         childElement.setAttribute("class", "anzeigenTreffer");
                         childElement.style.position = "absolute";
                         childElement.style.zIndex = "1";
@@ -801,9 +790,9 @@ function mousedownGame(e){
                         childElement.style.left = e.pageX+"px";
                         // zum Eltern-Div-Element hinzufügen
                         parentElement.appendChild(childElement);
-
-                        return false;
                     }
+                    // Trefferstatus wird gesetzt
+                    game.isaac[i].hit = "true";
                 }
             }
         }

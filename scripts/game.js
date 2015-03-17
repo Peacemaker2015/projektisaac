@@ -508,7 +508,7 @@ function playSound(elementID){
 function createGame(){
     this.isaac = [];
 
-    this.maxTime = 40;
+    this.maxTime = 5;
     this.time = null;
 
     this.level = null;
@@ -968,6 +968,26 @@ function drawIsaac(){
         ctx.drawImage(game.isaac[i].src, game.isaac[i].x, game.isaac[i].y, 40 * game.isaac[i].scale, 50 * game.isaac[i].scale);
     }
 }
+
+//------------------------------------------------------------------------------------------------------------ //
+/*
+**  Eingabe des Formularfeldes absichern
+*/
+//------------------------------------------------------------------------------------------------------------ //
+
+
+var inputfeld = document.getElementById("name");
+    inputfeld.addEventListener('keypress', function(e) {
+     var keyCode= e.keyCode;
+        if (keyCode < 48 || keyCode > 122) {
+            e.preventDefault();
+            inputfeld.style.border= "3px solid #ff0000";
+        }
+        else{
+            inputfeld.style.border= "3px solid #3498db";
+        }
+});
+
 
 
 //------------------------------------------------------------------------------------------------------------ //

@@ -22,7 +22,8 @@
 
 
 #fehler{
-    -webkit-animation: farbefehler 2s infinite;
+    -webkit-animation: farbefehler 2s ;
+    animation: position 2s, farbefehler 2s;
     padding: 20px;
     font-size: 25px;
     color: black;
@@ -33,7 +34,21 @@
 
 @-webkit-keyframes farbefehler {
         0%     {   }
-        50%    { text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;   }
-        100%   {    }
+        50%    { text-shadow: 0 0 0.1em red, 0 0 0.1em red, 0 0 0.1em red;  }
+        99%   { opacity: 0;
+                -webkit-transform: translate(0,-200px);
+                -moz-transform: translate(0,-200px);
+                -o-transform: translate(0,-200px);
+                -ms-transform: translate(0,-200px);
+                transform: translate(0,-200px);  }
+        100%{
+            display: none;
+        }
     }
 
+@-webkit-keyframes position {
+            0% { }
+            100%{
+
+            }
+}

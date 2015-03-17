@@ -254,7 +254,7 @@ body{
         width: 32px;
         height: 65px;
         position: absolute;
-        margin: 730px 0 0 950px;
+        margin: 730px 0 0 870px;
         text-shadow: 0 1px 0 #ccc,
                    0 2px 0 #c9c9c9,
                    0 3px 0 #bbb,
@@ -274,7 +274,7 @@ body{
 
     #ammo{
         color: #444;
-        margin: 745px 0 0 1000px;
+        margin: 745px 0 0 920px;
         text-shadow: 0 1px 0 #ccc,
                    0 2px 0 #c9c9c9,
                    0 3px 0 #bbb,

@@ -138,14 +138,20 @@ function game(){
         // Spielstand wird geladen
         //loadGame();
         // Spiel wird gestartet
-        if(document.getElementById("Einfach").checked === true){
-            startGame(1);
-        }
-        else if(document.getElementById("Mittel").checked === true){
-            startGame(2);
-        }
-        else if(document.getElementById("Experte").checked === true){
-            startGame(3);
+        if(isNaN(game.level) || game.level===null){
+            // Spiel wird gestartet
+            if(document.getElementById("Einfach").checked === true){
+                startGame(1);
+            }
+            else if(document.getElementById("Mittel").checked === true){
+                startGame(2);
+            }
+            else if(document.getElementById("Experte").checked === true){
+                startGame(3);
+            }
+        }else{
+            // Spiel wird gestartet
+            startGame(game.level);
         }
         game.show = "engine";
     };
@@ -184,7 +190,7 @@ function game(){
 
     // Funktion für den Eventlistener für den Button "Weiter"
     var hidemenupause = function () {
-        if(game.level===null){
+        if(isNaN(game.level) || game.level===null){
             // Spiel wird gestartet
             if(document.getElementById("Einfach").checked === true){
                 startGame(1);
@@ -225,6 +231,11 @@ function game(){
     var zuruckButtonEinstellungen = document.getElementById("zuruckEinstellungenButton");
     var musikOnSchalter = document.getElementById("yes");
     var musikOffSchalter = document.getElementById("no");
+    var soundOnSchalter = document.getElementById("on");
+    var soundOffSchalter = document.getElementById("off");
+    var levelSchalterEinfach = document.getElementById("Einfach");
+    var levelSchalterMittel = document.getElementById("Mittel");
+    var levelSchalterExperte = document.getElementById("Experte");
     var highscoreLeerenSchalter = document.getElementById("deleteYes");
 
     // Funktion für den Eventlistener für die Buttons
@@ -236,21 +247,72 @@ function game(){
 
     var musicOn = function () {
         activateMusic();
+        console.log("Music On");
     };
 
     var musicOff = function () {
         deactivateMusic();
+        console.log("Music Off");
+    };
+
+    var soundOn = function () {
+        activateSound();
+        console.log("Sound On");
+    };
+
+    var soundOff = function () {
+        deactivateSound();
+        console.log("Sound Off");
+    };
+
+    var levelEinfach = function () {
+        console.log("Level: 1");
+        game.level = 1;
+    };
+
+    var levelMittel = function () {
+        console.log("Level: 2");
+        game.level = 2;
+    };
+
+    var levelExperte = function () {
+        console.log("Level: 3");
+        game.level = 3;
     };
 
     var hidemenusettings = function () {
         spieleinstellungenDiv.classList.toggle("hidden");
         buttonsDiv.classList.toggle("hidden");
         impressumButton.classList.toggle("hidden");
-        if(document.getElementById("on").checked === true){
-            activateSound();
+        if(game.music===true){
+            document.getElementById("yes").checked = true;
+            document.getElementById("no").checked = false;
+        }else if(game.music===false){
+            document.getElementById("yes").checked = false;
+            document.getElementById("no").checked = true;
         }
-        else if(document.getElementById("off").checked === true){
-            deactivateSound();
+
+        if(game.sound===true){
+            document.getElementById("on").checked = true;
+            document.getElementById("off").checked = false;
+        }else if(game.sound===false){
+            document.getElementById("on").checked = false;
+            document.getElementById("off").checked = true;
+        }
+        if(game.level===1){
+            document.getElementById("Einfach").checked = true;
+            document.getElementById("Mittel").checked = false;
+            document.getElementById("Experte").checked = false;
+        }
+        else if(game.level===2){
+            document.getElementById("Einfach").checked = false;
+            document.getElementById("Mittel").checked = true;
+            document.getElementById("Experte").checked = false;
+        }
+        else if(game.level===3){
+            document.getElementById("Einfach").checked = false;
+            document.getElementById("Mittel").checked = false;
+            document.getElementById("Experte").checked = true;
         }
     };
 
@@ -258,6 +320,11 @@ function game(){
     highscoreLeerenSchalter.addEventListener("click", highscoreLeeren);
     musikOnSchalter.addEventListener("click", musicOn);
     musikOffSchalter.addEventListener("click", musicOff);
+    soundOnSchalter.addEventListener("click", soundOn);
+    soundOffSchalter.addEventListener("click", soundOff);
+    levelSchalterEinfach.addEventListener("click", levelEinfach);
+    levelSchalterMittel.addEventListener("click", levelMittel);
+    levelSchalterExperte.addEventListener("click", levelExperte);
     spieleinstellungenButton.addEventListener("click", hidemenusettings);
     zuruckButtonEinstellungen.addEventListener("click", hidemenusettings);
 
@@ -506,12 +573,41 @@ function loadGame(){
             i++;
         }
     }
+    // Level wird geladen
+    game.level = parseInt(window.localStorage.getItem("GameLevel"));
+    if (isNaN(game.level) || game.level===null){
+        if(document.getElementById("Einfach").checked === true){
+            game.level = 1;
+        }
+        else if(document.getElementById("Mittel").checked === true){
+            game.level = 2;
+        }
+        else if(document.getElementById("Experte").checked === true){
+            game.level = 3;
+        }
+    }
+    // Musik wird geladen
+    game.music = window.localStorage.getItem("GameMusic");
+    if(game.music==="false"){
+        deactivateMusic();
+    }else{
+        activateMusic();
+    }
+    // Sound wird geladen
+    game.sound = window.localStorage.getItem("GameSound");
+    if(game.sound==="false"){
+        deactivateSound();
+    }else{
+        activateSound();
+    }
+    console.log("Level:" + game.level);
+    console.log("Musik:" + game.music);
+    console.log("Sound:" + game.sound);
 }
 
 function startGame(a){
     // Level wird festgesetzt
     game.level = a;
-
     if(game.time===0){
         window.localStorage.clear();
         game.isaac = [];
@@ -578,6 +674,9 @@ function saveGame(){
         game.isaac = [];
         window.localStorage.clear();
     }
+    window.localStorage.setItem("GameLevel", game.level);
+    window.localStorage.setItem("GameMusic", game.music);
+    window.localStorage.setItem("GameSound", game.sound);
 }
 
 function keydownGame(e){

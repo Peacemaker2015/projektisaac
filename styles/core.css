@@ -19,15 +19,15 @@ body{
 ***************************************************************/
 
     animation: schnee 20s linear infinite;
-       -webkit-animation: schnee 20s linear infinite;
+       /*-webkit-animation: schnee 20s linear infinite; */
 
 	padding: 10px;
     background:
 
         url('../images/schnee_hintergrund_1.png'),
-       /*url('../images/schnee_hintergrund_2.png'),
-        url('../images/schnee_hintergrund_3.png')*/
-        repeat-x left bottom;
+          /* url('../images/schnee_hintergrund_2.png'),
+          url('../images/schnee_hintergrund_3.png') */
+          repeat-x left bottom;
 
 
 }
@@ -836,13 +836,14 @@ body{
 ***************************************************************/
 
 .anzeigenTreffer{
-        -webkit-animation: position 1000ms 1;
-        color: red;
+        -webkit-animation: position 1000ms;
+        color: green;
+        font-family: 'Bubblegum Sans', cursive;
+        opacity: 0;
     }
 
 @-webkit-keyframes position {
-            0% {
-
+            0% {opacity: 1}
 
             100%{
                 opacity: 0;
@@ -852,7 +853,6 @@ body{
                 -ms-transform: translate(0,-200px);
                 transform: translate(0,-200px);
             }
+ }
 
-            }
-    }
 

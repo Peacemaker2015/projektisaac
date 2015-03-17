@@ -689,7 +689,7 @@ function keydownGame(e){
             game.ammo = 10;
             document.getElementById('ammo').innerHTML = game.ammo;
             if(game.score>=10){
-                game.score += -10;
+                game.score += (-10 * game.level);
                 document.getElementById('score').innerHTML = game.score;
             }else{
                 game.score = 0;
@@ -699,7 +699,7 @@ function keydownGame(e){
             var parentElement = document.getElementById('game_object');
             // Neues Kind-Div-Element erzeugen
             var childElement = document.createElement('div');
-            childElement.innerHTML = "- 10";
+            childElement.innerHTML = (-10 * game.level);
             // Eigenschaften zum Kind-Div-Element setzen
             childElement.setAttribute("class", "anzeigenAbzug");
             childElement.style.position = "absolute";

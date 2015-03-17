@@ -835,7 +835,7 @@ body{
 *
 ***************************************************************/
 
-#anzeigenTreffer{
+.anzeigenTreffer{
         -webkit-animation: position 1000ms 1;
         color: red;
     }

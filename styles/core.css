@@ -837,6 +837,7 @@ body{
 
 #anzeigenTreffer{
         -webkit-animation: position 1000ms 1;
+        color: red;
     }
 
 @-webkit-keyframes position {

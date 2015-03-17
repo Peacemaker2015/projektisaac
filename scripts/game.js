@@ -508,7 +508,7 @@ function playSound(elementID){
 function createGame(){
     this.isaac = [];
 
-    this.maxTime = 20;
+    this.maxTime = 40;
     this.time = null;
 
     this.level = null;

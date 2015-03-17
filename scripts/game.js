@@ -790,6 +790,14 @@ function mousedownGame(e){
                         childElement.style.left = e.pageX+"px";
                         // zum Eltern-Div-Element hinzufügen
                         parentElement.appendChild(childElement);
+                        // Kind-Div-Element verschwinden lassen
+                        var moveChildElement = setInterval(function(){
+
+                            childElement.style.top = "0px";
+                            childElement.style.left = "0px";
+
+                        }, 1000);
+
                     }
                     // Trefferstatus wird gesetzt
                     game.isaac[i].hit = "true";

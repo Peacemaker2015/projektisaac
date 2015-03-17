@@ -508,7 +508,7 @@ function playSound(elementID){
 function createGame(){
     this.isaac = [];
 
-    this.maxTime = 5;
+    this.maxTime = 20;
     this.time = null;
 
     this.level = null;
@@ -741,7 +741,11 @@ function mousedownGame(e){
                 document.getElementById('ammo').setAttribute( "class", "nachladen");
             }
 
-            document.getElementById('ammo').innerHTML = game.ammo;
+            if(game.ammo===0){
+                document.getElementById('ammo').innerHTML = "RELOAD";
+            }else{
+                document.getElementById('ammo').innerHTML = game.ammo;
+            }
             //Sound wiedergeben
             if(game.sound===true){
                 playSound("shot_sound");

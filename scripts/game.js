@@ -755,6 +755,8 @@ function mousedownGame(e){
             // Prüfen, ob Isaac getroffen
             for(var i=0;i<game.isaac.length;i++){
 
+                var hidPoints;
+
                 if( mouseX > (game.isaac[i].x - 30)
                         && mouseX < (game.isaac[i].x + (30 * game.isaac[i].scale) - 15)
                         && mouseY > (game.isaac[i].y - 30)
@@ -765,15 +767,18 @@ function mousedownGame(e){
 
                         // Punkte werden vergeben
                         if(game.isaac[i].scale <= 1.05){
-                            game.score += (15 * game.level);
+                            hidPoints = (15 * game.level)
+                            game.score += hidPoints;
                             document.getElementById('score').innerHTML = game.score;
                         }else{
                             if(game.isaac[i].scale <= 1.35){
-                                game.score += (10 * game.level);
+                                hidPoints = (10 * game.level)
+                                game.score += hidPoints;
                                 document.getElementById('score').innerHTML = game.score;
                             }
                             else if(game.isaac[i].scale > 1.35){
-                                game.score += (5 * game.level);
+                                hidPoints = (5 * game.level)
+                                game.score += hidPoints;
                                 document.getElementById('score').innerHTML = game.score;
                             }
                         }
@@ -786,7 +791,7 @@ function mousedownGame(e){
                         var parentElement = document.getElementById('game_object');
                         // Neues Kind-Div-Element erzeugen
                         var childElement = document.createElement('pkt');
-                        var childElementText = document.createTextNode('Punkte');
+                        var childElementText = document.createTextNode('+ '+hidPoints);
                         // Eigenschaften zum Kind-Div-Element setzen
                         childElement.appendChild(childElementText);
                         childElement.setAttribute("class", "anzeigenTreffer");

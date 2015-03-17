@@ -606,8 +606,6 @@ function loadGame(){
 }
 
 function startGame(a){
-    // Level wird festgesetzt
-    game.level = a;
     if(game.time===0){
         window.localStorage.clear();
         game.isaac = [];
@@ -628,6 +626,8 @@ function startGame(a){
 
     game.active=true;
     document.getElementById('time').removeAttribute("class");
+    // Level wird festgesetzt
+    game.level = a;
 }
 
 function timeGame(){
@@ -688,7 +688,7 @@ function keydownGame(e){
             document.getElementById('ammo').setAttribute( "class", "");
             game.ammo = 10;
             document.getElementById('ammo').innerHTML = game.ammo;
-            if(game.score>=10){
+            if(game.score>=(10 * game.level)){
                 game.score += (-10 * game.level);
                 document.getElementById('score').innerHTML = game.score;
             }else{

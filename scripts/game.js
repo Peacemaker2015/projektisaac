@@ -418,6 +418,7 @@ function game(){
     */
 
     // Elemente des DIVs werden in Variablen gespeichert
+    var inputfeld = document.getElementById("name");
     var textName = document.getElementById("name");
     var frageHighscoreDIV = document.getElementById("eintragenHighscoreDiv");
     var sendenButton = document.getElementById("highscoreSendenButton");
@@ -442,6 +443,18 @@ function game(){
         frageHighscoreDIV.classList.toggle("hidden");
     }
 
+    var inputText = function (e) {
+        var keyCode= e.keyCode;
+        if ((keyCode > 47 && keyCode < 58) || (keyCode > 64 && keyCode < 123))  {
+            inputfeld.style.border= "3px solid #3498db";
+        }
+        else{
+            inputfeld.style.border= "3px solid #ff0000";
+
+            e.preventDefault();
+        }
+    }
+
     var enterName = function (e) {
         if (e.keyCode === 13) {
             e.preventDefault();
@@ -450,6 +463,7 @@ function game(){
     }
 
     // Eventlistener für den Button "Zurück"
+    inputfeld.addEventListener('keypress', inputText);
     textName.addEventListener("keydown", enterName);
     zuruckMenuButton.addEventListener("click",hideAbfrageHighscore);
     sendenButton.addEventListener("click", writeHighscore);
@@ -1149,28 +1163,6 @@ function drawIsaac(){
         ctx.drawImage(game.isaac[i].src, game.isaac[i].x, game.isaac[i].y, 40 * game.isaac[i].scale, 50 * game.isaac[i].scale);
     }
 }
-
-//------------------------------------------------------------------------------------------------------------ //
-/*
-**  Eingabe des Formularfeldes absichern
-**  Es sollen nur Eingaben von 0-9 und Aa - Zz erlaubt sein!
-*/
-//------------------------------------------------------------------------------------------------------------ //
-
-
-var inputfeld = document.getElementById("name");
-    inputfeld.addEventListener('keypress', function(e) {
-     var keyCode= e.keyCode;
-        if ((keyCode > 47 && keyCode < 58) || (keyCode > 64 && keyCode < 123))  {
-            inputfeld.style.border= "3px solid #3498db";
-        }
-        else{
-            inputfeld.style.border= "3px solid #ff0000";
-
-            e.preventDefault();
-        }
-});
-
 
 
 //------------------------------------------------------------------------------------------------------------ //

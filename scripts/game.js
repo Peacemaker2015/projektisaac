@@ -207,6 +207,18 @@ function game(){
 
     // Funktion für den Eventlistener für den Button "Weiter"
     var hidemenupause = function () {
+
+        // PauseDIV wird ausgeblendet
+        pauseDiv.classList.toggle("hidden");
+
+        // Andere Elemente ausblenden
+        onlymenubutton.classList.toggle("hidden");
+        ammo.classList.toggle("hidden");
+        time.classList.toggle("hidden");
+        score.classList.toggle("hidden");
+        kugel.classList.toggle("hidden");
+
+        // Spiel wird wieder gestartet
         if(isNaN(game.level) || game.level===null){
             // Spiel wird gestartet
             if(document.getElementById("Einfach").checked === true){
@@ -222,14 +234,6 @@ function game(){
             // Spiel wird gestartet
             startGame(game.level);
         }
-        // PauseDIV wird ausgeblendet
-        pauseDiv.classList.toggle("hidden");
-        // Andere Elemente ausblenden
-        onlymenubutton.classList.toggle("hidden");
-        ammo.classList.toggle("hidden");
-        time.classList.toggle("hidden");
-        score.classList.toggle("hidden");
-        kugel.classList.toggle("hidden");
     };
 
     // Eventlistener für den Button "Weiter"
@@ -823,6 +827,16 @@ function game(){
             // Wenn Leertaste gedrückt wurde, wird Spiel unterbrochen oder fortgesetzt
             else if (e.keyCode === 32 && game.show === "engine") {
 
+                // Andere Elemente ausblenden
+                onlymenubutton.classList.toggle("hidden");
+                ammo.classList.toggle("hidden");
+                time.classList.toggle("hidden");
+                score.classList.toggle("hidden");
+                kugel.classList.toggle("hidden");
+
+                // PauseDIV wird ausgeblendet
+                pauseDiv.classList.toggle("hidden");
+
                 // Wenn ein Spiel aktiv ist, dann wird es angehalten
                 // Ansonsten wird es fortgesetzt
                 if(game.active===true){
@@ -845,16 +859,6 @@ function game(){
                         startGame(game.level);
                     }
                 }
-
-                // Andere Elemente ausblenden
-                onlymenubutton.classList.toggle("hidden");
-                ammo.classList.toggle("hidden");
-                time.classList.toggle("hidden");
-                score.classList.toggle("hidden");
-                kugel.classList.toggle("hidden");
-
-                // PauseDIV wird ausgeblendet
-                pauseDiv.classList.toggle("hidden");
             }
         }
     }

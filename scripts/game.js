@@ -544,7 +544,7 @@ function game(){
         this.sound = true;
 
         // Elemente für das Spiel selbst
-        this.maxTime = 5;
+        this.maxTime = 40;
         this.time = null;
         this.score = null;
         this.ammo = null;

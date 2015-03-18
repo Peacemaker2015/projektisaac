@@ -1153,6 +1153,7 @@ function drawIsaac(){
 //------------------------------------------------------------------------------------------------------------ //
 /*
 **  Eingabe des Formularfeldes absichern
+**  Es sollen nur Eingaben von 0-9 und Aa - Zz erlaubt sein!
 */
 //------------------------------------------------------------------------------------------------------------ //
 
@@ -1160,12 +1161,13 @@ function drawIsaac(){
 var inputfeld = document.getElementById("name");
     inputfeld.addEventListener('keypress', function(e) {
      var keyCode= e.keyCode;
-        if (keyCode < 48 || keyCode > 122) {
-            e.preventDefault();
-            inputfeld.style.border= "3px solid #ff0000";
+        if ((keyCode > 47 && keyCode < 58) || (keyCode > 64 && keyCode < 123))  {
+            inputfeld.style.border= "3px solid #3498db";
         }
         else{
-            inputfeld.style.border= "3px solid #3498db";
+            inputfeld.style.border= "3px solid #ff0000";
+
+            e.preventDefault();
         }
 });
 

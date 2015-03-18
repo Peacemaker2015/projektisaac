@@ -434,7 +434,10 @@ function game(){
 
     var inputText = function (e) {
         var keyCode= e.keyCode;
-        if ((keyCode > 47 && keyCode < 58) || (keyCode > 64 && keyCode < 123))  {
+        if (
+            (keyCode > 47 && keyCode < 58) ||
+            (keyCode > 64 && keyCode < 123) ||
+            (keyCode === 32) )  {
             inputfeld.style.border= "3px solid #3498db";
         }
         else{

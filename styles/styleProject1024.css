@@ -1,37 +1,70 @@
-#game{
+***************************************************************/
+/**************************************************************
+*
+*   Darstellung des Spiels ohne zusätzlichem Rand für die Darstellung
+*   bei 1024 Pixel Bildschirmbreite
+*   sowie angepasster Elemente, welche über dem Canvas Element liegen
+*
+***************************************************************/
+***************************************************************/
 
-        left: 0px !important;
-        top: 0px !important;
-         }
 
-#menu {
-        left: 0px !important;
-        top: 100px !important;
-}
+/**************************************************************
+*
+*   Änderung Darstellung des Game Elementes
+*
+***************************************************************/
+    #game{
 
-#time {
-    margin: 700px 0 0 70px !important;
-}
+            left: 0px !important;
+            top: 0px !important;
+    }
 
-#score {
+/**************************************************************
+*
+*   Änderung Darstellung des Menü Elementes
+*
+***************************************************************/
 
-  margin: 700px 0 0 500px !important;
-}
+    #menu {
+            left: 0px !important;
+            top: 100px !important;
+    }
 
-#kugel{
+/**************************************************************
+*
+*   Änderung Darstellung der Elemente im Spiel
+*
+***************************************************************/
+    #time {
+        margin: 700px 0 0 70px !important;
+    }
 
-    margin: 675px 0 0 770px !important;
-}
+    #score {
 
-#ammo {
-      margin: 695px 0 0 825px !important;
-}
+      margin: 700px 0 0 500px !important;
+    }
 
-.menubutton {
-    margin: 0px 10px 20px 190px !important;
-}
+    #kugel{
 
- .postionHighscoreAbfrage{
-        margin-left: 125px !important;
-        top: 75 !important;
-}
+        margin: 675px 0 0 770px !important;
+    }
+
+    #ammo {
+          margin: 695px 0 0 825px !important;
+    }
+
+/**************************************************************
+*
+*   Änderung Darstellung einzelner Menübuttons
+*
+***************************************************************/
+
+    .menubutton {
+        margin: 0px 10px 20px 190px !important;
+    }
+
+     .postionHighscoreAbfrage{
+            margin-left: 125px !important;
+            top: 75 !important;
+    }

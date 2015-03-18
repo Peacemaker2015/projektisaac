@@ -1,18 +1,36 @@
 
 <!--  Quellenangabe:
 
-    Bilder Highscore:   http://de.all-free-download.com/frei-vektoren/vektoren-misc/medaillen_medaille_troph%C3%A4e_vektor_152875.html  Freie Lizenz!
-    Hintergrundbild:    http://de.wikipedia.org/wiki/Pilatus_(Berg)#/media/File:Gipfel_und_Bergstation_Pilatus.JPG                      Freie Lizenz!
-    Grafiketn Isaac:    http://www.cookis.at/                                                                                           Genehmigung zur internen Nutzung. Keine gewerbliche Nutzung!
-    Musik / Effekte:    http://www.cookis.at/                                                                                           Genehmigung zur internen Nutzung. Keine gewerbliche Nutzung!
+    Bilder Highscore:
+    http://de.all-free-download.com/frei-vektoren/vektoren-misc/medaillen_medaille_troph%C3%A4e_vektor_152875.html
+    Freie Lizenz!
 
-Schriftart: http://www.myfont.de/schriftarten/schnee/
+    Hintergrundbild:
+    http://de.wikipedia.org/wiki/Pilatus_(Berg)#/media/File:Gipfel_und_Bergstation_Pilatus.JPG
+    Freie Lizenz!
+
+    Grafiketn Isaac:
+    http://www.cookis.at/
+    Genehmigung zur internen Nutzung. Keine gewerbliche Nutzung!
+
+    Musik / Effekte:
+    http://www.cookis.at/
+    Genehmigung zur internen Nutzung. Keine gewerbliche Nutzung!
+
+    Schriftart: http://www.myfont.de/schriftarten/schnee/
 
 
 --->
 
 <html lang="en">
 <head>
+
+
+<!--************************************************************
+*
+*   Einbinden der Stylesheets
+*
+***********************************************************-*-->
 
 
   <link href='http://fonts.googleapis.com/css?family=Bubblegum+Sans' rel='stylesheet' type='text/css'>
@@ -29,6 +47,12 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
 </head>
 <body>
     <div id="game_object">
+
+        <!--************************************************************
+        *
+        *   Einbinden Elemente für das Spiel
+        *
+        ***********************************************************-*-->
 
         <audio id="background_music" loop="loop" autoplay="autoplay">
             <source src="media/musik.mp3" type="audio/mp3">
@@ -58,6 +82,11 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
         <div id="score">0</div>
         <div id="time"></div>
 
+        <!--************************************************************
+        *
+        *   Hauptmenü des Spieles
+        *
+        ***********************************************************-*-->
 
         <div id="menu" class="hidden">
             <div id="buttonsDiv">
@@ -83,9 +112,22 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
                 <a href="#" class="action-button animate yellow" id="highscoreButton">Highscore</a>
 
         </div><!-- ENDE DIV Buttons -->
+
+        <!--************************************************************
+        *
+        *   Impressum Link Button neben dem Startmenü
+        *
+        ***********************************************************-*-->
+
             <div id="impressumButton">
             <a href="#" class="stempel" id="Impressum" class="hidden">Impressum</a >
             </div>
+
+        <!--************************************************************
+        *
+        *   DIV für die Inhalte für die Spielanleitung
+        *
+        ***********************************************************-*-->
 
         <div id="spielanleitungDiv"  class="hidden">
 
@@ -93,27 +135,36 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
 
             <p id="content">Ziel des Spiels ist es, so viele fliegende "Isaacs" wie möglich abzuschießen. <br><br>
 
-                Je mehr du davon in den vorgegebenen 30 Sekunden treffen, umso höher fällt Ihre Punktezahl aus. <br>
-                <br> Gesteuert wird das Zielkreuz mit der Maus  <br>
-                <br> <font color="blue">Linksklick</font> feuern Sie eine Ladung Schrot ab
-                <br> Die Taste <font color="blue">STRG</font>  läd neue Munition nach, aber Achtung
-                <br> Jedes Nachladen kostet dich <font color="red">viele Punkte!</font>
-                <br> Die Höhe der Punkte / Abzüge hängt von deinem gewähltem Level ab!
-                <br><br> Am Bildschirmrand sehen Sie verschiedene Anzeigen. <br>
+                Je mehr du davon in den vorgegebenen 40 Sekunden triffst, umso höher fällt deine Punktezahl aus. <br>
+                <br> Gesteuert wird das Zielkreuz mit deiner Maus  <br>
+                <br> <font color="blue">Linksklick</font> feuert eine Ladung Schrot ab
+                <br> Die Taste <font color="blue">STRG</font>  läd neue Munition nach, aber Achtung:
+                <br> Jedes Nachladen kostet dich <font color="red">Punkte!</font>
+                <br> Die Höhe der Punkte / Abzüge hängt von deinem gewählten Level ab!
+                <br><br> Am Bildschirmrand siehst du verschiedene Anzeigen: <br>
                 <br> Unten links wird die verbleibende Zeit für das Spiel angegeben
-                <br> Unten in der Mitte sehen Sie Ihren aktuellen Punktestand
-                <br> Unten rechts befindet sich die Anzeige der übrigen Patronen für Ihre Waffe.
+                <br> Unten in der Mitte siehst du deinen aktuellen Punktestand
+                <br> Unten rechts befindet sich die Anzeige der übrigen Patronen für deine Waffe.
             </p>
 
         <a href="#" class="action-button shadow animate green" id="zuruckAnleitungButton">Zurück</a>
 
         </div> <!-- ENDE DIV SPIELANLEITUNG -->
 
+        <!--************************************************************
+        *
+        *   DIV für die Inhalte für des Impressums
+        *
+        ***********************************************************-*-->
+
         <div id="impressumDiv"  class="hidden">
 
             <br>
-            <p id="content"> Dies Spiel wurde programmiert von:</p>
-            <br>
+            <p id="content">
+                Projekt Multimedia Skript März 2015 <br><br>
+                Dieses Spiel wurde programmiert von:
+
+            </p>
             <table>
                <tr>
                    <th><p id="content"> OFR Reichert</p></th>
@@ -121,8 +172,10 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
                 </tr>
 
                 <tr>
-                    <td id="tdprofil"><img src="images/tobi.JPG" alt="OFR Reichert" height="300" align="center" class="profil"><br><br></td>
-                    <td id="tdprofil"><img src="images/martin.jpg" alt="OFR Rothe" height="300" align="center" class="profil"><br><br></td>
+                    <td id="tdprofil">
+                    <img src="images/tobi.JPG" alt="OFR Reichert" height="300" align="center" class="profilfotos"><br></td>
+                    <td id="tdprofil">
+                    <img src="images/martin.jpg" alt="OFR Rothe" height="300" align="center" class="profilfotos"><br></td>
                 </tr>
 
 
@@ -136,11 +189,18 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
 
         </div> <!-- ENDE DIV impressumDIV -->
 
+        <!--************************************************************
+        *
+        *   DIV für die Abfrage, ob die Datenbank wirklich gelöscht werden soll
+        *   Dies kann über die Einstellungen gesteuert werden
+        *
+        ***********************************************************-*-->
+
         <div id="abfrageDiv" class="hidden">
 
             <br><br><br><br><br>
-            <p id="content"> Möchten Sie den Highscore wirklich löschen?</p>
-            <br>
+            <p id="punkte"> Möchten Sie den Highscore wirklich löschen?</p>
+            <br><br>
 
 
         <a href="#" class="action-button shadow animate green" id="abfrageJaButton">Ja</a>
@@ -148,13 +208,16 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
 
         </div> <!-- ENDE DIV abfrageDIV -->
 
+        <!--************************************************************
+        *
+        *   DIV für die Inhalte des Highscore
+        *
+        ***********************************************************-*-->
+
         <div id="HighscoreDiv" class="hidden">
 
-            <p id="content">Highscore</p>
-            <br>
-            <br>
-            <br>
-            <br>
+            <p id="punkte">Highscore</p>
+            <br><br>
             <div id ="tabelle"></div>
             <br>
             <br>
@@ -163,15 +226,19 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
 
         </div> <!-- ENDE DIV Highscore -->
 
+        <!--************************************************************
+        *
+        *   DIV für die Inhalte der Einstellungen
+        *
+        ***********************************************************-*-->
 
         <div id="spieleinestellungenDiv" class="hidden">
 
-            <p id="content">Einstellungen</p>
-            <br>
-            <br>
+            <p id="punkte">Einstellungen</p>
+            <br><br>
             <!-- Einstellen des Schwierigkeitsgrades           -->
 
-           <div class="spaceEmOut">
+           <div class="Einstellungen">
         <fieldset class="switch switch-three">
           <legend>
             Schwierigkeitsgrad
@@ -195,11 +262,11 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
            <br>
            <br>
            <br>
-      <div class="spaceEmOut">
+      <div class="Einstellungen">
 
         <fieldset class="switch switch-two">
           <legend>
-            Musik
+            Hintergrundmusik
           </legend>
           <input id="yes" name="musik" type="radio" checked />
           <label for="yes">
@@ -217,10 +284,10 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
            <br>
            <br>
 
-       <div class="spaceEmOut">
+       <div class="Einstellungen">
           <fieldset class="switch switch-two">
           <legend>
-            Soundeffekte
+            Spielsoundeffekte
           </legend>
 
           <input id="on" name="sound" type="radio" checked />
@@ -239,7 +306,7 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
             <br>
            <br>
            <br>
-            <div class="spaceEmOut">
+            <div class="Einstellungen">
           <fieldset class="switch switch-two">
           <legend>
             Highscore leeren?
@@ -264,16 +331,25 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
         </div> <!-- ENDE DIV EINSTELLUNGEN -->
         </div> <!-- ENDE DIV Menü -->
 
+        <!--************************************************************
+        *
+        *   Menübutton der immer oben links im Spiel erscheint, wenn das Spiel läuft
+        *   um jederzeit ins Menü zu kommen
+        *
+        ***********************************************************-*-->
 
 
-        <!--  Menübutton der immer oben links im Spiel erscheint, wenn das Spiel läuft
-        um jederzeit ins Menü zu kommen
-        -->
 
         <div id="onlymenubuttondiv">
             <a href="#" class="animate red menubutton" id="onlymenu">Menü</a>
 
         </div> <!-- ENDE DIV ONLYMENÜBUTTON -->
+
+        <!--************************************************************
+        *
+        *   Div für die Inhalte der Pausemeldung
+        *
+        ***********************************************************-*-->
 
         <div id="pauseDiv"  class="postionHighscoreAbfrage hidden">
 
@@ -282,7 +358,7 @@ Schriftart: http://www.myfont.de/schriftarten/schnee/
             <br>
             <br>
 
-            <p id="content"> Spiel wurde pausiert! </p>
+            <p id="punkte"> Spiel wurde pausiert! </p>
 
             <br>
             <br>

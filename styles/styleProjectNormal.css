@@ -1,5 +1,23 @@
-@font-face { font-family: 'schnee';
-             src: url('../fonts/ChristmasSnow.ttf') format('truetype'); }
+/***************************************************************/
+/**************************************************************
+*
+*   Darstellung des Spiels mit zusätzlichem Rand für die Darstellung
+*   über 1024 Pixel Bildschirmbreite
+*
+***************************************************************/
+/***************************************************************/
+
+/**************************************************************
+*
+*   Importieren der Schriftart für das Logo " Fang Isaac "
+*
+***************************************************************/
+
+@font-face {
+    font-family: 'schnee';
+    src: url('../fonts/ChristmasSnow.ttf')
+    format('truetype');
+}
 
 
 html{
@@ -18,19 +36,27 @@ body{
 *
 ***************************************************************/
 
-    animation: schnee 20s linear infinite;
-       /*-webkit-animation: schnee 20s linear infinite; */
+    /*animation: schnee 20s linear infinite;
+       -webkit-animation: schnee 20s linear infinite; */
 
 	padding: 10px;
     background:
 
         url('../images/schnee_hintergrund_1.png'),
-          /* url('../images/schnee_hintergrund_2.png'),
-          url('../images/schnee_hintergrund_3.png') */
+        /*
+            url('../images/schnee_hintergrund_2.png'),
+            url('../images/schnee_hintergrund_3.png')
+        */
           repeat-x left bottom;
 
 
 }
+
+/**************************************************************
+*
+*   KeyFrames für die Animation des Schneefalls
+*
+***************************************************************/
 
 @keyframes schnee{
         0%      {background-position:0px 0px,0px 0px,0px 0px;            }
@@ -55,7 +81,6 @@ body{
         margin-left: 80px;
         left: 80px;
         font-size: 100px;
-/*        font-family: 'Cabin Sketch', cursive;*/
         font-family: 'schnee';
 
     }
@@ -111,7 +136,7 @@ body{
 ***************************************************************/
 
     #zuruckAnleitungButton, #zuruckEinstellungenButton {
-        margin-top: 20px;
+        margin-top: 30px;
 
     }
 
@@ -489,7 +514,7 @@ body{
         z-index:2;
     }
     .switch input:checked + label {
-        color:#f1831e;
+        color:#3498DB;
         moz-transition:all 0.4s ease-in 0s;
         o-transition:all 0.4s ease-in 0s;
         transition:all 0.4s ease-in 0s;
@@ -544,8 +569,7 @@ body{
         left:83.26%;
     }
 
-
-    .spaceEmOut {
+    .Einstellungen {
         margin-bottom:15px;
     }
 
@@ -570,7 +594,7 @@ body{
 
 /**************************************************************
 *
-*    CSS Klassen für die Darstellung des Highscores
+*    CSS Klassen für die Darstellung Eintragen in den Highscore
 *
 ***************************************************************/
 
@@ -822,12 +846,16 @@ body{
 *    Style für die Bilder im Impressum
 *
 ***************************************************************/
-.   profil {
-
+    .profilfotos {
       -webkit-box-shadow: 0 15px 10px #777;
       -moz-box-shadow: 0 15px 10px #777;
       box-shadow: 0 15px 10px #777;
     }
+
+    #tdprofil {
+        text-align: center;
+    }
+
 
 
 /**************************************************************
@@ -851,6 +879,7 @@ body{
         font-family: 'Bubblegum Sans', cursive;
         opacity: 0;
         transform: scale(1.5);
+
 
     }
 
@@ -898,10 +927,3 @@ body{
     }
 
 
-
-
-
-
-#tdprofil {
-    text-align: center;
-}

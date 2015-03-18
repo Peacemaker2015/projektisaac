@@ -355,7 +355,7 @@ function game(){
         impressumButton.classList.toggle("hidden");
 
         // Inhalt des DIVs "Tabelle" wieder zurücksetzen um alte Highscore zu löschen
-        document.getElementById('tabelle').innerHTML = '';
+        document.getElementById('tabelle').innerHTML = '<p id=content>Lade Highscore....</p><br><br><img id="load" src="images/load.png">';
         readHighscore(name, score);
     };
 
@@ -538,7 +538,7 @@ function game(){
         this.sound = true;
 
         // Elemente für das Spiel selbst
-        this.maxTime = 4;
+        this.maxTime = 40;
         this.time = null;
         this.score = null;
         this.ammo = null;

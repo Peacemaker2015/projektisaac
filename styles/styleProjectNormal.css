@@ -136,6 +136,11 @@ body{
 ***************************************************************/
 
     #zuruckAnleitungButton, #zuruckEinstellungenButton {
+        margin-top: 8px;
+
+    }
+
+    #zuruckEinstellungenButton {
         margin-top: 30px;
 
     }
@@ -755,6 +760,15 @@ body{
     #highscoreSendenButton {
         top: 170px;
     }
+
+    #load{
+        -webkit-animation: drehen 3s linear infinite;
+    }
+
+    @-webkit-keyframes drehen{
+        100% {-webkit-transform: rotate(360deg); }
+    }
+
 
 /**************************************************************
 *

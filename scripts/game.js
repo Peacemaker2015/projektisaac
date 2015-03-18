@@ -4,21 +4,6 @@
 *
 *   Author     : Reichert, Tobias, OFR
 *                Rothe, Martin, OFR
-*
-*   History:
-*   2015-02-23  -
-*   2015-02-26  TR  > Create Main-Game-Engine
-*   2015-02-26  MR  > Implementation GUI
-*   2015-03-03  TR  > Implementation Code encapsulation
-*   2015-03-04  TR  > Implementation left and right direction
-*                   > Fixed Errors
-*   2015-03-05  MR  > Implementation Database connection
-*   2015-03-10  TR  >
-*   2015-03-11  TR  >
-*   2015-03-12  TR  >
-*   2015-03-17  TR  >
-*   2015-03-18  TR  >
-*   2015-03-19  TR  >
 */
 //------------------------------------------------------------------------------------------------------------ //
 
@@ -537,6 +522,11 @@ function game(){
         document.getElementById(elementID).play();
     }
 
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Erzeugen eines neuen Spieles
+    */
+
     function createGame(){
 
         // Speicher mit Isaac`s wird angelegt
@@ -548,7 +538,7 @@ function game(){
         this.sound = true;
 
         // Elemente für das Spiel selbst
-        this.maxTime = 40;
+        this.maxTime = 4;
         this.time = null;
         this.score = null;
         this.ammo = null;
@@ -562,6 +552,11 @@ function game(){
         this.moveTimer;
         this.isaacTimer;
     }
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Laden eines vorhandenen Spieles
+    */
 
     function loadGame(){
 
@@ -662,6 +657,11 @@ function game(){
         }
     }
 
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Beginnen eines neuen Spieles
+    */
+
     function startGame(a){
         if(game.time===0){
             window.localStorage.clear();
@@ -686,6 +686,11 @@ function game(){
         // Level wird festgesetzt
         game.level = a;
     }
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das runterzählen der Spielzeit
+    */
 
     function timeGame(){
         // Spielzeit wird runtergezählt
@@ -713,6 +718,11 @@ function game(){
         }
     }
 
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Stopen eines Spieles
+    */
+
     function stopGame(){
 
         // Timer werden angehalten
@@ -723,6 +733,11 @@ function game(){
         // Schalter wird umgelegt
         game.active=false;
     }
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Speichern des Spieles
+    */
 
     function saveGame(){
 
@@ -769,6 +784,11 @@ function game(){
         // Soundeinstellung wird abgespeichert
         window.localStorage.setItem("GameSound", game.sound);
     }
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das drücken einer Taste
+    */
 
     function keydownGame(e){
         // Wenn genügend Spielzeit (größer 0) vorhanden ist, dann dann wird reagiert
@@ -862,6 +882,11 @@ function game(){
             }
         }
     }
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das drücken der Maustaste
+    */
 
     function mousedownGame(e){
         // Prüfen, Spiel aktiv und genügend Munition vorhanden ist
@@ -965,208 +990,237 @@ function game(){
         }
     }
 
-/* Dinge für die Isaac`s */
+    /* Dinge für die Isaac`s */
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Erzeugen einer neuen Figur
+    */
 
-function createIsaac(direction){
+    function createIsaac(direction){
 
-    // ID, welches Bild verwendet wird
-    this.srcid = 0;
+        // ID, welches Bild verwendet wird
+        this.srcid = 0;
 
-    // Zufällige y-Koordinate wird berechnet
-    var min = 0;
-    var max = 600;
-    this.y = Math.floor(Math.random() * (max - min)) + min;
+        // Zufällige y-Koordinate wird berechnet
+        var min = 0;
+        var max = 600;
+        this.y = Math.floor(Math.random() * (max - min)) + min;
 
-    // Startposition x-Koordinate wird festgelegt
-    if(direction === "move_right"){
-        // Wenn Isaac nach links fliegt
-        this.x = 1024;
-    }else{
-        // Wenn Isaac nach rechts fliegt
-        this.x = 0;
-    }
-
-    // Trefferstatus wird gesetzt
-    this.hit = false;
-
-    // Geschwindigkeit wird anhand des Level berechnet
-    this.speed = (parseInt(game.level) * 2) + 0.5;
-
-    // Flugrichtung wird gesetzt
-    this.direction = direction;
-
-    // Größe wird abhängig vom Level festgesetzt
-    if(game.level===3){
-        this.scale = 0.7;
-    }else{
-        this.scale = 0.7 + (Math.random() * 0.8);
-    }
-}
-
-function addIsaac(){
-    // Isaac ("links fliegend") hinzufügen
-    game.isaac.push(new createIsaac("move_left"));
-    // Isaac ("rechts fliegend") hinzufügen
-    game.isaac.push(new createIsaac("move_right"));
-}
-
-function moveIsaac(){
-
-    // Spielfeld leeren
-    ctx.clearRect(0,0,1024,768);
-
-    // Morrhühner in die jeweilige Richtung bewegen
-    for(var i=0;i<game.isaac.length;i++){
-
-        // Überprüfung in welche Richtung Isaac fliegt
-        if(game.isaac[i].direction === "move_right"){
-
-            // Isaac fliegt nach rechts
-            moveIsaacRight(i);
+        // Startposition x-Koordinate wird festgelegt
+        if(direction === "move_right"){
+            // Wenn Isaac nach links fliegt
+            this.x = 1024;
+        }else{
+            // Wenn Isaac nach rechts fliegt
+            this.x = 0;
         }
-        else{
 
-            // Isaac fliegt nach links
-            moveIsaacLeft(i);
+        // Trefferstatus wird gesetzt
+        this.hit = false;
+
+        // Geschwindigkeit wird anhand des Level berechnet
+        this.speed = (parseInt(game.level) * 2) + 0.5;
+
+        // Flugrichtung wird gesetzt
+        this.direction = direction;
+
+        // Größe wird abhängig vom Level festgesetzt
+        if(game.level===3){
+            this.scale = 0.7;
+        }else{
+            this.scale = 0.7 + (Math.random() * 0.8);
         }
     }
-}
 
-function moveIsaacRight(i){
-    // Überprüfung, ob Isaac getroffen wurde
-    if(game.isaac[i].hit === "true"){
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das hinzufügen einer Figur zum Speicher
+    */
 
-        // Anzeigebild wird anhand der ID ausgewählt
-        if(game.isaac[i].srcid === 0){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacRH0");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 1;
-        }
-        else if(game.isaac[i].srcid === 1){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacRH0");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 2;
-        }
-        else if(game.isaac[i].srcid === 2){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacRH1");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 0;
-        }
+    function addIsaac(){
+        // Isaac ("links fliegend") hinzufügen
+        game.isaac.push(new createIsaac("move_left"));
+        // Isaac ("rechts fliegend") hinzufügen
+        game.isaac.push(new createIsaac("move_right"));
+    }
 
-        // Bewegungsrichtung
-        game.isaac[i].y += +1;
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Bewegen einer Figur
+    */
 
-        // Überprüfung, ob Isaac außerhalb des Spielfeldes
-        if(game.isaac[i].y > 768){
-            // Enfernen des Isaacs aus den Speicher
-            window.localStorage.removeItem(game.isaac[i]);
-        }
-    }else{
+    function moveIsaac(){
 
-        // Anzeigebild wird anhand der ID ausgewählt
-        if(game.isaac[i].srcid === 0){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacR0");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 1;
-        }
-        else if(game.isaac[i].srcid === 1){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacR0");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 2;
-        }
-        else if(game.isaac[i].srcid === 2){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacR1");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 0;
-        }
+        // Spielfeld leeren
+        ctx.clearRect(0,0,1024,768);
 
-        // Bewegungsrichtung
-        game.isaac[i].x += - game.isaac[i].speed;
+        // Morrhühner in die jeweilige Richtung bewegen
+        for(var i=0;i<game.isaac.length;i++){
 
-        // Überprüfung, ob Isaac außerhalb des Spielfeldes
-        if(game.isaac[i].x<0){
-            // Enfernen des Isaacs aus den Speicher
-            window.localStorage.removeItem(game.isaac[i]);
+            // Überprüfung in welche Richtung Isaac fliegt
+            if(game.isaac[i].direction === "move_right"){
+
+                // Isaac fliegt nach rechts
+                moveIsaacRight(i);
+            }
+            else{
+
+                // Isaac fliegt nach links
+                moveIsaacLeft(i);
+            }
         }
     }
-}
 
-function moveIsaacLeft(i){
-    // Überprüfung, ob Isaac getroffen wurde
-    if(game.isaac[i].hit === "true"){
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Bewegen einer Figur nach rechts
+    */
 
-        // Anzeigebild wird anhand der ID ausgewählt
-        if(game.isaac[i].srcid === 0){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacLH0");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 1;
-        }
-        else if(game.isaac[i].srcid === 1){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacLH0");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 2;
-        }
-        else if(game.isaac[i].srcid === 2){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacLH1");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 0;
-        }
-        // Bewegungsrichtung
-        game.isaac[i].y += +1;
+    function moveIsaacRight(i){
+        // Überprüfung, ob Isaac getroffen wurde
+        if(game.isaac[i].hit === "true"){
 
-        // Überprüfung, ob Isaac außerhalb des Spielfeldes
-        if(game.isaac[i].y > 768){
-            // Enfernen des Isaacs aus den Speicher
-            window.localStorage.removeItem(game.isaac[i]);
-        }
-    }else{
+            // Anzeigebild wird anhand der ID ausgewählt
+            if(game.isaac[i].srcid === 0){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacRH0");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 1;
+            }
+            else if(game.isaac[i].srcid === 1){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacRH0");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 2;
+            }
+            else if(game.isaac[i].srcid === 2){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacRH1");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 0;
+            }
 
-        // Anzeigebild wird anhand der ID ausgewählt
-        if(game.isaac[i].srcid === 0){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacL0");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 1;
-        }
-        else if(game.isaac[i].srcid === 1){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacL0");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 2;
-        }
-        else if(game.isaac[i].srcid === 2){
-            // Grafik wird geladen
-            game.isaac[i].src = document.getElementById("isaacL1");
-            // ID wird gesetzt
-            game.isaac[i].srcid = 0;
-        }
-        // Bewegungsrichtung
-        game.isaac[i].x += + game.isaac[i].speed;
+            // Bewegungsrichtung
+            game.isaac[i].y += +1;
 
-        // Überprüfung, ob Isaac außerhalb des Spielfeldes
-        if(game.isaac[i].x<0){
-            // Enfernen des Isaacs aus den Speicher
-            window.localStorage.removeItem(game.isaac[i]);
+            // Überprüfung, ob Isaac außerhalb des Spielfeldes
+            if(game.isaac[i].y > 768){
+                // Enfernen des Isaacs aus den Speicher
+                window.localStorage.removeItem(game.isaac[i]);
+            }
+        }else{
+
+            // Anzeigebild wird anhand der ID ausgewählt
+            if(game.isaac[i].srcid === 0){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacR0");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 1;
+            }
+            else if(game.isaac[i].srcid === 1){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacR0");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 2;
+            }
+            else if(game.isaac[i].srcid === 2){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacR1");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 0;
+            }
+
+            // Bewegungsrichtung
+            game.isaac[i].x += - game.isaac[i].speed;
+
+            // Überprüfung, ob Isaac außerhalb des Spielfeldes
+            if(game.isaac[i].x<0){
+                // Enfernen des Isaacs aus den Speicher
+                window.localStorage.removeItem(game.isaac[i]);
+            }
         }
     }
-}
 
-function drawIsaac(){
-    // Durchlaufen des Speichers für die Isaac`s
-    for(var i=0;i<game.isaac.length;i++){
-        // Isaac wird im Canvas-Element gezeichnet
-        ctx.drawImage(game.isaac[i].src, game.isaac[i].x, game.isaac[i].y, 40 * game.isaac[i].scale, 50 * game.isaac[i].scale);
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Bewegen einer Figur nach links
+    */
+
+    function moveIsaacLeft(i){
+        // Überprüfung, ob Isaac getroffen wurde
+        if(game.isaac[i].hit === "true"){
+
+            // Anzeigebild wird anhand der ID ausgewählt
+            if(game.isaac[i].srcid === 0){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacLH0");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 1;
+            }
+            else if(game.isaac[i].srcid === 1){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacLH0");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 2;
+            }
+            else if(game.isaac[i].srcid === 2){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacLH1");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 0;
+            }
+            // Bewegungsrichtung
+            game.isaac[i].y += +1;
+
+            // Überprüfung, ob Isaac außerhalb des Spielfeldes
+            if(game.isaac[i].y > 768){
+                // Enfernen des Isaacs aus den Speicher
+                window.localStorage.removeItem(game.isaac[i]);
+            }
+        }else{
+
+            // Anzeigebild wird anhand der ID ausgewählt
+            if(game.isaac[i].srcid === 0){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacL0");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 1;
+            }
+            else if(game.isaac[i].srcid === 1){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacL0");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 2;
+            }
+            else if(game.isaac[i].srcid === 2){
+                // Grafik wird geladen
+                game.isaac[i].src = document.getElementById("isaacL1");
+                // ID wird gesetzt
+                game.isaac[i].srcid = 0;
+            }
+            // Bewegungsrichtung
+            game.isaac[i].x += + game.isaac[i].speed;
+
+            // Überprüfung, ob Isaac außerhalb des Spielfeldes
+            if(game.isaac[i].x<0){
+                // Enfernen des Isaacs aus den Speicher
+                window.localStorage.removeItem(game.isaac[i]);
+            }
+        }
     }
-}
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Zeichnen einer Figur im Canvas
+    */
+
+    function drawIsaac(){
+        // Durchlaufen des Speichers für die Isaac`s
+        for(var i=0;i<game.isaac.length;i++){
+            // Isaac wird im Canvas-Element gezeichnet
+            ctx.drawImage(game.isaac[i].src, game.isaac[i].x, game.isaac[i].y, 40 * game.isaac[i].scale, 50 * game.isaac[i].scale);
+        }
+    }
 
 
 //------------------------------------------------------------------------------------------------------------ //
@@ -1174,6 +1228,11 @@ function drawIsaac(){
 **  Bereich Datenbank
 */
 //------------------------------------------------------------------------------------------------------------ //
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Erzeugen einer Datenbank
+    */
 
     function createDatabase(){
 
@@ -1189,6 +1248,11 @@ function drawIsaac(){
         // Senden des Requests
         xmlhttp.send();
     }
+
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Schreiben der Punkte in den Highscore
+    */
 
     function writeHighscore(){
 
@@ -1232,6 +1296,11 @@ function drawIsaac(){
         }, 1000 );
     };
 
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Auslesen des Highscores
+    */
+
     function readHighscore(name,score){
 
         // Action-ID wird gesetzt
@@ -1254,6 +1323,10 @@ function drawIsaac(){
         xmlhttp.send();
     }
 
+    //-------------------------------------------------------------------- //
+    /*
+    **  Befehlsausführungen, für das Löschen des Highscores
+    */
 
     function dropHighscore(){
 
